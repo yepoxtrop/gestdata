@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!--estilos de la plantilla-->
+    <link
+      rel="stylesheet"
+      href="{{url_for('static', filename='css/pdfs/reporte.css')}}"
+    />
+    <link
+      rel="icon"
+      href="/static/src/vectores/raven.svg"
+      type="image/svg+xml"
+    />
+    <title>{% block titulo %}REPORTE{% endblock %}</title>
+  </head>
+  <body>
+    <div class="contendor_general">
+      <!--datos empresa fumigadora-->
+      <div class="titulo">
+        <div class="datos_empresa_fumigadora">
+          <div id="empresa_fumigadora">
+            <span class="empresa_fumigadora">{{ empresa_fumigadora }}</span>
+          </div>
+          <div id="slogan">
+            <span class="slogan">
+              Comprometidos con el medio ambiente y sus clientes
+            </span>
+          </div>
+          <div id="nit_empresa_fumigadora">
+            <span>NIT: {{ nit }} RÉGIMEN COMÚN</span>
+          </div>
+        </div>
+
+        <!--datos especificos-->
+        <div class="datos_personales">
+          <div class="numeros">
+            <div class="num1"><span> {{ telefono }} </span></div>
+            <div class="separados">-</div>
+            <div class="num2"><span> {{ encargado_telefono }} </span></div>
+          </div>
+
+          <!--direccion-->
+          <div class="direccion">
+            <div class="calle"><span> {{ direccion }}</span></div>
+            <div class="separados">-</div>
+            <div class="departamento"><span> {{ departamento }} </span></div>
+          </div>
+
+          <!--corre1-->
+          <div class="correos">
+            <div class="correo1"><span> {{ correo }}</span></div>
+          </div>
+
+          <!--corre2-->
+          <div class="correos">
+            <div class="correo2"><span> {{ encargado_correo }}</span></div>
+          </div>
+        </div>
+
+        <!--logo gest data-->
+        <div class="logo">
+          <img
+            src="/static/src/images/logos/logo.png"
+            alt=""
+            class="logo_gestdata"
+          />
+        </div>
+      </div>
+
+      <div class="cuerpo">
+        <!--Anlisis de trabajo seguro-->
+        <div class="titulo_cuerpo">
+          <span class="txt_titulo_cuerpo"
+            >ANÁLISIS DE TRABAJO SEGURO(MEDIDAS PREVENTIVAS)</span
+          >
+        </div>
+
+        <div class="tabla_medidas_preventivas">
+          {% if longitud2 > 0 %}
+          <table>
+            <thead>
+              <tr>
+                <th>CARACTERÍSTICA</th>
+                <th>DETALLE</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for detalles_servicio in session['detalles_servicios_2'] %}
+              <tr>
+                <td>{{ detalles_servicio['caracteristica'] }}</td>
+                <td>{{ detalles_servicio['detalle'] }}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+          {% else %}
+          <span>No existen detalles disponibles para este apartado</span>
+          {% endif %}
+        </div>
+
+        <div class="nota">
+          <span style="color: rgb(0, 0, 0); text-align: left"
+            >Nota:
+            <span
+              >La apreicación de insecticida por método nebulizador genera
+              condensación de aceite en piso y superficies, por lo cual se
+              recomienda realizar jornada de limpieza antes de iniciar labores,
+              para prevenir caídas al mismo nivel y derrapes de montacargas u
+              otros</span
+            >
+          </span>
+        </div>
+
+        <div class="titulo_cuerpo">
+          <span class="txt_titulo_cuerpo">REPORTE DE SERVICIO</span>
+        </div>
+        {% if longitud1 > 0 %}
+        <table>
+          <thead>
+            <tr>
+              <th>CARACTERÍSTICA</th>
+              <th>DETALLE</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for detalles_servicio in session['detalles_servicios_1'] %}
+            <tr>
+              <td>{{ detalles_servicio['caracteristica'] }}</td>
+              <td>{{ detalles_servicio['detalle'] }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+        {% else %}
+        <span>No existen detalles disponibles para este apartado</span>
+        {% endif %}
+
+        <div class="titulo_cuerpo">
+          <span class="txt_titulo_cuerpo">OBSERVACIONES</span>
+        </div>
+
+        <div class="tabla_observaciones">
+          {% if longitud3 > 0 %}
+          <table>
+            <thead>
+              <tr>
+                <th>OBSERVACIONES</th>
+                <th>DETALLE</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for detalles_servicio in session['detalles_servicios_3'] %}
+              <tr>
+                <td>{{ detalles_servicio['caracteristica'] }}</td>
+                <td>{{ detalles_servicio['detalle'] }}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+          {% else %}
+          <span>No existen detalles disponibles para este apartado</span>
+          {% endif %}
+        </div>
+
+        <div class="titulo_cuerpo">
+          <span class="txt_titulo_cuerpo">REPONSBALES</span>
+        </div>
+
+        <div class="aprobacion">
+          <div class="tabla1">
+            <table>
+              <thead>
+                <tr>
+                  <th colspan="2">APROBACIÓN A.T.S PARA INICIO DE LABORES</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>NOMBRE CLIENTE</td>
+                  <td>{{ nombre_cliente }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="tabla2">
+            <table>
+              <thead>
+                <tr>
+                  <th>TÉCNICO/S ESPECIALISTA/S</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>{{ empleado }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="pie de pagina">
+          <span
+            ><span style="color: rgb(0, 0, 0)"
+              >CONVENCIONES DEL REPORTE DE SERVICIO RGSP:</span
+            ><span style="color: rgb(80, 0, 230)"
+              >Registro sanitario para uso en salud pública.</span
+            ></span
+          >
+
+          <span
+            ><span style="color: rgb(0, 0, 0)">CC:</span
+            ><span style="color: rgb(80, 0, 230)"
+              >Centímetros cúbicos.</span
+            ></span
+          >
+
+          <span
+            ><span style="color: rgb(0, 0, 0)">NQ:</span
+            ><span style="color: rgb(80, 0, 230)">No químico.</span></span
+          >
+
+          <span
+            ><span style="color: rgb(0, 0, 0)"
+              >CONVENCION PARA LAS APLICACION ASP:</span
+            ><span style="color: rgb(80, 0, 230)">Aspersión.</span></span
+          >
+
+          <span
+            ><span style="color: rgb(0, 0, 0)">NF:</span
+            ><span style="color: rgb(80, 0, 230)"
+              >Nebulización fría.</span
+            ></span
+          >
+
+          <span
+            ><span style="color: rgb(0, 0, 0)">TC:</span
+            ><span style="color: rgb(80, 0, 230)"
+              >Termo nebulizador.</span
+            ></span
+          >
+
+          <span
+            ><span style="color: rgb(0, 0, 0)">PF:</span
+            ><span style="color: rgb(80, 0, 230)">Pote fumígeno.</span></span
+          >
+
+          <span
+            ><span style="color: rgb(0, 0, 0)">FF:</span
+            ><span style="color: rgb(80, 0, 230)"
+              >Fumigación con fosfuro de aluminio.</span
+            ></span
+          >
+        </div>
+      </div>
+    </div>
+
+    <dialog id="modal">
+      <span class="titulo_modal">¿DESEAS DESCARGAR EL PDF DEL REPORTE?</span>
+      <div class="contenedor_btn_modal">
+        <div class="descargar_modal">
+          <a
+            id="aceptar_modal"
+            href="{% block descargar %} # {% endblock %}"
+            class="txt_modal"
+            >Aceptar</a
+          >
+        </div>
+        <div class="cerrar_modal">
+          <a
+            id="cerrar_modal"
+            href="{% block cancelar %} # {% endblock %}"
+            class="txt_modal"
+            >Cancelar</a
+          >
+        </div>
+      </div>
+    </dialog>
+    <!--scripts-->
+    <script src="/static/js/empresa_fumigadora/reporte/reporte.js"></script>
+  </body>
+</html>

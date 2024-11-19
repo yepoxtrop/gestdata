@@ -1,0 +1,185 @@
+/*estilos de la pagina*/
+#hoja6 {
+  background-color: rgb(247, 247, 250);
+  padding: 65px 82px 53.24px 75px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#container_titulo6 {
+  width: 100%;
+  text-align: center;
+}
+
+/*titulo de la pagina*/
+.titulo_morado6 {
+  color: rgb(85, 0, 230);
+  font-size: 60px;
+  font-weight: bold;
+}
+
+/*contendor de la descripcion de la pagina*/
+#mensaje6 {
+  width: 70%;
+  text-align: center;
+  margin-bottom: 49px;
+  margin-top: 34px;
+}
+
+/*descripcion de la pagina*/
+#txt_mensaje6 {
+  font-size: 25px;
+  color: rgb(108, 108, 114);
+  font-weight: bold;
+  line-height: 24px;
+  text-align: center;
+}
+
+/*contendor de las licencias(2)*/
+.card_licencias {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+  align-items: center;
+  width: 90%;
+  min-width: 100%;
+  max-width: 100%;
+}
+
+/*foto de la licencia*/
+.foto_licencia {
+  border-radius: 270px;
+  border-width: 4px;
+  border-color: rgb(85, 0, 230);
+  border-style: solid;
+  margin-bottom: 40px;
+}
+
+.cartas_licencias {
+  width: calc(100% / 3);
+  background-color: rgb(255, 255, 255);
+  border-radius: 40px;
+  padding: 34px 22px 34px 22px;
+  box-shadow: 4px 8px 20px rgba(0, 0, 0, 0.35);
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.contenedor_licencias {
+  width: 60%;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+.foto_licencia {
+  width: 80%;
+  border-radius: 270px;
+  border-width: 4px;
+  border-color: rgb(85, 0, 230);
+  border-style: solid;
+  margin-bottom: 40px;
+}
+
+.contenedor_nombre_licencia {
+  width: 100%;
+  max-width: 100%;
+  min-width: 100%;
+  text-align: center;
+}
+
+.nombre_licencia {
+  color: rgb(85, 0, 230);
+}
+
+.precio_licencia {
+  width: 100%;
+  max-width: 100%;
+  min-width: 100%;
+  text-align: center;
+}
+
+.descripcion_licencia {
+  width: 100%;
+  min-width: 100%;
+  max-width: 100%;
+  text-align: center;
+}
+
+.datos_licencias {
+  width: 100%;
+}
+
+.descripcion {
+  font-size: 16px;
+}
+
+/**/
+@media screen and (max-width: 1200px) {
+  #mensaje6 {
+    width: 90%;
+  }
+}
+
+/**/
+@media screen and (max-width: 905px) {
+  /*contendor de las licencias(2)*/
+  .card_licencias {
+    flex-direction: column;
+  }
+
+  .cartas_licencias {
+    width: 100%;
+    flex-direction: row;
+  }
+
+  .foto_licencia {
+    margin-bottom: 0;
+  }
+
+  #mensaje6 {
+    width: 90%;
+  }
+}
+
+/**/
+@media screen and (max-width: 815px) {
+  .nombre_licencia {
+    font-size: 29px;
+  }
+
+  .contenedor_licencias {
+    display: none;
+  }
+
+  #mensaje6 {
+    width: 90%;
+  }
+
+  #txt_mensaje6 {
+    font-size: 20px;
+  }
+}
+
+/**/
+@media screen and (max-width: 480px) {
+  #hoja6 {
+    padding: 33px 40px 33px 40px;
+  }
+
+  #mensaje6 {
+    width: 90%;
+  }
+
+  #txt_mensaje6 {
+    font-size: 19px;
+  }
+
+  .titulo_morado6 {
+    font-size: 53px;
+  }
+}

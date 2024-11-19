@@ -1,0 +1,136 @@
+{% extends 'empresa_fumigadora/components/plantilla.html' %}
+
+<!--extensiones css/bootstrap-->
+{% block extensiones %} {{super()}}
+<link
+  rel="stylesheet"
+  href="{{url_for('static', filename='css/empresa_fumigadora/estilos_empleados.css')}}"
+/>
+
+<link
+  rel="stylesheet"
+  href="{{url_for('static', filename='css/empresa_fumigadora/empleados_agregar.css')}}"
+/>
+
+<link
+  rel="stylesheet"
+  href="{{url_for('static', filename='css/empresa_fumigadora/menu/menu.css')}}"
+/>
+
+{% endblock %}
+
+<!--titulo de la pagina-->
+{% block titulo %} ACTUALIZAR EMPLEADO {% endblock %}
+
+<!--cerrar sesion-->
+{% block cerrar_sesion %} {{url_for('Login.cerrar_sesion')}} {% endblock %}
+
+<!--logo de la empresa-->
+{% block logo %} {{ file_path }} {% endblock %}
+
+<!--boton de borrado de cuenta-->
+
+<!--foto del encargado-->
+{% block encargado %} {{file_path_encargado}} {% endblock %}
+
+<!--titulos de cada pagina-->
+{% block titulos_contenido %}
+<div class="titulo_contenido_pag">
+  <span class="txt_contenido_pag">ACTULIZAR DATOS </span>
+</div>
+{% endblock %}
+
+<!--mensaje-->
+
+<!--imagen de bienvenida-->
+{% block contenido_usuario%}
+<div class="imagen_form">
+  <img
+    src="/static/src/images/imagen1.png"
+    alt="imagen_fomr"
+    class="imagen_contenedor"
+  />
+</div>
+<div class="formulario_empleados">
+  <form
+    action="{{ url_for('Empresa_fumigadora.actualizar_empleado') }}"
+    method="post"
+    class="formulario_ñregistrar_empleado"
+  >
+    <!--mensajes-->
+    {% with messages = get_flashed_messages() %} {% if messages %} {% for
+    message in messages %}
+    <div
+      class="mensaje_error"
+      style="
+        width: 100%;
+        background-color: #f25044;
+        border-radius: 40px;
+        padding: 15px 20px;
+      "
+    >
+      <span>{{message}}</span>
+    </div>
+
+    {% endfor %} {% endif %} {% endwith %}
+
+    <div class="contendor_pares">
+      <!--nombre del empleado-->
+      <div class="inputs_crear_empleado">
+        <label for="nombre_empleado">Nombres</label>
+        <input
+          type="text"
+          name="nombre_empleado"
+          minlength="10"
+          value="{{ nombre_empleado }}"
+          required
+        />
+      </div>
+
+      <!--apellido del empleado-->
+      <div class="inputs_crear_empleado">
+        <label for="apellido_empleado">Apellidos</label>
+        <input
+          type="text"
+          name="apellido_empleado"
+          minlength="10"
+          value="{{ apellido_empleado }}"
+          required
+        />
+      </div>
+    </div>
+
+    <div class="contendor_pares">
+      <!--corre personal-->
+      <div class="inputs_crear_empleado">
+        <label for="correo_personal">Email personal</label>
+        <input
+          type="email"
+          name="correo_personal"
+          minlength="10"
+          value="{{ correo_personal }}"
+          required
+        />
+      </div>
+
+      <!--correo empresarial-->
+      <div class="inputs_crear_empleado">
+        <label for="correo_empresarial">Email empresarial</label>
+        <input
+          type="email"
+          name="correo_empresarial"
+          minlength="10"
+          value="{{ correo_empresarial }}"
+          required
+        />
+      </div>
+    </div>
+
+    <!--enviar formulario-->
+    <div class="inputs_crear_empleado" id="boton_enviar">
+      <input type="submit" value="ACTUALIZAR" id="boton_enviar_input" />
+    </div>
+  </form>
+</div>
+
+{% endblock %}

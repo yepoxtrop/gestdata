@@ -1,0 +1,354 @@
+{% extends 'cliente/components/plantilla.html' %}
+
+<!--extensiones css/bootstrap-->
+{% block extensiones %} {{super()}}
+<link
+  rel="stylesheet"
+  href="{{url_for('static', filename='css/empresa_fumigadora/servicios/general.css')}}"
+/>
+
+<link
+  rel="stylesheet"
+  href="{{url_for('static', filename='css/empresa_fumigadora/servicios.css')}}"
+/>
+
+<link
+  rel="stylesheet"
+  href="{{url_for('static', filename='css/empresa_fumigadora/servicios/bootstrap.css')}}"
+/>
+
+<link
+  rel="stylesheet"
+  href="{{url_for('static', filename='css/cliente/sedes_crear.css')}}"
+/>
+
+{% endblock %}
+
+<!--titulo de la pagina-->
+{% block titulo %} CREAR SEDE {% endblock %}
+
+<!--cerrar sesion-->
+{% block cerrar_sesion %} {{url_for('Login.cerrar_sesion')}} {% endblock %}
+
+<!--logo de la empresa-->
+{% block logo %} {{ logo_Cliente }} {% endblock %}
+
+<!--titulos de cada pagina-->
+{% block titulos_contenido %}
+<div class="menu_empleados">
+  <button id="abrir_menu">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="16"
+      height="16"
+      fill="currentColor"
+      class="bi bi-list"
+      viewBox="0 0 16 16"
+      id="abrir_men2"
+    >
+      <path
+        fill-rule="evenodd"
+        d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"
+      />
+    </svg>
+  </button>
+
+  <!--barra de navegacion-->
+  <nav class="barra2">
+    <button id="cerrar_menu">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="16"
+        height="16"
+        fill="currentColor"
+        class="bi bi-x-lg"
+        viewBox="0 0 16 16"
+        id="cerrar_men2"
+      >
+        <path
+          d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z"
+        />
+      </svg>
+    </button>
+
+    <!--contendor de los botones-->
+    <div class="contenedor_botones">
+      <div class="titulo_contenido_pag" id="servicios_atendidos">
+        <span class="txt_contenido_pag"
+          ><a href="{{ url_for('Cliente.sedes') }}" class="titulos_empleados"
+            >SEDES ACTUALES</a
+          ></span
+        >
+      </div>
+
+      <div class="titulo_contenido_pag" id="servicios_disponibles">
+        <span class="txt_contenido_pag" id="txt_agregar"
+          ><a
+            href="{{url_for('Cliente.sedes_form')}}"
+            class="titulos_empleados"
+            id="conexion_agregar"
+            >CREAR SEDE</a
+          ></span
+        >
+      </div>
+    </div>
+  </nav>
+</div>
+{% endblock %}
+
+<!--imagen de bienvenida-->
+{% block contenido_usuario%}
+
+<div class="contendor_mensaje_bienvenida" style="flex-direction: column">
+  <!--mensajes-->
+  {% with messages = get_flashed_messages() %} {% if messages %} {% for message
+  in messages %}
+  <div
+    class="mensaje_error"
+    style="
+      width: 100%;
+      background-color: #f25044;
+      border-radius: 40px;
+      padding: 15px 20px;
+    "
+  >
+    <span>{{message}}</span>
+  </div>
+
+  {% endfor %} {% endif %} {% endwith %}
+  <div class="formulario_sservicio">
+    <form
+      action="{{ url_for('Cliente.insertar_sede')}}"
+      method="post"
+      enctype="multipart/form-data"
+    >
+      <!--fotos-->
+      <div id="inputs_multimedia">
+        <div class="foto1">
+          <label for="logo_cliente">Logo</label>
+          <input
+            type="file"
+            name="logo_cliente"
+            id="logo_cliente"
+            required
+            accept="image/*"
+          />
+          <label for="logo_cliente" class="labels">
+            <img
+              src="/static/src/images/logos/logo_ejemplo.jpg"
+              alt="logo"
+              class="fotos_sedes"
+              id="logo_ejemplo"
+            />
+          </label>
+          <span id="file-name">Foto no seleccionada</span>
+        </div>
+
+        <div class="foto2">
+          <label for="foto_encargado">Encargado</label>
+          <input
+            type="file"
+            name="foto_encargado"
+            id="foto_encargado"
+            accept="image/*"
+            required
+          />
+          <label for="foto_encargado" class="labels">
+            <img
+              src="/static/src/images/imagenes_adicionales/perfil3.jpeg"
+              alt="encargado"
+              class="fotos_sedes"
+              id="foto_ejemplo"
+            />
+          </label>
+          <span id="file-name2">Foto no seleccionada</span>
+        </div>
+      </div>
+
+      <div class="inputs_no_multimedia">
+        <div class="contenedor_campos_form" id="inputs_no_multimedia2">
+          <div class="campo1">
+            <label for="nit">Nit</label>
+            <input
+              type="tel"
+              name="nit"
+              id="nit"
+              required
+              minlength="11"
+              maxlength="11"
+              placeholder="12345678911"
+            />
+          </div>
+
+          <div class="campo2">
+            <label for="nombre">Nombre sede</label>
+            <input
+              type="text"
+              name="nombre"
+              id="nombre"
+              required
+              minlength="10"
+              maxlength="50"
+              placeholder="Bancolombia calle 85"
+            />
+          </div>
+        </div>
+
+        <div class="contenedor_campos_form">
+          <div class="campo1">
+            <label for="direccion">Direccion</label>
+            <input
+              type="text"
+              name="direccion"
+              id="direccion"
+              required
+              minlength="10"
+              maxlength="40"
+              placeholder="Calle 85 - norte"
+            />
+          </div>
+
+          <div class="campo2">
+            <label for="correo1">Correo sede</label>
+            <input
+              type="email"
+              name="correo1"
+              id="correo1"
+              required
+              minlength="15"
+              maxlength="200"
+              placeholder="bancolombia@gmail.com"
+            />
+          </div>
+        </div>
+
+        <div class="contenedor_campos_form">
+          <div class="campo1">
+            <label for="telefono">Telefono</label>
+            <input
+              type="text"
+              name="telefono"
+              id="telefono"
+              required
+              minlength="10"
+              maxlength="10"
+              placeholder="32188854561"
+            />
+          </div>
+
+          <div class="campo2">
+            <label for="departamento">Departamento</label>
+            <select
+              name="departamento"
+              id="departamento"
+              class="inputs_form"
+              required
+            >
+              <option value="1">Amazonas</option>
+              <option value="2">Antioquía</option>
+              <option value="3">Arauca</option>
+              <option value="4">Atlántico</option>
+              <option value="5">Bolívar</option>
+              <option value="6">Boyacá</option>
+              <option value="7">Caldas</option>
+              <option value="8">Caquetá</option>
+              <option value="9">Casanare</option>
+              <option value="10">Cauca</option>
+              <option value="11">Cesar</option>
+              <option value="12">Chocó</option>
+              <option value="13">Córdoba</option>
+              <option value="14" selected>Cundinamarca</option>
+              <option value="15">Guainía</option>
+              <option value="16">Guaviare</option>
+              <option value="17">Huila</option>
+              <option value="18">La Guajira</option>
+              <option value="19">Magdalena</option>
+              <option value="20">Meta</option>
+              <option value="21">Nariño</option>
+              <option value="22">Norte de Santander</option>
+              <option value="23">Putumayo</option>
+              <option value="24">Quindío</option>
+              <option value="25">Risaralda</option>
+              <option value="26">San Andrés y Providencia</option>
+              <option value="27">Santander</option>
+              <option value="28">Sucre</option>
+              <option value="29">Tolima</option>
+              <option value="30">Valle del Cauca</option>
+              <option value="31">Vaupés</option>
+              <option value="32">Vichada</option>
+              <option value="33">Distrito Capital</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="contenedor_campos_form">
+          <div class="campo1">
+            <label for="encargado">Nombre encargado</label>
+            <input
+              type="text"
+              name="encargado"
+              id="encargado"
+              required
+              minlength="10"
+              maxlength="50"
+              placeholder="Elba boso"
+            />
+          </div>
+
+          <div class="campo2">
+            <label for="correo2">Correo encargado</label>
+            <input
+              type="email"
+              name="correo2"
+              id="correo2"
+              required
+              minlength="15"
+              maxlength="70"
+              placeholder="Elbaboso@gmail.com"
+            />
+          </div>
+        </div>
+
+        <div class="contenedor_campos_form">
+          <div class="campo1">
+            <label for="encargado_tel">Teléfono encargado</label>
+            <input
+              type="tel"
+              name="encargado_tel"
+              id="encargado_tel"
+              required
+              minlength="10"
+              maxlength="10"
+              placeholder="3218854561"
+            />
+          </div>
+
+          <div class="campo2">
+            <label for="contraseña">Contraseña</label>
+            <input
+              type="password"
+              name="contraseña"
+              id="contraseña"
+              required
+              minlength="10"
+              maxlength="20"
+              placeholder="Like a stone"
+            />
+          </div>
+        </div>
+
+        <div class="contenedor_campos_form">
+          <input type="submit" value="CREAR SEDE" />
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+{% endblock %}
+
+<!--script-->
+{% block javascript %} {{super()}}
+<script src="/static/js/empresa_fumigadora/menu_opciones/opciones.js"></script>
+<script src="/static/js/cliente/sedes_fotos.js"></script>
+{% endblock %}

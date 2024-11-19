@@ -1,0 +1,155 @@
+/*estilos generales de la hoja*/
+#hoja2 {
+  background-image: url("/static/src/patrones/morado1.png");
+  margin: 0;
+  padding: 80px 123px 80px 123px;
+  width: 100%;
+  max-width: 100%;
+  min-width: 100%;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/*contenedor del titulo*/
+#container_titulo2 {
+  margin-bottom: 50px;
+  text-align: center;
+  width: 100%;
+}
+
+/*titulo de la pagina*/
+.titulo_blanco1 {
+  color: rgb(255, 255, 255);
+  font-size: 60px;
+  font-weight: bold;
+}
+
+/*contenedor de las 3 cartas*/
+.contenedor_de_Cartas {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+/*estilo general de las cartas*/
+.cartas {
+  width: calc(100%/3);
+  min-width: calc(100%/3);
+  max-width: calc(100%/3);
+  background-color: rgb(247, 247, 250);
+  border-radius: 40px;
+  padding: 21px 14px 21px 14px;
+  box-shadow: 4px 8px 20px rgba(0, 0, 0, 0.35);
+  display: flex;
+  flex-direction: column;
+}
+
+/*estilo del contenedor del titulo de las cartas*/
+.contenedor_titulos_cartas {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 100%;
+  min-width: 100%;
+}
+
+/*estilo de los titulos de las cartas*/
+.titulos_cartas {
+  font-size: 35px;
+  color: rgb(85, 0, 230);
+}
+
+/*estilo del contenedor de imagenes*/
+.contenedor_imagenes {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  width: 100%;
+}
+
+/*estilo del contendor del texto*/
+.carta_interna {
+  background-color: rgb(255, 255, 255);
+  border-radius: 40px;
+  box-shadow: 4px 8px 20px rgba(0, 0, 0, 0.15);
+  padding: 22px 28px 22px 28px;
+  width: 100%;
+}
+
+/*estilo del texto de cada carta*/
+.texto_carta {
+  font-size: 18px;
+  color: rgb(179, 179, 179);
+  line-height: 20px;
+}
+
+.imagen_caja2 {
+  width: 55%;
+  max-width: 55%;
+}
+
+.contenedor_especifico {
+  display: flex;
+  flex-direction: column;
+}
+
+
+/*------------------------------*/
+@media screen and (max-width: 1200px) {
+  .contenedor_de_Cartas {
+    flex-direction: column;
+  }
+
+  .cartas {
+    width: 100%;
+    min-width: 100%;
+    max-width: 100%;
+  }
+
+  .contenedor_especifico {
+    flex-direction: row;
+  }
+
+  .contenedor_imagenes {
+    width: 50%;
+  }
+
+  .carta_interna {
+    width: 50%;
+  }
+
+  .imagen_caja2 {
+    width: 67%;
+    max-width: 67%;
+  }
+}
+
+@media screen and (max-width: 905px) {
+  .texto_carta {
+    font-size: 12px;
+  }
+}
+
+@media screen and (max-width: 815px) {
+  .contenedor_imagenes {
+    /* width: 50%; */
+    display: none;
+  }
+
+  .carta_interna {
+    width: 100%;
+  }
+
+  .texto_carta {
+    font-size: 16px;
+  }
+
+  #hoja2 {
+    padding: 33px 40px 33px 40px;
+  }
+}

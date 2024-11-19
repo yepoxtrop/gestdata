@@ -1,0 +1,264 @@
+body {
+  font-family: "Nexa";
+  font-weight: bold;
+}
+
+.contenedor_principal {
+  width: 100%;
+  display: flex;
+}
+
+h4 {
+  margin-bottom: 0;
+}
+
+.enlaces {
+  color: rgb(255, 255, 255) !important;
+  text-decoration: none;
+}
+
+.info_basica {
+  width: 15%;
+  background-color: rgb(247, 247, 250);
+  padding: 1% 2%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.info_detallada {
+  width: 85%;
+  padding: 3% 3%;
+  background-image: url("/static/src/patrones/morado1.png");
+  margin: 0;
+  max-width: 100%;
+  background-size: cover;
+}
+
+.contendores {
+  width: 100%;
+}
+
+.titulo_logo {
+  text-align: center;
+  color: rgb(80, 0, 230);
+}
+
+.titulo_encargado {
+  text-align: center;
+  color: rgb(80, 0, 230);
+}
+
+.imagen {
+  width: 100%;
+  border-radius: 360px;
+  box-shadow: 4px 8px 20px rgba(0, 0, 0, 0.25);
+}
+
+.botones {
+  width: 100%;
+}
+
+.botones_update {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 7px 10px;
+  background-color: rgb(158, 120, 230);
+  border-radius: 8px;
+  border-color: rgb(158, 120, 230);
+  border-style: solid;
+  box-shadow: 4px 8px 20px rgba(0, 0, 0, 0.25);
+}
+
+.botones_update:hover {
+  background-color: rgb(80, 0, 230);
+  border-color: rgb(80, 0, 230);
+}
+
+.icono {
+  width: 20%;
+}
+
+.texto_boton {
+  width: 80%;
+}
+
+.span_btn {
+  color: rgb(255, 255, 255);
+  font-size: 20px;
+}
+
+svg#vector_lapiz,
+svg.bi.bi-trash3,
+svg.bi.bi-c-circle {
+  width: 100%;
+  height: 100%;
+}
+
+svg#vector_lapiz.activo,
+svg.bi.bi-trash3.activo {
+  color: rgb(255, 255, 255);
+}
+
+.contendores#derechos_autor {
+  display: flex;
+  flex-direction: row;
+  background-color: red;
+}
+
+.span_copy {
+  color: rgb(0, 0, 0);
+  font-size: 11px;
+}
+
+.caja_fondo {
+  width: 100%;
+  background-color: rgba(217, 217, 217, 0.8);
+  border-radius: 40px;
+  padding: 60px;
+}
+
+.caja_contenido_compuesta {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.botones_acciones {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+}
+
+.caja_contenido_user {
+  width: 100%;
+  background-color: rgb(247, 247, 250);
+  padding: 2% 4%;
+  border-radius: 40px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+@media screen and (max-width: 1500px) {
+  .span_btn {
+    font-size: 18px;
+  }
+
+  .titulo_encargado {
+    font-size: 20px;
+  }
+
+  .titulo_logo {
+    font-size: 20px;
+  }
+}
+
+@media screen and (max-width: 1300px) {
+  .info_basica {
+    padding: 1% 1.5%;
+  }
+}
+
+@media screen and (max-width: 1100px) {
+  .info_basica {
+    padding: 1% 2%;
+    width: 20%;
+  }
+
+  .info_detallada {
+    width: 80%;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .contenedor_principal {
+    flex-direction: column-reverse;
+  }
+
+  .info_detallada {
+    width: 100%;
+    height: 0%;
+  }
+
+  .info_basica {
+    display: none;
+  }
+
+  #titulo_logo {
+    display: none;
+  }
+
+  #titulo_encargado {
+    display: none;
+  }
+
+  #logo,
+  #foto,
+  .botones {
+    width: 25%;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+  }
+
+  .icono {
+    display: none;
+  }
+
+  .texto_boton {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .span_btn {
+    font-size: 25px;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .icono {
+    display: flex;
+    width: 20%;
+  }
+
+  .texto_boton {
+    width: 80%;
+  }
+
+  .botones {
+    width: 50%;
+  }
+
+  #logo,
+  #foto {
+    display: none;
+  }
+
+  .span_btn {
+    font-size: 30px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .span_btn {
+    font-size: 25px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .span_btn {
+    font-size: 22px;
+  }
+
+  header {
+    padding: 4% 6% !important;
+  }
+}

@@ -1,0 +1,15 @@
+/entorno_vitual
+/testing
+usuario_ejemplo_paypal.txt
+/app/__pycache__
+/app/Cliente/__pycache__
+/app/Documentos/__pycache__
+/app/Emp_empresa_fumigadora/__pycache__
+/app/Empresa_fumigadora/__pycache__
+/app/Index/__pycache__
+/app/Login/__pycache__
+/app/Recuperar_cuenta/__pycache__
+/app/Recuperar_password/__pycache__
+/app/Register/__pycache__
+/app/Register/ejemplo.py
+/app/Sede_cliente/__pycache__

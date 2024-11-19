@@ -1,0 +1,98 @@
+.contenedor_datos_licencia {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
+
+.imagen_licencia_usuario,
+.contenedor_licencia {
+  width: 50%;
+}
+
+.imagen_licenia_actual {
+  width: 100%;
+}
+
+.contenedor_licencia-dato {
+  width: 100%;
+  border-radius: 40px;
+  padding: 40px;
+  background-image: url("/static/src/patrones/fondo404_3.jpeg");
+  background-position: center;
+  background-size: cover;
+}
+
+.datos_bd_licencia {
+  width: 100%;
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 40px;
+}
+
+.membresia_titulo1,
+.membresia_titulo2,
+.membresia_titulo3,
+.membresia_titulo4 {
+  width: 100%;
+  text-align: center;
+}
+
+.licencia_titulo1 {
+  font-size: 50px;
+  color: rgb(80, 0, 230);
+}
+
+.licencia_titulo2 {
+  font-size: 40px;
+  color: rgb(158, 120, 230);
+}
+
+.licencia_titulo3 {
+  font-size: 40px;
+}
+
+.licencia_titulo4 {
+  font-size: 30px;
+  color: rgb(158, 120, 230);
+}
+
+@media screen and (max-width: 1250px) {
+  .imagen_licencia_usuario {
+    display: none;
+  }
+
+  .contenedor_licencia-dato {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .licencia_titulo1 {
+    font-size: 40px;
+  }
+
+  .licencia_titulo2 {
+    font-size: 30px;
+  }
+
+  .licencia_titulo3 {
+    font-size: 30px;
+  }
+
+  .licencia_titulo4 {
+    font-size: 20px;
+  }
+}
+
+@media screen and (max-width: 460px) {
+  .contenedor_licencia-dato {
+    padding: 20px;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .licencia_titulo1 {
+    font-size: 30px;
+  }
+}

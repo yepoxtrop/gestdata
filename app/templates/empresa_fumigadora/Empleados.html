@@ -1,0 +1,317 @@
+{% extends 'empresa_fumigadora/components/plantilla.html' %}
+
+<!--extensiones css/bootstrap-->
+{% block extensiones %} {{super()}}
+<link
+  rel="stylesheet"
+  href="{{url_for('static', filename='css/empresa_fumigadora/estilos_empleados.css')}}"
+/>
+
+<link
+  rel="stylesheet"
+  href="{{url_for('static', filename='css/empresa_fumigadora/empleados_agregar.css')}}"
+/>
+{% endblock %}
+
+<!--titulo de la pagina-->
+{% block titulo %} EMPLEADOS {% endblock %}
+
+<!--cerrar sesion-->
+{% block cerrar_sesion %} {{url_for('Login.cerrar_sesion')}} {% endblock %}
+
+<!--logo de la empresa-->
+{% block logo %} {{ file_path }} {% endblock %}
+
+<!--boton de borrado de cuenta-->
+
+<!--foto del encargado-->
+{% block encargado %} {{file_path_encargado}} {% endblock %}
+
+<!--titulos de cada pagina-->
+{% block titulos_contenido %}
+<div class="menu_empleados">
+  <button id="abrir_menu">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="16"
+      height="16"
+      fill="currentColor"
+      class="bi bi-list"
+      viewBox="0 0 16 16"
+      id="abrir_men2"
+    >
+      <path
+        fill-rule="evenodd"
+        d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"
+      />
+    </svg>
+  </button>
+
+  <!--barra de navegacion-->
+  <nav class="barra2">
+    <button id="cerrar_menu">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="16"
+        height="16"
+        fill="currentColor"
+        class="bi bi-x-lg"
+        viewBox="0 0 16 16"
+        id="cerrar_men2"
+      >
+        <path
+          d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z"
+        />
+      </svg>
+    </button>
+
+    <!--contendor de los botones-->
+    <div class="contenedor_botones">
+      <div class="titulo_contenido_pag">
+        <span class="txt_contenido_pag" id="titulo1"
+          ><a
+            href="{{url_for ('Empresa_fumigadora.consultar_empleados')}}"
+            class="titulos_empleados"
+            >EMPLEADOS ACTIVOS</a
+          ></span
+        >
+      </div>
+
+      <div class="titulo_contenido_pag" id="empleados_inactivos">
+        <span class="txt_contenido_pag" id="titulo2"
+          ><a
+            href="{{url_for ('Empresa_fumigadora.consultar_empleados_inhabilitados')}}"
+            class="titulos_empleados"
+            >EMPLEADOS INACTIVOS</a
+          ></span
+        >
+      </div>
+
+      <div class="titulo_contenido_pag" id="agregar_empleados">
+        <span class="txt_contenido_pag" id="txt_agregar"
+          ><a
+            href="{{url_for('Empresa_fumigadora.Agregar_empleado')}}"
+            class="titulos_empleados"
+            id="conexion_agregar"
+            ><svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="currentColor"
+              class="bi bi-plus-circle-fill"
+              viewBox="0 0 16 16"
+              id="agregar"
+            >
+              <path
+                d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3z"
+              /></svg></a
+        ></span>
+        <span class="txt_contenido_pag" id="conexion_agregar2"
+          ><a
+            href="{{url_for('Empresa_fumigadora.Agregar_empleado')}}"
+            class="titulos_empleados"
+            >AGREGAR EMPLEADOS</a
+          ></span
+        >
+      </div>
+    </div>
+  </nav>
+
+  <style>
+    .titulo_contenido_pag {
+      background-color: rgb(80, 0, 230);
+    }
+
+    #agregar_empleados {
+      background-color: rgb(158, 120, 230);
+    }
+
+    #agregar_empleados:hover {
+      background-color: rgb(80, 0, 230);
+    }
+  </style>
+</div>
+{% endblock %}
+
+<!--mensaje-->
+{% with messages = get_flashed_messages() %} {% if messages %} {% for message in
+messages %}
+<p>{{message}}</p>
+{% endfor %} {% endif %} {% endwith %}
+
+<!--imagen de bienvenida-->
+{% block contenido_usuario%}
+<div class="contendor_mensaje_bienvenida">
+  <div class="contendor_imagen">
+    <table>
+      <thead>
+        <tr>
+          <th class="titulos_tabla" id="nombre">NOMBRES</th>
+          <th class="titulos_tabla" id="apellido">APELLIDOS</th>
+          <th class="titulos_tabla" id="personal">CORREO PERSONAL</th>
+          <th class="titulos_tabla" id="empresarial">CORREO EMPRESARIAL</th>
+          <th class="titulos_tabla" id="servicios">SERVICIOS</th>
+          <th class="titulos_tabla" id="cambiar">ACCIONES</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!--recorres diccionario-->
+        {% for empleado in session['empleados_datos'] %}
+        <tr>
+          <td class="txt_tabla">{{ empleado['nombre_empleado'] }}</td>
+          <td class="txt_tabla">{{ empleado['apellido_empleado'] }}</td>
+          <td class="txt_tabla">{{ empleado['correo_personal'] }}</td>
+          <td class="txt_tabla">{{ empleado['correo_empresarial'] }}</td>
+          <td class="txt_tabla">{{ empleado['servicios_atendidos'] }}</td>
+          <!--vector1-->
+          <td class="iconos_campo">
+            <!--edita-->
+            <a
+              href="{{url_for('Empresa_fumigadora.editar_empleado', index_empleado_modificar=loop.index0)}}"
+              id="icono_editar"
+              class="acciones_empleado"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                class="bi bi-pencil-fill"
+                viewBox="0 0 16 16"
+                id="editar_empleado"
+              >
+                <path
+                  d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.5.5 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11z"
+                />
+              </svg>
+            </a>
+            <!--elimina-->
+            <a
+              href="{{url_for('Empresa_fumigadora.eliminar_empleado', index_empleado=loop.index0)}}"
+              id="icono_eliminar"
+              class="acciones_empleado"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                class="bi bi-trash"
+                viewBox="0 0 16 16"
+                id="eliminar_empleado"
+              >
+                <path
+                  d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"
+                />
+                <path
+                  d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z"
+                />
+              </svg>
+            </a>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!--tabla mobile-->
+<div class="tabla_mobile">
+  {% for empleado in session['empleados_datos'] %}
+  <div class="fila">
+    <div class="columna">
+      <div class="titulo_tabla_mibile">
+        <span class="titulos_tabla">Nombres</span>
+      </div>
+      <div class="valor_tabla_mobile">
+        <span class="txt_tabla_mobile">{{ empleado['nombre_empleado'] }}</span>
+      </div>
+    </div>
+
+    <div class="columna">
+      <div class="titulo_tabla_mibile">
+        <span class="titulos_tabla">Apellidos</span>
+      </div>
+      <div class="valor_tabla_mobile">
+        <span class="txt_tabla_mobile"
+          >{{ empleado['apellido_empleado'] }}</span
+        >
+      </div>
+    </div>
+
+    <div class="columna">
+      <div class="titulo_tabla_mibile">
+        <span class="titulos_tabla">Correo personal</span>
+      </div>
+      <div class="valor_tabla_mobile">
+        <span class="txt_tabla_mobile">{{ empleado['correo_personal'] }}</span>
+      </div>
+    </div>
+
+    <div class="columna">
+      <div class="titulo_tabla_mibile">
+        <span class="titulos_tabla">Correo empresarial</span>
+      </div>
+      <div class="valor_tabla_mobile">
+        <span class="txt_tabla_mobile">
+          {{ empleado['correo_empresarial'] }}</span
+        >
+      </div>
+    </div>
+
+    <div class="columna">
+      <div class="titulo_tabla_mibile">
+        <span class="titulos_tabla">Servicios atendidos</span>
+      </div>
+      <div class="valor_tabla_mobile">
+        <span class="txt_tabla_mobile">
+          {{ empleado['servicios_atendidos'] }}</span
+        >
+      </div>
+    </div>
+
+    <div class="columna">
+      <div
+        class="titulo_tabla_mibile"
+        style="border-bottom: 2px solid rgb(179, 179, 179)"
+      >
+        <span class="titulos_tabla">Acciones</span>
+      </div>
+      <div
+        class="valor_tabla_mobile"
+        style="
+          border-bottom: 2px solid rgb(179, 179, 179);
+          flex-direction: column;
+        "
+      >
+        <span class="acciones_empleado"
+          ><a
+            href="{{url_for('Empresa_fumigadora.editar_empleado', index_empleado_modificar=loop.index0)}}"
+            id="icono_editar"
+            class="acciones_empleado"
+            style="color: rgb(249, 210, 145); text-decoration: none"
+          >
+            ¿Editar?
+          </a></span
+        >
+        <span class="acciones_empleado"
+          ><a
+            href="{{url_for('Empresa_fumigadora.eliminar_empleado', index_empleado=loop.index0)}}"
+            id="icono_editar"
+            style="color: rgb(80, 0, 230); text-decoration: none"
+          >
+            ¿Inhabilitar?
+          </a></span
+        >
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}
+
+<!--script-->
+{% block javascript %} {{super()}}
+<script src="/static/js/empresa_fumigadora/menu_opciones/opciones.js"></script>
+{% endblock %}

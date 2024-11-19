@@ -1,0 +1,130 @@
+{% extends 'empresa_fumigadora/components/plantilla.html' %}
+
+<!--extensiones css/bootstrap-->
+{% block extensiones %} {{super()}}
+<link
+  rel="stylesheet"
+  href="{{url_for('static', filename='css/empresa_fumigadora/estilos_empleados.css')}}"
+/>
+
+<link
+  rel="stylesheet"
+  href="{{url_for('static', filename='css/empresa_fumigadora/actualizar_detalles.css')}}"
+/>
+
+<link
+  rel="stylesheet"
+  href="{{url_for('static', filename='css/empresa_fumigadora/servicios/editar_servicios.css')}}"
+/>
+{% endblock %}
+
+<!--titulo de la pagina-->
+{% block titulo %} MODIFICAR SERVICIO {% endblock %}
+
+<!--cerrar sesion-->
+{% block cerrar_sesion %} {{url_for('Login.cerrar_sesion')}} {% endblock %}
+
+<!--logo de la empresa-->
+{% block logo %} {{ file_path }} {% endblock %}
+
+<!--boton de borrado de cuenta-->
+
+<!--foto del encargado-->
+{% block encargado %} {{file_path_encargado}} {% endblock %}
+
+<!--titulos de cada pagina-->
+{% block titulos_contenido %}
+<div class="titulo_contenido_pag">
+  <span class="txt_contenido_pag">SERVICIO ATENDIDO</span>
+</div>
+{% endblock %}
+
+<!--imagen de bienvenida-->
+{% block contenido_usuario%}
+<div class="imagen_form">
+  <img
+    src="/static/src/images/imagen5.png"
+    alt="imagen_fomr"
+    class="imagen_contenedor"
+  />
+</div>
+<div class="formulario_empleados">
+  <form
+    action="{{url_for('Empresa_fumigadora.editar_servicio')}}"
+    method="post"
+    class="formulario_ñregistrar_empleado"
+  >
+    <div class="contendor_pares" style="display: none">
+      <!--nombre del empleado-->
+      <div class="inputs_crear_empleado" style="display: none">
+        <label for="id">ID</label>
+        <input type="text" readonly value="{{ id_servicio }}" name="id" />
+      </div>
+    </div>
+
+    <div class="contendor_pares">
+      <!--nombre del empleado-->
+      <div class="inputs_crear_empleado">
+        <label for="">CLIENTE</label>
+        <input type="text" readonly value="{{ cliente }}" />
+      </div>
+
+      <!--apellido del empleado-->
+      <div class="inputs_crear_empleado">
+        <label for="">SEDE</label>
+        <input type="text" readonly value="{{ sede_cliente }}" />
+      </div>
+    </div>
+
+    <div class="contendor_pares">
+      <!--nombre del empleado-->
+      <div class="inputs_crear_empleado">
+        <label for="fecha_solictud">FECHA DE SOLICITUD</label>
+        <input type="date" required name="fecha_solictud" min="" max="" />
+      </div>
+
+      <!--apellido del empleado-->
+      <div class="inputs_crear_empleado">
+        <label for="fecha_inicio">FECHA DE INICIO</label>
+        <input type="date" required name="fecha_inicio" />
+      </div>
+    </div>
+
+    <div class="contendor_pares">
+      <!--numero telefonico del empleado-->
+      <div class="inputs_crear_empleado">
+        <label for="fecha_fin">FECHA FINAL</label>
+        <input type="date" name="fecha_fin" required />
+      </div>
+
+      <!--corre personal-->
+      <div class="inputs_crear_empleado">
+        <label for="empleados">EMPLEADOS</label>
+        <select name="empleados" required>
+          <option value="" disabled selected></option>
+          {% for empleados in session['empleados'] %}
+          <option>{{ empleados['nombre_empleado'] }}</option>
+          {% endfor %}
+        </select>
+      </div>
+    </div>
+
+    <div class="contendor_pares">
+      <!--corre personal-->
+      <div class="inputs_crear_empleado" style="width: 100%">
+        <label for="estado">ESTADO</label>
+        <select name="estado" required>
+          <option value="" disabled selected></option>
+          <option value="en espera">en espera</option>
+          <option value="finalizado">finalizado</option>
+        </select>
+      </div>
+    </div>
+
+    <!--enviar formulario-->
+    <div class="inputs_crear_empleado" id="boton_enviar">
+      <input type="submit" value="EDITAR DETALLE" id="boton_enviar_input" />
+    </div>
+  </form>
+</div>
+{% endblock %}

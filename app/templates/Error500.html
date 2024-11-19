@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!--estilos del documento-->
+    <link
+      rel="stylesheet"
+      href="{{url_for('static', filename='css/estilos.css')}}"
+    />
+
+    <!--tipografia del documento-->
+    <link
+      rel="stylesheet"
+      href="{{url_for('static', filename='css/fuente.css')}}"
+    />
+
+    <link
+      rel="stylesheet"
+      href="{{url_for('static', filename='css/errores/error404.css')}}"
+    />
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Página no encontrada</title>
+  </head>
+  <body>
+    <!--contendor principal-->
+    <div class="error404">
+      <!--contendor izquierdo-->
+      <div class="contendor404">
+        <img src="/static/src/images/logos/logo.png" alt="logo_gestdata" />
+        <span class="t404">500</span>
+        <span class="titulo">
+          NO ESPERABAMOS ESTA VISITA,TAL VEZ ESTO TE PUEDA AYUDAR
+        </span>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,167 @@
+{% extends 'empresa_fumigadora/components/plantilla.html' %}
+
+<!--extensiones css/bootstrap-->
+{% block extensiones %} {{super()}}
+<link
+  rel="stylesheet"
+  href="{{url_for('static', filename='css/empresa_fumigadora/estilos_encargado.css')}}"
+/>
+
+<link
+  rel="stylesheet"
+  href="{{url_for('static', filename='css/empresa_fumigadora/comprar_licencias.css')}}"
+/>
+
+<script src="https://sandbox.paypal.com/sdk/js?client-id=AUi30M9_OWNfxOwRgZhdF1MlEOYMaHEzS7qp-FsfehCKYFbc6FITiFMl8NMibngPBxPPq9von8SM1kyt"></script>
+{% endblock %}
+
+<!--titulo de la pagina-->
+{% block titulo %} COMPRAR LICENCIA {% endblock %}
+
+<!--cerrar sesion-->
+{% block cerrar_sesion %} {{url_for('Login.cerrar_sesion')}} {% endblock %}
+
+<!--logo de la empresa-->
+{% block logo %} {{ file_path }} {% endblock %}
+
+<!--boton de borrado de cuenta-->
+
+<!--foto del encargado-->
+{% block encargado %} {{file_path_encargado}} {% endblock %}
+
+<!--titulos de cada pagina-->
+{% block titulos_contenido %}
+<div class="titulo_contenido_pag">
+  <span class="txt_contenido_pag">COMPRAR LICENCIA</span>
+</div>
+
+{% endblock %}
+
+<!--imagen de bienvenida-->
+{% block contenido_usuario%}
+<div class="contendor_mensaje_bienvenida">
+  <div class="tarjeta">
+    <div class="imagenes1">
+      <div class="chip">
+        <img
+          src="/static/src/images/imagenes_adicionales/chip.png"
+          alt="chip"
+          class="imagenes_tarjetea"
+        />
+      </div>
+      <div class="logo_gestdata_comprar">
+        <img
+          src="/static/src/images/logos/logo.png"
+          alt="logo"
+          class="imagenes_tarjetea"
+        />
+      </div>
+    </div>
+
+    <div class="datos_emp">
+      <form>
+        <div class="contenedores_form_falso">
+          <label for="emp">Empresa</label>
+          <input
+            type="text"
+            readonly
+            name="emp"
+            value="{{ nombre_comercial }}"
+          />
+        </div>
+
+        <div class="contenedores_form_falso">
+          <label for="corr">Correo</label>
+          <input type="text" readonly name="corr" value="{{ correo }}" />
+        </div>
+
+        <div class="contenedores_form_falso">
+          <label for="lice">Licencia</label>
+          <input
+            type="text"
+            readonly
+            name="lice"
+            value="{{ nombre_licencia }}"
+          />
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="botones_paypal">
+    <div class="titulo_pago">
+      <h1>EL PAGO DE TU LICENCIA LO PUEDES REALIZAR CON PAYPAL</h1>
+    </div>
+    <div id="paypal-button-container"></div>
+  </div>
+
+  <script>
+    let id_liencia = "{{id_licencia | tojson }}";
+
+    paypal
+      .Buttons({
+        style: {
+          shape: "pill",
+          label: "pay",
+        },
+        createOrder: function (data, actions) {
+          return actions.order.create({
+            purchase_units: [
+              {
+                amount: {
+                  value: 2.0,
+                },
+              },
+            ],
+          });
+        },
+        onApprove: function (data, actions) {
+          actions.order.capture().then(function (detalles) {
+            detalles.id_liencia = id_liencia;
+            window.alert("Pago completado");
+            console.log(detalles);
+            enviarDetallesAPython(detalles);
+            console.log(detalles);
+          });
+        },
+        onCancel: function (data) {
+          window.alert("Pago cancelado");
+          console.log(data);
+        },
+      })
+      .render("#paypal-button-container");
+
+    function enviarDetallesAPython(detalles) {
+      fetch("/Empresa_fumigadora/guardar_pago", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(detalles),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          console.log("Respuesta del servidor:", data);
+          if (data.status === "success") {
+            window.location.href =
+              "{{url_for('Empresa_fumigadora.licencia_comprada')}}";
+          }
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+        });
+    }
+  </script>
+
+  <style>
+    @media screen and (max-width: 1000px) {
+      .tarjeta {
+        display: none;
+      }
+      .botones_paypal {
+        width: 100%;
+      }
+    }
+  </style>
+</div>
+{% endblock %}

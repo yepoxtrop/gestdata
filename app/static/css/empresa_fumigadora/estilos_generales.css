@@ -1,0 +1,150 @@
+.contendor_mensaje_bienvenida {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
+
+.contendor_imagen {
+  width: 50%;
+}
+
+.imagen_bienvenida {
+  width: 100%;
+}
+
+.contenedor_txt_bienvenida {
+  width: 50%;
+}
+
+.nombre_comercial {
+  color: rgb(80, 0, 230);
+}
+
+.contnedor_h2 {
+  width: 100%;
+}
+
+.contnedor_h4 {
+  width: 100%;
+}
+
+.contnedor_h4_oculto {
+  display: none;
+}
+
+.titulo_contenido_pag {
+  width: 80%;
+  background-color: rgb(80, 0, 230);
+  border-radius: 40px;
+  padding: 25px 27px;
+}
+
+.titulo_contenido_pag span {
+  color: rgb(255, 255, 255);
+  font-size: 27px;
+}
+
+/*-----------------------------------------*/
+@media screen and (max-width: 1300px) {
+  .mensaje_h4 {
+    font-size: 20px;
+  }
+}
+
+@media screen and (max-width: 1100px) {
+  .mensaje_h4 {
+    font-size: 17px;
+  }
+
+  .mensaje_h2 {
+    font-size: 25px;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .mensaje_h2 {
+    font-size: 40px;
+    text-align: center;
+  }
+
+  .contendor_mensaje_bienvenida {
+    flex-direction: column-reverse;
+  }
+
+  .contenedor_txt_bienvenida {
+    width: 100%;
+  }
+
+  .contnedor_h4 {
+    display: none;
+  }
+
+  .contendor_imagen {
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+  }
+
+  .imagen_bienvenida {
+    width: 80%;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .contnedor_h4_oculto {
+    display: flex;
+  }
+
+  .contendor_imagen {
+    flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .titulo_contenido_pag {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .caja_fondo {
+    padding: 60px 40px;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .caja_fondo {
+    padding: 40px 30px;
+  }
+
+  .titulo_contenido_pag span {
+    font-size: 24px;
+  }
+
+  .caja_contenido_user {
+    padding: 5% 4%;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .titulo_contenido_pag span {
+    font-size: 22px;
+  }
+
+  .titulo_contenido_pag {
+    padding: 20px 27px;
+  }
+
+  .mensaje_h2 {
+    font-size: 35px;
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 460px) {
+  .titulo_contenido_pag span {
+    font-size: 16px;
+  }
+}

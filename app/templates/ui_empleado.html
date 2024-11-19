@@ -1,0 +1,1554 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!--bootstrap-->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+
+    <!--personalizacion bootstrap-->
+    <link
+      rel="stylesheet"
+      href="{{url_for('static', filename='css/bootstrap_custom/custom.css')}}"
+    />
+
+    <!--estilos del documento-->
+    <link
+      rel="stylesheet"
+      href="{{url_for('static', filename='css/estilos.css')}}"
+    />
+
+    <!--tipografia del documento-->
+    <link
+      rel="stylesheet"
+      href="{{url_for('static', filename='css/fuente.css')}}"
+    />
+
+    <!--estilos del encabezado-->
+    <link
+      rel="stylesheet"
+      href="{{url_for('static', filename='css/index/encabezado.css')}}"
+    />
+
+    <!--estilos de la primera pagina-->
+    <link
+      rel="stylesheet"
+      href="{{url_for('static', filename='css/index/pagina1.css')}}"
+    />
+
+    <!--estilos de la segunda pagina-->
+    <link
+      rel="stylesheet"
+      href="{{url_for('static', filename='css/index/pagina2.css')}}"
+    />
+
+    <!--estilos de la tercera pagina-->
+    <link
+      rel="stylesheet"
+      href="{{url_for('static', filename='css/index/pagina3.css')}}"
+    />
+
+    <!--estilos de la cuarta pagina-->
+    <link
+      rel="stylesheet"
+      href="{{url_for('static', filename='css/index/pagina4.css')}}"
+    />
+
+    <!--estilos de la quinta pagina-->
+    <link
+      rel="stylesheet"
+      href="{{url_for('static', filename='css/index/pagina5.css')}}"
+    />
+
+    <!--estilos de la sexta pagina-->
+    <link
+      rel="stylesheet"
+      href="{{url_for('static', filename='css/index/pagina6.css')}}"
+    />
+
+    <!--estilos de la septima pagina-->
+    <link
+      rel="stylesheet"
+      href="{{url_for('static', filename='css/index/pagina7.css')}}"
+    />
+
+    <title>BIENVENIDO EMPLEADO</title>
+  </head>
+
+  <body>
+    <!--encabezado/barra de navegacion-->
+    <header>
+      <!--logo de gestData-->
+      <div class="logo_gest_data">
+        <a href="/" class="enlace_logo">
+          <img
+            src="/static/src/images/logos/logo.png"
+            alt="logo_GestData"
+            style="width: 100%"
+          />
+        </a>
+      </div>
+
+      <!--menu abrir-->
+      <button id="abrir" class="abrirMenu">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="73"
+          height="73"
+          fill="currentColor"
+          class="bi bi-list"
+          viewBox="0 0 16 16"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"
+          />
+        </svg>
+      </button>
+
+      <!--barra de mavegacion-->
+      <nav id="barra_navegacion" class="barra_navegacion">
+        <!--menu cerrar-->
+        <button id="cerrar" class="cerrarMenu">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="73"
+            height="73"
+            fill="currentColor"
+            class="bi bi-x"
+            viewBox="0 0 16 16"
+          >
+            <path
+              d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708"
+            />
+          </svg>
+        </button>
+
+        <!--menu-->
+        <div class="contenedor_lista">
+          <ul class="lista">
+            <li><a href="#hoja1" class="botones">ACERCA DE</a></li>
+            <li><a href="#hoja2" class="botones">SERVICIOS</a></li>
+            <li><a href="#hoja4" class="botones">CONTACTO</a></li>
+            <li><a href="#hoja5" class="botones">PREGUNTAS FRECUENTES</a></li>
+            <li><a href="#hoja6" class="botones">LICENCIAS</a></li>
+          </ul>
+        </div>
+
+        <!--contendor botones-->
+        <div class="bones_menu">
+          <!--boton de login-->
+          <button class="btn">
+            <a href="#" class="txt_btn">PERFIL</a>
+          </button>
+
+          <!--boton de register-->
+          <button class="btn">
+            <a href="#" class="txt_btn">CERRAR SESIÓN</a>
+          </button>
+        </div>
+      </nav>
+    </header>
+
+    <!--contenido/por paginas-->
+    <!--primera pagina-->
+    <div class="hojas" id="hoja1">
+      <!--titulo de la pagina-->
+      <div id="container_titulo1_morado">
+        <span class="titulo_morado" id="titulo1"
+          >LA NUEVA PLATAFORMA PARA SERVICIOS DE CONTROL DE PLAGAS</span
+        >
+      </div>
+
+      <!--contenedor imagen/cajas(blanca y marco azul)-->
+      <div id="caja1">
+        <!--contenedor de cajas/blanca/marco azul-->
+        <div id="container_cajas">
+          <!--contenedor del texot de la caja blanca-->
+          <div id="mensaje1">
+            <!--contenedor del titulo de la caja-->
+            <div id="container_titulo1">
+              <span id="titulo_mensaje"
+                >TU SOLUCIÓN CONFIABLE PARA EL CONTROL DE PLAGAS</span
+              >
+            </div>
+
+            <!--contenedor del texto de la caja-->
+            <div id="container_txt">
+              <span id="txt_mensaje1"
+                >A un clic de distancia nuestra plataforma te conecta con
+                profesionales certificados para resolver cualquier problema de
+                plagas, garantizando un servicio seguro, rápido y adaptado a tus
+                necesidades. Confía en nosotros para mantener tu hogar o negocio
+                libre de infestaciones</span
+              >
+            </div>
+
+            <!--boton de la caja blanca-->
+            <div id="boton">
+              <a href="#" id="txt_btn">¿COMENZAMOS?</a>
+            </div>
+          </div>
+        </div>
+
+        <!--contendor de imagen gif-->
+        <div class="contendor_imagen">
+          <img
+            src="../static/src/images/gifs/gif2.gif"
+            alt="imaegn_contador"
+            class="imagen_pag1"
+          />
+        </div>
+      </div>
+    </div>
+
+    <!--segunda pagina(usa elementos de bootstrap)-->
+    <div class="hojas" id="hoja2">
+      <!--contenedor del titulo/descripcion-->
+      <div id="container_titulo2">
+        <span class="titulo_blanco1">¿QUIENES SOMOS?</span>
+      </div>
+
+      <!--contenedor de cartas-->
+      <div class="contenedor_de_Cartas">
+        <!--carta 1-->
+        <div class="cartas" id="carta1">
+          <!--contenedor titulo carta-->
+          <div class="contenedor_titulos_cartas">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="30"
+              height="30"
+              fill="currentColor"
+              class="bi bi-check-circle-fill"
+              viewBox="0 0 16 16"
+              style="color: rgb(85, 0, 230)"
+            >
+              <path
+                d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"
+              />
+            </svg>
+            <span class="titulos_cartas"> MISIÓN </span>
+          </div>
+
+          <div class="contenedor_especifico">
+            <!--contenedor de imagen-->
+            <div class="contenedor_imagenes">
+              <img
+                src="/static/src/images/imagen7.png"
+                alt="imagen7"
+                class="imagen_caja2"
+              />
+            </div>
+
+            <!--carta interna-->
+            <div class="carta_interna">
+              <!--contenedor informacion-->
+              <div>
+                <span class="texto_carta">
+                  Ofrecer soluciones efectivas y seguras para el control de
+                  plagas, conectando a nuestros usuarios con profesionales
+                  certificados a través de una plataforma intuitiva. Nos
+                  comprometemos a resolver problemas de infestaciones de manera
+                  rápida y adaptada a las necesidades específicas de cada
+                  cliente, garantizando un entorno saludable y libre de plagas
+                  tanto en el hogar como en los negocios.
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!--carta 2-->
+        <div class="cartas" id="carta2">
+          <!--contenedor titulo carta-->
+          <div class="contenedor_titulos_cartas">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="30"
+              height="30"
+              fill="currentColor"
+              class="bi bi-check-circle-fill"
+              viewBox="0 0 16 16"
+              style="color: rgb(85, 0, 230)"
+            >
+              <path
+                d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"
+              />
+            </svg>
+            <span class="titulos_cartas"> VISIÓN </span>
+          </div>
+
+          <!--contenedor especifico-->
+          <div class="contenedor_especifico">
+            <!--contenedor de imagen-->
+            <div class="contenedor_imagenes">
+              <img
+                src="/static/src/images/imagen8.png"
+                alt="imagen8"
+                class="imagen_caja2"
+              />
+            </div>
+
+            <!--carta interna-->
+            <div class="carta_interna">
+              <!--contenedor informacion-->
+              <div>
+                <span class="texto_carta">
+                  Convertirnos en la plataforma de referencia en el control de
+                  plagas, destacándonos por nuestra eficiencia y confianza en el
+                  servicio. Buscamos innovar en la forma en que se gestionan y
+                  previenen las infestaciones, proporcionando acceso fácil y
+                  directo a expertos en el área, y estableciendo un estándar de
+                  excelencia en la protección de espacios personales y
+                  comerciales.
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!--carta 3-->
+        <div class="cartas" id="carta3">
+          <!--contenedor titulo carta-->
+          <div class="contenedor_titulos_cartas">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="30"
+              height="30"
+              fill="currentColor"
+              class="bi bi-check-circle-fill"
+              viewBox="0 0 16 16"
+              style="color: rgb(85, 0, 230)"
+            >
+              <path
+                d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"
+              />
+            </svg>
+            <span class="titulos_cartas"> VALORES </span>
+          </div>
+
+          <div class="contenedor_especifico">
+            <!--contenedor de imagen-->
+            <div class="contenedor_imagenes">
+              <img
+                src="/static/src/images/imagen15.png"
+                alt="imagen9"
+                class="imagen_caja2"
+              />
+            </div>
+
+            <!--carta interna-->
+            <div class="carta_interna">
+              <!--contenedor informacion-->
+              <div>
+                <span class="texto_carta">
+                  Nos comprometemos con la excelencia en cada aspecto de nuestra
+                  organización, desde la calidad del servicio hasta la atención
+                  al cliente. Fomentamos la mejora continua y la innovación para
+                  superar las expectativas de nuestros clientes, construyendo
+                  relaciones duraderas basadas en la confianza y consolidando
+                  nuestra reputación como líderes en la industria.
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--tercera pagina(usa elementos de bootstap)-->
+    <div class="hojas" id="hoja3">
+      <!--contenedor del titulo/descripcion-->
+      <div id="container_titulo3">
+        <span class="titulo_morado3">¿QUE NOS HACE DIFERENTE AL RESTO?</span>
+      </div>
+      <div id="mensaje3">
+        <span id="txt_mensaje3">
+          Conoce nuestros servicios y descubre lo que nos diferencia de lo
+          común. Ofrecemos soluciones únicas y personalizadas, orientada a la
+          excelencia y la innovación.
+        </span>
+      </div>
+
+      <!--contenedor de cards-->
+      <div class="total_cartas">
+        <!--contenedor de cards(3 por linea)-->
+        <div class="container">
+          <div class="row">
+            <!--carta1-->
+            <div class="col-12 col-sm-6 col-lg-4">
+              <div class="cards">
+                <div class="card" style="width: 100%">
+                  <img
+                    src="/static/src/images/analisas_datos.jpg"
+                    class="card-img-top"
+                    alt="..."
+                  />
+                  <div class="card-body">
+                    <h5 class="card-title">ANÁLISIS DE DATOS</h5>
+                    <p class="card-text">
+                      GestData se destaca por su capacidad principal de realizar
+                      análisis de datos a partir de la información de los
+                      servicios. ¡Así es, te ayudamos con el análisis de esos
+                      datos para que puedas ahorrar tiempo! ¿Qué es esperas para
+                      usarla
+                    </p>
+                    <p>
+                      <a
+                        href="#"
+                        class="link-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
+                        >Mas información</a
+                      >
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!--carta2-->
+            <div class="col-12 col-sm-6 col-lg-4">
+              <div class="cards">
+                <div class="card" style="width: 100%">
+                  <img
+                    src="/static/src/images/bonito.jpg"
+                    class="card-img-top"
+                    alt="..."
+                  />
+                  <div class="card-body">
+                    <h5 class="card-title">INTERFAZ</h5>
+                    <p class="card-text">
+                      Cuenta con una interfaz llamativa, con colores que son de
+                      agrado visual para usted como usuario del sistema.
+                      GestData busca que te sientas comodo con las paletas de
+                      colores que sean de tu agrado usuario.
+                    </p>
+                    <p>
+                      <a
+                        href="#"
+                        class="link-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
+                        >Mas información</a
+                      >
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!--carta3-->
+            <div class="col-12 col-sm-6 col-lg-4">
+              <div class="cards">
+                <div class="card" style="width: 100%">
+                  <img
+                    src="/static/src/images/eficaz.jpg"
+                    class="card-img-top"
+                    alt="..."
+                  />
+                  <div class="card-body">
+                    <h5 class="card-title">EFICAZ</h5>
+                    <p class="card-text">
+                      GestData es eficaz cuando se trata se ser útil para
+                      gestionar los servicios de sus usuarios recurrentes,
+                      porque como empresa sabemos lo importante y necesarios que
+                      son para tí los servicios que atiendes o contratas.
+                    </p>
+                    <p>
+                      <a
+                        href="#"
+                        class="link-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
+                        >Mas información</a
+                      >
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!--carta4-->
+            <div class="col-12 col-sm-6 col-lg-4">
+              <div class="cards">
+                <div class="card" style="width: 100%">
+                  <img
+                    src="/static/src/images/facil_usar.jpg"
+                    class="card-img-top"
+                    alt="..."
+                  />
+                  <div class="card-body">
+                    <h5 class="card-title">FÁCIL DE USAR</h5>
+                    <p class="card-text">
+                      Nuestra plataforma esta hecha para que nuestros usuarios
+                      no presenten problemas con su uso cotidiano normal. Algo
+                      que nos importa es la usabilidad de nuestras aplicaciones
+                      y GestData es el claro ejemplo de ello.
+                    </p>
+                    <p>
+                      <a
+                        href="#"
+                        class="link-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
+                        >Mas información</a
+                      >
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!--carta5-->
+            <div class="col-12 col-sm-6 col-lg-4">
+              <div class="cards">
+                <div class="card" style="width: 100%">
+                  <img
+                    src="/static/src/images/infleuncia_sociedad.jpg"
+                    class="card-img-top"
+                    alt="..."
+                  />
+                  <div class="card-body">
+                    <h5 class="card-title">APORTE SOCIAL</h5>
+                    <p class="card-text">
+                      GestData, es consciente de que los empleados de las
+                      empresas fumigadores, pueden llevar a cabo más rápidamente
+                      sus funciones si hacen uso del software, por eso también
+                      nos ponemos en los zapatos de usted, querido empleado.
+                    </p>
+                    <p>
+                      <a
+                        href="#"
+                        class="link-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
+                        >Mas información</a
+                      >
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!--carta6-->
+            <div class="col-12 col-sm-6 col-lg-4">
+              <div class="cards">
+                <div class="card" style="width: 100%">
+                  <img
+                    src="/static/src/images/rapido.jpg"
+                    class="card-img-top"
+                    alt="..."
+                  />
+                  <div class="card-body">
+                    <h5 class="card-title">RÁPIDO</h5>
+                    <p class="card-text">
+                      Rápido es nuestro segundo nombre, GestData sabe lo
+                      importante que es tu tiempo y no te hará esperar enormes
+                      lapsos agotadores de tiempo, como acostumbran otros
+                      softwares que existen hoy en día.
+                    </p>
+                    <p>
+                      <a
+                        href="#"
+                        class="link-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
+                        >Mas información</a
+                      >
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!--carta7-->
+            <div class="col-12 col-sm-6 col-lg-4">
+              <div class="cards">
+                <div class="card" style="width: 100%">
+                  <img
+                    src="/static/src/images/reportes.jpg"
+                    class="card-img-top"
+                    alt="..."
+                  />
+                  <div class="card-body">
+                    <h5 class="card-title">DOCUMENTACIÓN</h5>
+                    <p class="card-text">
+                      Dile adiós al papeleo fisico, nos encargaremos de
+                      digitalizar todos los documentos relacionados con tus
+                      servicios, desde reportes hasta certificados, ¿Existe algo
+                      mejor que una plataforma que haga eso?.
+                    </p>
+                    <p>
+                      <a
+                        href="#"
+                        class="link-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
+                        >Mas información</a
+                      >
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!--carta8-->
+            <div class="col-12 col-sm-6 col-lg-4">
+              <div class="cards">
+                <div class="card" style="width: 100%">
+                  <img
+                    src="/static/src/images/seguro.jpg"
+                    class="card-img-top"
+                    alt="..."
+                  />
+                  <div class="card-body">
+                    <h5 class="card-title">SEGURO</h5>
+                    <p class="card-text">
+                      La seguridad de tu información nos importa, por eso usamos
+                      diferentes procesos de encriptado para cuidar la
+                      integridad de tus datos personales, la de tus empleados y
+                      tus sedes. Evitando inseguridades.
+                    </p>
+                    <p>
+                      <a
+                        href="#"
+                        class="link-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
+                        >Mas información</a
+                      >
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!--carta9-->
+            <div class="col-12 col-sm-6 col-lg-4">
+              <div class="cards">
+                <div class="card" style="width: 100%">
+                  <img
+                    src="/static/src/images/sostenible.jpg"
+                    class="card-img-top"
+                    alt="..."
+                  />
+                  <div class="card-body">
+                    <h5 class="card-title">SOSTENIBLE</h5>
+                    <p class="card-text">
+                      Con el ahorro de papel por la falta de documentación
+                      digital, damos nuestro aporte a la sostenibilidad en estos
+                      momentos donde escasea el agua en la ciudad, hay
+                      manifestaciones y furros. Pero todo por el bien de la
+                      sociedad.
+                    </p>
+                    <p>
+                      <a
+                        href="#"
+                        class="link-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
+                        >Mas información</a
+                      >
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--cuarta pagina-->
+    <div class="hojas" id="hoja4">
+      <!--contenedor del titulo/descripcion-->
+      <div id="container_titulo4">
+        <span class="titulo_morado4">NUESTRO EQUIPO DE DESARROLLO</span>
+      </div>
+      <div id="mensaje4">
+        <span id="txt_mensaje4">
+          En este apartado podrás observar a los encargados de desarrollar la
+          plataforma que estas usando
+        </span>
+      </div>
+
+      <!--contenedor tarjetas-->
+      <div class="contenedor_tarjetas">
+        <!--contenedor luis/rafael-->
+        <div class="card_lr">
+          <!--tarjeta l-->
+          <div id="card_luis" class="cartas_personales1">
+            <!--contenedor de imagen-->
+            <div class="contenedor_foto_admin">
+              <img
+                src="/static/src/images/imagenes_adicionales/perfil1.jpeg"
+                alt="foto_luis"
+                class="foto_perfil"
+              />
+            </div>
+
+            <!--informacion personal-->
+            <div class="info_detallada">
+              <div class="nombre">
+                <h5 class="nombre_expertos">LUIS SARMIENTO</h5>
+              </div>
+
+              <div class="frase_profesion">
+                <h6 class="profesion" style="font-size: 20px">
+                  DESARROLLADOR FULL STACK
+                </h6>
+              </div>
+
+              <div class="frase_completa">
+                <span
+                  class="frase"
+                  style="font-size: 16px; color: rgb(108, 108, 114)"
+                >
+                  “De mi cuerpo descompuesto crecerán las flores, y yo estaré en
+                  ellas. Eso es eternidad.”
+                </span>
+              </div>
+
+              <div class="autor">
+                <span
+                  class="frase"
+                  style="
+                    font-size: 16px;
+                    color: rgb(108, 108, 114);
+                    margin-bottom: 20px;
+                  "
+                >
+                  Edvard Munch
+                </span>
+              </div>
+
+              <!--contendor de redes sociales-->
+              <div class="redes_sociales">
+                <!--contenedor individual de red social-->
+                <div class="red">
+                  <div id="facebook">
+                    <button class="bnt_red">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        fill="currentColor"
+                        class="bi bi-facebook"
+                        viewBox="0 0 16 16"
+                        id="icono_facebook"
+                      >
+                        <path
+                          d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951"
+                        />
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+
+                <!--contenedor individual de red social-->
+                <div class="red">
+                  <div id="instagram">
+                    <button class="bnt_red">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        fill="currentColor"
+                        class="bi bi-instagram"
+                        viewBox="0 0 16 16"
+                      >
+                        <path
+                          d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.9 3.9 0 0 0-1.417.923A3.9 3.9 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.9 3.9 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.9 3.9 0 0 0-.923-1.417A3.9 3.9 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599s.453.546.598.92c.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.5 2.5 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.5 2.5 0 0 1-.92-.598 2.5 2.5 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233s.008-2.388.046-3.231c.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92s.546-.453.92-.598c.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92m-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217m0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334"
+                        />
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+
+                <!--contenedor individual de red social-->
+                <div class="red">
+                  <div id="twitter-x">
+                    <button class="bnt_red">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        fill="currentColor"
+                        class="bi bi-twitter-x"
+                        viewBox="0 0 16 16"
+                      >
+                        <path
+                          d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865z"
+                        />
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+
+                <!--contenedor individual de red social-->
+                <div class="red">
+                  <div id="github">
+                    <button class="bnt_red">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        fill="currentColor"
+                        class="bi bi-github"
+                        viewBox="0 0 16 16"
+                      >
+                        <path
+                          d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8"
+                        />
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!--tarjeta r-->
+          <div id="card_rafael" class="cartas_personales1">
+            <!--contenedor de imagen-->
+            <div class="contenedor_foto_admin">
+              <img
+                src="/static/src/images/imagenes_adicionales/perfil1.jpeg"
+                alt="foto_rafael"
+                class="foto_perfil"
+              />
+            </div>
+
+            <!--informacion personal-->
+            <div class="info_detallada">
+              <div class="nombre">
+                <h5 class="nombre_expertos">RAFAEL RONCANCIO</h5>
+              </div>
+
+              <div class="frase_profesion">
+                <h6 class="profesion" style="font-size: 20px">
+                  DESARROLLADOR FULL STACK
+                </h6>
+              </div>
+
+              <div class="frase_completa">
+                <span
+                  class="frase"
+                  style="font-size: 16px; color: rgb(108, 108, 114)"
+                >
+                  “De mi cuerpo descompuesto crecerán las flores, y yo estaré en
+                  ellas. Eso es eternidad.”
+                </span>
+              </div>
+
+              <div class="autor">
+                <span
+                  class="frase"
+                  style="
+                    font-size: 16px;
+                    color: rgb(108, 108, 114);
+                    margin-bottom: 20px;
+                  "
+                >
+                  Edvard Munch
+                </span>
+              </div>
+
+              <!--contendor de redes sociales-->
+              <div class="redes_sociales">
+                <!--contenedor individual de red social-->
+                <div class="red">
+                  <div id="facebook">
+                    <button class="bnt_red">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        fill="currentColor"
+                        class="bi bi-facebook"
+                        viewBox="0 0 16 16"
+                        id="icono_facebook"
+                      >
+                        <path
+                          d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951"
+                        />
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+
+                <!--contenedor individual de red social-->
+                <div class="red">
+                  <div id="instagram">
+                    <button class="bnt_red">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        fill="currentColor"
+                        class="bi bi-instagram"
+                        viewBox="0 0 16 16"
+                      >
+                        <path
+                          d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.9 3.9 0 0 0-1.417.923A3.9 3.9 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.9 3.9 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.9 3.9 0 0 0-.923-1.417A3.9 3.9 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599s.453.546.598.92c.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.5 2.5 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.5 2.5 0 0 1-.92-.598 2.5 2.5 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233s.008-2.388.046-3.231c.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92s.546-.453.92-.598c.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92m-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217m0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334"
+                        />
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+
+                <!--contenedor individual de red social-->
+                <div class="red">
+                  <div id="twitter-x">
+                    <button class="bnt_red">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        fill="currentColor"
+                        class="bi bi-twitter-x"
+                        viewBox="0 0 16 16"
+                      >
+                        <path
+                          d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865z"
+                        />
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+
+                <!--contenedor individual de red social-->
+                <div class="red">
+                  <div id="github">
+                    <button class="bnt_red">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        fill="currentColor"
+                        class="bi bi-github"
+                        viewBox="0 0 16 16"
+                      >
+                        <path
+                          d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8"
+                        />
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!--contenedor jorge/bryan-->
+        <div class="card_jb">
+          <!--tarjeta jorge-->
+          <div id="card_jorge" class="cartas_personales1">
+            <!--contenedor de imagen-->
+            <div class="contenedor_foto_admin">
+              <img
+                src="/static/src/images/imagenes_adicionales/perfil1.jpeg"
+                alt="foto_jorge"
+                class="foto_perfil"
+              />
+            </div>
+
+            <!--informacion personal-->
+            <div class="info_detallada">
+              <div class="nombre">
+                <h5 class="nombre_expertos">JORGE CONTRERAS</h5>
+              </div>
+
+              <div class="frase_profesion">
+                <h6 class="profesion" style="font-size: 20px">
+                  DESARROLLADOR 'FRONT'
+                </h6>
+              </div>
+
+              <div class="frase_completa">
+                <span
+                  class="frase"
+                  style="font-size: 16px; color: rgb(108, 108, 114)"
+                >
+                  “De mi cuerpo descompuesto crecerán las flores, y yo estaré en
+                  ellas. Eso es eternidad.”
+                </span>
+              </div>
+
+              <div class="autor">
+                <span
+                  class="frase"
+                  style="
+                    font-size: 16px;
+                    color: rgb(108, 108, 114);
+                    margin-bottom: 20px;
+                  "
+                >
+                  Edvard Munch
+                </span>
+              </div>
+
+              <!--contendor de redes sociales-->
+              <div class="redes_sociales">
+                <!--contenedor individual de red social-->
+                <div class="red">
+                  <div id="facebook">
+                    <button class="bnt_red">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        fill="currentColor"
+                        class="bi bi-facebook"
+                        viewBox="0 0 16 16"
+                        id="icono_facebook"
+                      >
+                        <path
+                          d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951"
+                        />
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+
+                <!--contenedor individual de red social-->
+                <div class="red">
+                  <div id="instagram">
+                    <button class="bnt_red">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        fill="currentColor"
+                        class="bi bi-instagram"
+                        viewBox="0 0 16 16"
+                      >
+                        <path
+                          d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.9 3.9 0 0 0-1.417.923A3.9 3.9 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.9 3.9 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.9 3.9 0 0 0-.923-1.417A3.9 3.9 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599s.453.546.598.92c.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.5 2.5 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.5 2.5 0 0 1-.92-.598 2.5 2.5 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233s.008-2.388.046-3.231c.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92s.546-.453.92-.598c.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92m-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217m0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334"
+                        />
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+
+                <!--contenedor individual de red social-->
+                <div class="red">
+                  <div id="twitter-x">
+                    <button class="bnt_red">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        fill="currentColor"
+                        class="bi bi-twitter-x"
+                        viewBox="0 0 16 16"
+                      >
+                        <path
+                          d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865z"
+                        />
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+
+                <!--contenedor individual de red social-->
+                <div class="red">
+                  <div id="github">
+                    <button class="bnt_red">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        fill="currentColor"
+                        class="bi bi-github"
+                        viewBox="0 0 16 16"
+                      >
+                        <path
+                          d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8"
+                        />
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!--cartas bryan-->
+          <div id="card_bryan" class="cartas_personales1">
+            <!--contenedor de imagen-->
+            <div class="contenedor_foto_admin">
+              <img
+                src="/static/src/images/imagenes_adicionales/perfil1.jpeg"
+                alt="foto_bryan"
+                class="foto_perfil"
+              />
+            </div>
+
+            <!--informacion personal-->
+            <div class="info_detallada">
+              <div class="nombre">
+                <h5 class="nombre_expertos">BRYAN BARRANTES</h5>
+              </div>
+
+              <div class="frase_profesion">
+                <h6 class="profesion" style="font-size: 20px">
+                  DESARROLLADOR 'FRONT'
+                </h6>
+              </div>
+
+              <div class="frase_completa">
+                <span
+                  class="frase"
+                  style="font-size: 16px; color: rgb(108, 108, 114)"
+                >
+                  “De mi cuerpo descompuesto crecerán las flores, y yo estaré en
+                  ellas. Eso es eternidad.”
+                </span>
+              </div>
+
+              <div class="autor">
+                <span
+                  class="frase"
+                  style="
+                    font-size: 16px;
+                    color: rgb(108, 108, 114);
+                    margin-bottom: 20px;
+                  "
+                >
+                  Edvard Munch
+                </span>
+              </div>
+
+              <!--contendor de redes sociales-->
+              <div class="redes_sociales">
+                <!--contenedor individual de red social-->
+                <div class="red">
+                  <div id="facebook">
+                    <button class="bnt_red">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        fill="currentColor"
+                        class="bi bi-facebook"
+                        viewBox="0 0 16 16"
+                        id="icono_facebook"
+                      >
+                        <path
+                          d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951"
+                        />
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+
+                <!--contenedor individual de red social-->
+                <div class="red">
+                  <div id="instagram">
+                    <button class="bnt_red">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        fill="currentColor"
+                        class="bi bi-instagram"
+                        viewBox="0 0 16 16"
+                      >
+                        <path
+                          d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.9 3.9 0 0 0-1.417.923A3.9 3.9 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.9 3.9 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.9 3.9 0 0 0-.923-1.417A3.9 3.9 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599s.453.546.598.92c.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.5 2.5 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.5 2.5 0 0 1-.92-.598 2.5 2.5 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233s.008-2.388.046-3.231c.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92s.546-.453.92-.598c.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92m-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217m0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334"
+                        />
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+
+                <!--contenedor individual de red social-->
+                <div class="red">
+                  <div id="twitter-x">
+                    <button class="bnt_red">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        fill="currentColor"
+                        class="bi bi-twitter-x"
+                        viewBox="0 0 16 16"
+                      >
+                        <path
+                          d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865z"
+                        />
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+
+                <!--contenedor individual de red social-->
+                <div class="red">
+                  <div id="github">
+                    <button class="bnt_red">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        fill="currentColor"
+                        class="bi bi-github"
+                        viewBox="0 0 16 16"
+                      >
+                        <path
+                          d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8"
+                        />
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--quinta pagina-->
+    <div class="hojas" id="hoja5">
+      <!--contenedor del titulo/descripcion-->
+      <div id="container_titulo5">
+        <span class="titulo_blanco2">PREGUNTAS COMUNES</span>
+      </div>
+      <div id="mensaje5">
+        <span id="txt_mensaje5">
+          Aquí puedes encontrar un compendio de las preguntas más frecuentadas
+          por los nuevos usuarios de que empiezana usar nuestro software.
+        </span>
+      </div>
+
+      <!--carrusel-->
+      <div class="carrusel">
+        <!--contenedor de titulo-->
+        <div class="container_titulo">
+          <!--vector-->
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="currentColor"
+            class="bi bi-check-circle-fill"
+            viewBox="0 0 16 16"
+          >
+            <path
+              d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"
+            />
+          </svg>
+          <!--titulo-->
+          <div class="contenedor_subtitulo">
+            <span class="titulo_slider1"> PREGUNTAS INTERESANTES </span>
+          </div>
+        </div>
+
+        <!--contenido general/<>/slices-->
+        <div class="contenido_general_slices1">
+          <!--icono atras-->
+          <div class="atras">
+            <svg
+              version="1.0"
+              xmlns="http://www.w3.org/2000/svg"
+              width="60px"
+              height="60px"
+              class="menor"
+              viewBox="0 0 100.000000 100.000000"
+              preserveAspectRatio="xMidYMid meet"
+              fill="currentColor"
+              id="atras"
+            >
+              <g
+                transform="translate(0.000000,100.000000) scale(0.100000,-0.100000)"
+                fill="currentColor"
+                stroke="none"
+              >
+                <path
+                  d="M415 720 l-220 -220 223 -222 222 -223 72 73 73 72 -148 148 -147 147 
+                  145 145 c80 80 145 149 145 155 0 10 -131 145 -140 145 -3 0 -104 -99 -225 -220z"
+                />
+              </g>
+            </svg>
+          </div>
+
+          <!--contenido-->
+          <div class="contenido_slice1" id="contenido">
+            <div class="imagen" id="imagen">
+              <img
+                src="/static/src/images/imagen10.png"
+                alt="imagen10"
+                class="imagen_representativa"
+                style="opacity: 1; visibility: visible"
+                class="imagen_carrusel1"
+              />
+            </div>
+            <div class="caja_contenido_slice" id="texto">
+              <span
+                class="txt_caja_contenido_slice"
+                style="opacity: 1; visibility: visible"
+              >
+                ¿De que manera garantiza su plataforma que los profesionales
+                certificados con los que me conectaré son realmente confiables y
+                poseen la experiencia necesaria en el control de plagas? ¿Qué
+                procesos siguen para asegurar su calidad y competencia?
+              </span>
+            </div>
+          </div>
+
+          <!--icono adelante-->
+          <div class="adelante">
+            <svg
+              version="1.0"
+              xmlns="http://www.w3.org/2000/svg"
+              width="60px"
+              height="60px"
+              class="mayor"
+              viewBox="0 0 100.000000 100.000000"
+              preserveAspectRatio="xMidYMid meet"
+              fill="currentColor"
+              id="adelante"
+            >
+              <g
+                transform="translate(0.000000,100.000000) scale(0.100000,-0.100000)"
+                fill="currentColor"
+                stroke="none"
+              >
+                <path
+                  d="M415 720 l-220 -220 223 -222 222 -223 72 73 73 72 -148 148 -147 147 
+                  145 145 c80 80 145 149 145 155 0 10 -131 145 -140 145 -3 0 -104 -99 -225 -220z"
+                />
+              </g>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <!--puntos-->
+      <div class="puntos" id="punto"></div>
+    </div>
+
+    <!--sexta pagina-->
+    <div class="hojas" id="hoja6">
+      <div id="container_titulo6">
+        <span class="titulo_morado6">LICENCIAS</span>
+      </div>
+      <div id="mensaje6">
+        <span id="txt_mensaje6">
+          Para disfrutar de la mejor manera contamos con licncias que te dan más
+          libertad al momento de usar nuestra plataforma
+        </span>
+      </div>
+
+      <!--contenedor de cartas-->
+      <div class="card_licencias">
+        <!--tarjeta plata-->
+        <div class="cartas_licencias">
+          <!--contenedor de imagen-->
+          <div class="contenedor_licencias">
+            <img
+              src="/static/src/images/gifs/plata.gif"
+              alt="foto_luis"
+              class="foto_licencia"
+            />
+          </div>
+
+          <!--informacion personal-->
+          <div class="datos_licencias">
+            <div class="contenedor_nombre_licencia">
+              <h5 class="nombre_licencia" style="font-size: 31px">
+                PAQUETE SILVER
+              </h5>
+            </div>
+            <div class="precio_licencia">
+              <h6 class="precio" style="font-size: 20px">20.000 COP/MES</h6>
+            </div>
+            <div class="descripcion_licencia">
+              <span class="descripcion" style="color: rgb(108, 108, 114)">
+                La Licencia Plata es ideal para pequeñas empresas de gestión de
+                plagas que buscan mejorar la eficiencia operativa básica.
+                Incluye las herramientas esenciales para registrar y gestionar
+                la información de los servicios, programación de citas, y
+                almacenamiento de reportes.
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!--tarjeta oro-->
+        <div class="cartas_licencias">
+          <!--contenedor de imagen-->
+          <div class="contenedor_licencias">
+            <img
+              src="/static/src/images/gifs/dold.gif"
+              alt="foto_luis"
+              class="foto_licencia"
+            />
+          </div>
+
+          <!--informacion personal-->
+          <div class="datos_licencias">
+            <div class="contenedor_nombre_licencia">
+              <h5 class="nombre_licencia" style="font-size: 31px">
+                PAQUETE GOLD
+              </h5>
+            </div>
+            <div class="precio_licencia">
+              <h6 class="precio" style="font-size: 20px">20.000 COP/MES</h6>
+            </div>
+            <div class="descripcion_licencia">
+              <span class="descripcion" style="color: rgb(108, 108, 114)">
+                La Licencia Gold está diseñada para empresas medianas que
+                requieren funcionalidades avanzadas de gestión y análisis de
+                datos. Esta licencia incluye más capacidad de almacenamiento y
+                funciones adicionales que mejoran la eficiencia en la operación.
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!--tarjeta ruby-->
+        <div class="cartas_licencias">
+          <!--contenedor de imagen-->
+          <div class="contenedor_licencias">
+            <img
+              src="/static/src/images/gifs/ruby.gif"
+              alt="foto_luis"
+              class="foto_licencia"
+            />
+          </div>
+
+          <!--informacion personal-->
+          <div class="datos_licencias">
+            <div class="contenedor_nombre_licencia">
+              <h5 class="nombre_licencia" style="font-size: 31px">
+                PAQUETE RUBY
+              </h5>
+            </div>
+            <div class="precio_licencia">
+              <h6 class="precio" style="font-size: 20px">20.000 COP/MES</h6>
+            </div>
+            <div class="descripcion_licencia">
+              <span class="descripcion" style="color: rgb(108, 108, 114)">
+                La Licencia Rubí es la opción más completa para grandes empresas
+                de gestión de plagas. Ofrece acceso ilimitado a todas las
+                funcionalidades del software, incluyendo la personalización de
+                todo tipo de flujo de trabajo y el almacenamiento masivo de
+                datos.
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--septima pagina-->
+    <div class="hojas" id="hoja7">
+      <!--contenedor del titulo/descripcion-->
+      <div id="container_titulo7">
+        <span class="titulo_blanco3">RECOMENDACIONES DE NUESTROS USUARIOS</span>
+      </div>
+      <div id="mensaje7">
+        <span id="txt_mensaje7">
+          Aquí puedes encontrar un compendio de las recomendaciones más
+          destacadas por parte de nuestros fieles clientes.
+        </span>
+      </div>
+
+      <!--carrusel-->
+      <div class="carrusel2">
+        <!--contenido general/<>/slices-->
+        <div class="contenido_general_slices2">
+          <!--icono atras-->
+          <div class="atras">
+            <svg
+              version="1.0"
+              xmlns="http://www.w3.org/2000/svg"
+              width="60px"
+              height="60px"
+              class="menor"
+              viewBox="0 0 100.000000 100.000000"
+              preserveAspectRatio="xMidYMid meet"
+              fill="currentColor"
+              id="atras_btn"
+            >
+              <g
+                transform="translate(0.000000,100.000000) scale(0.100000,-0.100000)"
+                fill="currentColor"
+                stroke="none"
+              >
+                <path
+                  d="M415 720 l-220 -220 223 -222 222 -223 72 73 73 72 -148 148 -147 147 
+                  145 145 c80 80 145 149 145 155 0 10 -131 145 -140 145 -3 0 -104 -99 -225 -220z"
+                />
+              </g>
+            </svg>
+          </div>
+
+          <!--contenido-->
+          <div class="contenido_slice2" id="contenido_clientes">
+            <div class="imagen_avatar" id="imagen_avatar">
+              <img
+                src="/static/src/images/imagenes_adicionales/avatar1.jpg"
+                alt="imagen10"
+                width="120"
+                height="120"
+                style="border-radius: 360px"
+                class="imagen_carrusel2"
+              />
+            </div>
+            <div class="caja_contenido_slice2" id="texto">
+              <div
+                id="nombre_caja_contenido_slice2"
+                class="nombre_caja_contenido_slice2"
+              >
+                <span class="nombre_caja_contenido_slice2">
+                  ULDARICO ANDRADE
+                </span>
+              </div>
+
+              <div
+                id="txt_caja_contenido_slice2"
+                class="txt_caja_contenido_slice2"
+              >
+                <span class="txt_caja_contenido_slice2">
+                  La plataforma debería tener una interfaz clara y fácil de
+                  navegar, permitiendo a los usuarios acceder a la información y
+                  realizar tareas sin complicaciones. Un diseño amigable mejora
+                  la eficiencia y reduce el tiempo de capacitación.
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <!--icono adelante-->
+          <div class="adelante">
+            <svg
+              version="1.0"
+              xmlns="http://www.w3.org/2000/svg"
+              width="60px"
+              height="60px"
+              class="mayor"
+              viewBox="0 0 100.000000 100.000000"
+              preserveAspectRatio="xMidYMid meet"
+              fill="currentColor"
+              id="adelante_btn"
+            >
+              <g
+                transform="translate(0.000000,100.000000) scale(0.100000,-0.100000)"
+                fill="currentColor"
+                stroke="none"
+              >
+                <path
+                  d="M415 720 l-220 -220 223 -222 222 -223 72 73 73 72 -148 148 -147 147 
+                  145 145 c80 80 145 149 145 155 0 10 -131 145 -140 145 -3 0 -104 -99 -225 -220z"
+                />
+              </g>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <!--puntos-->
+      <div class="puntos_slide2" id="puntos_slide2"></div>
+    </div>
+
+    {% include 'components/Footer.html'%}
+
+    <!--Importar footer-->
+
+    <!--scripst importados-->
+    <script src="/static/js/carrusel1.js"></script>
+    <script src="/static/js/carrusel2.js"></script>
+    <script src="/static/js/header/header.js"></script>
+  </body>
+</html>

@@ -1,0 +1,260 @@
+#hoja5 {
+  background-image: url("/static/src/patrones/morado1.png");
+  margin: 0;
+  padding: 80px 123px 80px 123px;
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+#container_titulo5 {
+  width: 100%;
+  text-align: center;
+}
+
+.titulo_blanco2 {
+  color: rgb(255, 255, 255);
+  font-size: 60px;
+  font-weight: bold;
+  line-height: 50px;
+}
+
+#mensaje5 {
+  width: 50%;
+  max-width: 100%;
+  text-align: center;
+  margin-bottom: 32px;
+  margin-top: 25px;
+}
+
+#txt_mensaje5 {
+  font-size: 20px;
+  color: rgb(255, 255, 255);
+  font-weight: bold;
+  line-height: 24px;
+  text-align: center;
+}
+
+/*carrusel*/
+
+.carrusel {
+  border-radius: 40px;
+  width: 70%;
+  padding: 29px 26px 29px 26px;
+  box-shadow: 0 1px 10px rgba(0, 0, 0, 0.1);
+  background-color: rgb(247, 247, 250);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.container_titulo {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  gap: 1rem;
+}
+
+svg.bi.bi-check-circle-fill {
+  width: 30px;
+  height: 30px;
+  color: rgb(85, 0, 230);
+}
+
+.titulo_slider1 {
+  font-size: 35px;
+  color: rgb(85, 0, 230);
+}
+
+.contenido_general_slices1 {
+  gap: 1rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+div.atras {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+div.adelante {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.contenido_slice1 {
+  display: flex;
+  width: 80%;
+  justify-content: center;
+  align-items: center;
+}
+
+.imagen {
+  width: 50%;
+  max-width: 50%;
+  min-width: 50%;
+}
+
+.imagen_representativa {
+  width: 100%;
+}
+
+.caja_contenido_slice {
+  background-color: rgb(255, 255, 255);
+  box-shadow: 4px 8px 20px rgba(0, 0, 0, 0.15);
+  border-radius: 40px;
+  width: 50%;
+  padding: 30px 28px 30px 28px;
+}
+
+.txt_caja_contenido_slice {
+  line-height: 24px;
+  font-size: 24px;
+}
+
+.puntos {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 58px;
+}
+
+.mayor {
+  rotate: 180deg;
+  color: rgb(85, 0, 230);
+  cursor: pointer;
+}
+
+.mayor:hover {
+  color: rgb(158, 120, 230);
+}
+
+.mayor:active {
+  color: rgb(0, 0, 0);
+}
+
+.menor {
+  color: rgb(85, 0, 230);
+  cursor: pointer;
+}
+
+.menor:hover {
+  color: rgb(158, 120, 230);
+}
+.menor:active {
+  color: rgb(0, 0, 0);
+}
+
+/**/
+@media screen and (max-width: 1350px) {
+  .txt_caja_contenido_slice {
+    line-height: 22px;
+    font-size: 18px;
+  }
+
+  .carrusel {
+    width: 80%;
+  }
+}
+
+/**/
+@media screen and (max-width: 1200px) {
+  .carrusel {
+    width: 90%;
+  }
+
+  .txt_caja_contenido_slice {
+    font-size: 18px;
+  }
+}
+
+/**/
+@media screen and (max-width: 1000px) {
+  .carrusel {
+    width: 100%;
+  }
+
+  .txt_caja_contenido_slice {
+    font-size: 15px;
+  }
+
+  #mensaje5 {
+    width: 85%;
+  }
+}
+
+/**/
+@media screen and (max-width: 905px) {
+  #hoja5 {
+    padding: 80px;
+  }
+}
+
+/**/
+@media screen and (max-width: 815px) {
+  div.imagen {
+    display: none;
+  }
+  div.caja_contenido_slice {
+    width: 100%;
+  }
+
+  .titulo_slider1 {
+    font-size: 25px;
+  }
+
+  svg.bi.bi-check-circle-fill {
+    width: 25px;
+    height: 25px;
+  }
+}
+
+/**/
+@media screen and (max-width: 690px) {
+  #hoja5 {
+    padding: 80px 60px 80px 60px;
+  }
+
+  .titulo_blanco2 {
+    font-size: 50px;
+  }
+
+  .puntos {
+    display: none;
+  }
+
+  .container_titulo {
+    display: none;
+  }
+
+  .contenido_general_slices1 {
+    gap: 0rem;
+  }
+
+  .carrusel {
+    padding: 26px 20px 26px 20px;
+  }
+}
+
+/**/
+@media screen and (max-width: 480px) {
+  #mensaje5 {
+    width: 100%;
+  }
+
+  #hoja5 {
+    padding: 33px 40px 33px 40px;
+  }
+}

@@ -1,0 +1,77 @@
+{% extends 'empresa_fumigadora/components/plantilla.html' %}
+
+<!--extensiones css/bootstrap-->
+{% block extensiones %} {{super()}}
+<link
+  rel="stylesheet"
+  href="{{url_for('static', filename='css/empresa_fumigadora/estilos_encargado.css')}}"
+/>
+{% endblock %}
+
+<!--titulo de la pagina-->
+{% block titulo %} ENCARGADO DE LA EMPRESA {% endblock %}
+
+<!--cerrar sesion-->
+{% block cerrar_sesion %} {{url_for('Login.cerrar_sesion')}} {% endblock %}
+
+<!--logo de la empresa-->
+{% block logo %} {{ file_path }} {% endblock %}
+
+<!--boton de borrado de cuenta-->
+
+<!--foto del encargado-->
+{% block encargado %} {{file_path_encargado}} {% endblock %}
+
+<!--titulos de cada pagina-->
+{% block titulos_contenido %}
+<div class="titulo_contenido_pag">
+  <span class="txt_contenido_pag">REPRESENTANTE </span>
+</div>
+{% endblock %}
+
+<!--imagen de bienvenida-->
+{% block contenido_usuario%}
+<div class="contendor_mensaje_bienvenida">
+  <div class="contendor_imagen">
+    <img
+      src="{{ file_path_encargado }}"
+      alt="imagen_bienvenida"
+      class="imagen_bienvenida"
+    />
+  </div>
+  <div class="contenedor_txt_bienvenida">
+    <div class="contenedor_inputs">
+      <div class="inputs_encargado" id="nombre">
+        <label for="nombre_encargado">Nombre</label>
+        <input
+          type="text"
+          name="nombre_encargado"
+          id=""
+          readonly
+          value="{{ encargado_nombre }}"
+        />
+      </div>
+      <div class="inputs_encargado" id="nombre">
+        <label for="cel_encargado">Teléfono</label>
+        <input
+          type="text"
+          name="cel_encargado"
+          id=""
+          readonly
+          value="{{ encargado_telefono }}"
+        />
+      </div>
+      <div class="inputs_encargado" id="nombre">
+        <label for="email_encargado">Correo Electrónico</label>
+        <input
+          type="text"
+          name="email_encargado"
+          id=""
+          readonly
+          value="{{ encargado_correo }}"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

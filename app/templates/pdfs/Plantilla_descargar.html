@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!--estilos de la plantilla-->
+    <link
+      rel="stylesheet"
+      href="{{url_for('static', filename='css/pdfs/certificado.css')}}"
+    />
+    <title>{% block titulo %}Plantilla_pdf_descargar{% endblock %}</title>
+  </head>
+  <body>
+    <div class="contendor_general">
+      <!--titulo-->
+      <div class="titulo">
+        <h1 class="titluo_txt">
+          CERTIFICADO DE SERVICIO CUMPLIDO SATISFACTORIAMENTE
+        </h1>
+      </div>
+      <!--cliente-->
+      <div class="nombre_cliente">
+        <h3 class="nombre_cliente_txt">
+          {% block nombre_cliente%} GESTDATA {% endblock %}
+        </h3>
+      </div>
+      <!--detalles-->
+      <div class="descripcion">
+        <span class="txt_descriptivo"
+          >Recibe este certificado del servicio ejecutado por
+          <!--Nombre de la empresa fumigadora-->
+          {% block empresa_fumigadora %} MataPlagas_Corp {% endblock %}, en su
+          sede bajo el nombre de
+          <!--nombre de la sede del cliente-->
+          {% block sede_cliente %} El_Mike_Necesitado {% endblock %}, dirigida
+          por
+
+          <!--nombre del encargado de la sede-->
+          {% block encargado %} El_sapo_rico {% endblock %}.</span
+        >
+      </div>
+      <div class="datos_empresa_fumigadora">
+        <!--encargado de la empresa fumigadora-->
+        <div class="encargado">
+          <!--encargado de la empresa fumigadora-->
+          <span class="txt_descriptivo"
+            >{% block encargado2 %} Elba_boso {% endblock %}</span
+          >
+          <hr />
+          <span class="txt_descriptivo" id="encargado"
+            >Encargado de la empresa
+            <!--nombre de la empresa fumigadora-->
+            {% block empresa_fumigadora2 %} MataPlagas_Corp {% endblock %}</span
+          >
+        </div>
+        <!--finalizacion del servicio-->
+        <div class="fecha">
+          <!--fecha de finalizacion del servicio-->
+          <span class="txt_descriptivo"
+            >{% block fecha %} 20/10/2006 {% endblock %}</span
+          >
+          <hr />
+          <span class="txt_descriptivo" id="fecha"
+            >Fecha de finalización del servicio</span
+          >
+        </div>
+      </div>
+      <div class="derechos">
+        <img
+          src="/static/src/images/imagenes_adicionales/raven.png"
+          alt="raven"
+          style="width: 30px; height: 30px"
+        />
+        <span>Todos los derechos reservados a GestData</span>
+      </div>
+    </div>
+
+    <!--etilos-->
+    <style>
+      body {
+        font-family: "Nexa";
+        font-weight: bold;
+        padding: 5%;
+        text-align: center;
+        background-color: rgb(255, 255, 255);
+      }
+
+      .contendor_general {
+        padding: 2%;
+        margin: 0 auto;
+        background-color: rgb(255, 255, 255);
+      }
+
+      .titluo_txt {
+        font-size: 60px;
+        margin-block-end: 0;
+        color: rgb(80, 0, 230);
+        margin-block-start: 0;
+      }
+
+      .titluo_txt2 {
+        font-size: 60px;
+        margin-block-start: 0;
+        margin-block-end: 0;
+        color: rgb(80, 0, 230);
+      }
+
+      .nombre_cliente_txt {
+        font-size: 60px;
+        margin-block-start: 0;
+        margin-block-end: 0;
+      }
+
+      hr {
+        color: rgb(80, 0, 230);
+      }
+
+      .datos_empresa_fumigadora {
+        width: 100%;
+        gap: 5rem;
+      }
+
+      .encargado,
+      .fecha {
+        width: 100%;
+      }
+
+      .txt_descriptivo {
+        font-size: 30px;
+      }
+
+      #encargado,
+      #fecha {
+        color: rgb(80, 0, 230);
+      }
+
+      .encargado,
+      .fecha {
+        margin-top: 30px;
+      }
+
+      .derechos {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+      }
+    </style>
+  </body>
+</html>

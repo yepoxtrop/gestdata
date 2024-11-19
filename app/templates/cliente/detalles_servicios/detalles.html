@@ -1,0 +1,247 @@
+{% extends 'cliente/components/plantilla.html' %}
+
+<!--extensiones css/bootstrap-->
+{% block extensiones %} {{super()}}
+<link
+  rel="stylesheet"
+  href="{{url_for('static', filename='css/empresa_fumigadora/mensaje_empleado1.css')}}"
+/>
+
+<link
+  rel="stylesheet"
+  href="{{url_for('static', filename='css/empresa_fumigadora/empleados_agregar.css')}}"
+/>
+
+<link
+  rel="stylesheet"
+  href="{{url_for('static', filename='css/empresa_fumigadora/estilos_empleados.css')}}"
+/>
+
+<link
+  rel="stylesheet"
+  href="{{url_for('static', filename='css/empresa_fumigadora/menu/menu.css')}}"
+/>
+{% endblock %}
+
+<!--titulo de la pagina-->
+{% block titulo %} DETALLES DE SERVICIOS {% endblock %}
+
+<!--cerrar sesion-->
+{% block cerrar_sesion %} {{url_for('Login.cerrar_sesion')}} {% endblock %}
+
+<!--logo de la empresa-->
+{% block logo %} {{ logo_Cliente }} {% endblock %}
+
+<!--titulos de cada pagina-->
+{% block titulos_contenido %}
+<div class="menu_empleados">
+  <button id="abrir_menu">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="16"
+      height="16"
+      fill="currentColor"
+      class="bi bi-list"
+      viewBox="0 0 16 16"
+      id="abrir_men2"
+    >
+      <path
+        fill-rule="evenodd"
+        d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"
+      />
+    </svg>
+  </button>
+
+  <!--barra de navegacion-->
+  <nav class="barra2">
+    <button id="cerrar_menu">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="16"
+        height="16"
+        fill="currentColor"
+        class="bi bi-x-lg"
+        viewBox="0 0 16 16"
+        id="cerrar_men2"
+      >
+        <path
+          d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z"
+        />
+      </svg>
+    </button>
+
+    <!--contendor de los botones-->
+    <div class="contenedor_botones">
+      <div class="titulo_contenido_pag">
+        <span class="txt_contenido_pag" id="titulo1"
+          ><a href="{{ url_for('Cliente.detalles') }}" class="titulos_empleados"
+            >DETALLES DE SERVICIOS</a
+          ></span
+        >
+      </div>
+    </div>
+  </nav>
+
+  <style>
+    .titulo_contenido_pag {
+      background-color: rgb(80, 0, 230);
+    }
+
+    .contendor_imagen {
+      width: 100%;
+      overflow-y: hidden;
+      max-height: 100%;
+      display: flex;
+    }
+
+    .imagen_bienvenida {
+      width: 100%;
+      border-radius: 0px;
+    }
+
+    @media screen and (max-width: 1330px) {
+      .contendor_mensaje_bienvenida {
+        display: flex;
+      }
+
+      .contendor_mensaje_bienvenida {
+        display: none;
+      }
+    }
+
+    .titulos_tabla,
+    .txt_tabla_mobile {
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+
+    #acciones_div {
+      border-bottom: 2px solid rgb(179, 179, 179);
+    }
+
+    #id_ser {
+      width: 5%;
+    }
+
+    #empresa,
+    #sede,
+    #descripcion,
+    #solicitud,
+    #carac,
+    #deta {
+      width: calc(95% / 6);
+    }
+  </style>
+</div>
+{% endblock %}
+
+<!--imagen de bienvenida-->
+{% block contenido_usuario%}
+<div class="contendor_mensaje_bienvenida">
+  <div class="contendor_imagen">
+    <table>
+      <thead>
+        <tr>
+          <th class="titulos_tabla" id="id_ser">ID</th>
+          <th class="titulos_tabla" id="empresa">EMPRESA</th>
+          <th class="titulos_tabla" id="sede">EMPLEADO</th>
+          <th class="titulos_tabla" id="descripcion">SEDE</th>
+          <th class="titulos_tabla" id="solicitud">CLASE</th>
+          <th class="titulos_tabla" id="carac">CARACTERÍSTICA</th>
+          <th class="titulos_tabla" id="deta">DETALLE</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!--recorres diccionario-->
+        {% for detalles in session['detalles'] %}
+        <tr>
+          <td class="txt_tabla">{{ detalles['id_servicio'] }}</td>
+          <td class="txt_tabla">{{ detalles['empresa'] }}</td>
+          <td class="txt_tabla">{{ detalles['empleado'] }}</td>
+          <td class="txt_tabla">{{ detalles['sede'] }}</td>
+          <td class="txt_tabla">{{ detalles['clase'] }}</td>
+          <td class="txt_tabla">{{ detalles['caracteristica'] }}</td>
+          <td class="txt_tabla">{{ detalles['detalle'] }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!--tabla mobile-->
+<div class="tabla_mobile">
+  {% for detalles in session['detalles'] %}
+  <div class="fila">
+    <div class="columna">
+      <div class="titulo_tabla_mibile">
+        <span class="titulos_tabla">ID</span>
+      </div>
+      <div class="valor_tabla_mobile">
+        <span class="txt_tabla_mobile">{{ detalles['id_servicio'] }}</span>
+      </div>
+    </div>
+
+    <div class="columna">
+      <div class="titulo_tabla_mibile">
+        <span class="titulos_tabla">EMPRESA</span>
+      </div>
+      <div class="valor_tabla_mobile">
+        <span class="txt_tabla_mobile">{{ detalles['empresa'] }}</span>
+      </div>
+    </div>
+
+    <div class="columna">
+      <div class="titulo_tabla_mibile">
+        <span class="titulos_tabla">EMPLEADO</span>
+      </div>
+      <div class="valor_tabla_mobile">
+        <span class="txt_tabla_mobile">{{ detalles['empleado'] }}</span>
+      </div>
+    </div>
+
+    <div class="columna">
+      <div class="titulo_tabla_mibile">
+        <span class="titulos_tabla">SEDE</span>
+      </div>
+      <div class="valor_tabla_mobile">
+        <span class="txt_tabla_mobile"> {{ detalles['sede'] }}</span>
+      </div>
+    </div>
+
+    <div class="columna">
+      <div class="titulo_tabla_mibile">
+        <span class="titulos_tabla">CLASE</span>
+      </div>
+      <div class="valor_tabla_mobile">
+        <span class="txt_tabla_mobile"> {{ detalles['clase'] }}</span>
+      </div>
+    </div>
+
+    <div class="columna">
+      <div class="titulo_tabla_mibile">
+        <span class="titulos_tabla">CARACTERISTICA</span>
+      </div>
+      <div class="valor_tabla_mobile">
+        <span class="txt_tabla_mobile"> {{ detalles['caracteristica'] }}</span>
+      </div>
+    </div>
+
+    <div class="columna" id="acciones_div">
+      <div class="titulo_tabla_mibile">
+        <span class="titulos_tabla">DETALLE</span>
+      </div>
+      <div class="valor_tabla_mobile">
+        <span class="txt_tabla_mobile"> {{ detalles['detalle'] }}</span>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}
+
+<!--script-->
+{% block javascript %} {{super()}}
+<script src="/static/js/empresa_fumigadora/menu_opciones/opciones.js"></script>
+{% endblock %}

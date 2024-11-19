@@ -1,0 +1,52 @@
+{% extends 'empresa_fumigadora/components/plantilla.html' %}
+
+<!--extensiones css/bootstrap-->
+{% block extensiones %} {{super()}}
+<link
+  rel="stylesheet"
+  href="{{url_for('static', filename='css/empresa_fumigadora/mensaje_empleado1.css')}}"
+/>
+{% endblock %}
+
+<!--titulo de la pagina-->
+{% block titulo %} DETALLE ELIMNADO {% endblock %}
+
+<!--cerrar sesion-->
+{% block cerrar_sesion %} {{url_for('Login.cerrar_sesion')}} {% endblock %}
+
+<!--logo de la empresa-->
+{% block logo %} {{ file_path }} {% endblock %}
+
+<!--boton de borrado de cuenta-->
+
+<!--foto del encargado-->
+{% block encargado %} {{file_path_encargado}} {% endblock %}
+
+<!--titulos de cada pagina-->
+{% block titulos_contenido %}
+<div class="titulo_contenido_pag">
+  <span class="txt_contenido_pag">DETALLE ELIMNADO</span>
+</div>
+{% endblock %}
+
+<!--imagen de bienvenida-->
+{% block contenido_usuario%}
+<div class="contendor_mensaje_bienvenida">
+  <div class="contendor_imagen">
+    <img
+      src="/static/src/images/imagen25.png"
+      alt="imagen_bienvenida"
+      class="imagen_bienvenida"
+    />
+  </div>
+  <div class="contenedor_mensaje_actualizado">
+    <div class="contnedor_h2">
+      <h2 class="mensaje_h2">¡EXCELENTE!</h2>
+      <h4 class="mensaje_h4">
+        El detalle de servicio realizado por tu empresa ha sido borrado de
+        nuestro sistema.
+      </h4>
+    </div>
+  </div>
+</div>
+{% endblock %}

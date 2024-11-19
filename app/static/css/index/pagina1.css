@@ -1,0 +1,231 @@
+/*estilos de la hoja*/
+#hoja1 {
+  background-color: rgb(247, 247, 250);
+  padding: 31px 61px 31px 61px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+/*contenedor del titulo*/
+#container_titulo1_morado {
+  margin-bottom: 67px;
+  text-align: center;
+  width: 100%;
+}
+
+/*titulo*/
+.titulo_morado {
+  color: rgb(85, 0, 230);
+  font-size: 60px;
+  font-weight: bold;
+  line-height: 50px;
+  text-align: center;
+}
+
+/*contenedor de imagen/los dos cuadros*/
+#caja1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: auto;
+  gap: 3rem;
+}
+
+/*contenedor de las dos cajas*/
+#container_cajas {
+  align-items: center;
+  display: flex;
+  width: 50%;
+}
+
+/*contenedor con la iformacion/caja pequeña*/
+#mensaje1 {
+  background-color: rgb(255, 255, 255);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 83px 53px 83px 53px;
+  border-radius: 40px;
+  box-shadow: 0px 4px 20px rgba(85, 0, 230, 0.4),
+    0px 2px 10px rgba(0, 0, 0, 0.1);
+  gap: 1rem;
+}
+
+/*contenedor del titulo de la caja pequeña*/
+#container_titulo1 {
+  width: 100%;
+}
+
+/*titulo de la caja pequeña*/
+#titulo_mensaje {
+  color: rgb(0, 0, 0);
+  font-size: 40px;
+  font-weight: bold;
+  line-height: 50px;
+}
+
+/*contenedor del texto de la caja pequeña*/
+#container_txt {
+  width: 100%;
+}
+
+/*texto de la caja pequeña*/
+#txt_mensaje1 {
+  color: rgb(108, 108, 114);
+  font-size: 24px;
+  font-weight: bold;
+  line-height: 24px;
+}
+
+/*contenedor del botom*/
+#boton {
+  background-color: rgb(158, 120, 230);
+  width: 40%;
+  height: 70px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  min-width: 187px;
+}
+
+/*diseños de cursor sobre el boton*/
+#boton:hover {
+  background-color: rgb(85, 0, 230);
+}
+
+#boton:active {
+  background: rgb(0, 0, 0);
+}
+
+/*texto dentro del boton*/
+#txt_btn {
+  color: rgb(255, 255, 255);
+  font-weight: bold;
+  font-size: 20px;
+  text-decoration: none;
+}
+
+.contendor_imagen {
+  width: 50%;
+}
+
+.imagen_pag1 {
+  width: 100%;
+  height: auto;
+}
+
+@media screen and (max-width: 1200px) {
+  .imagen_pag1 {
+    width: 100%;
+    height: auto;
+  }
+
+  #mensaje1 {
+    padding: 70px 50px 70px 50px;
+  }
+
+  #titulo_mensaje {
+    font-size: 30px;
+    line-height: 24px;
+  }
+
+  #txt_mensaje1 {
+    font-size: 17px;
+  }
+}
+
+@media screen and (max-width: 905px) {
+  .titulo_morado {
+    color: rgb(85, 0, 230);
+    font-size: 50px;
+    font-weight: bold;
+    line-height: 56px;
+    text-align: center;
+  }
+
+  .contendor_imagen {
+    display: none;
+  }
+
+  #container_cajas {
+    width: 100%;
+  }
+
+  #txt_mensaje1 {
+    font-size: 20px;
+  }
+
+  #titulo_mensaje {
+    font-size: 40px;
+  }
+}
+
+@media screen and (max-width: 815px) {
+  .titulo_morado {
+    color: rgb(85, 0, 230);
+    font-size: 40px;
+    font-weight: bold;
+    line-height: 40px;
+    text-align: center;
+  }
+
+  #container_cajas {
+    width: 100%;
+  }
+
+  .contendor_imagen {
+    visibility: hidden;
+  }
+
+  .contendor_licencias {
+    display: none;
+  }
+  .titulo_morado {
+    font-size: 36px;
+    line-height: 26px;
+  }
+}
+
+@media screen and (max-width: 690px) {
+  #container_titulo1_morado {
+    margin-bottom: 50px;
+  }
+
+  #hoja1 {
+    padding: 33px 40px 33px 40px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .titulo_morado {
+    font-size: 30px;
+    line-height: 26px;
+  }
+
+  #container_cajas {
+    width: 100%;
+  }
+
+  #mensaje1 {
+    padding: 40px 30px 40px 30px;
+  }
+
+  #titulo_mensaje {
+    font-size: 26px;
+  }
+  #txt_mensaje1 {
+    font-size: 15px;
+  }
+  #txt_btn {
+    font-size: 15px;
+  }
+  #boton {
+    height: 60px;
+  }
+}

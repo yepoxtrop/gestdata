@@ -1,0 +1,359 @@
+{% extends 'cliente/components/plantilla.html' %}
+
+<!--extensiones css/bootstrap-->
+{% block extensiones %} {{super()}}
+<link
+  rel="stylesheet"
+  href="{{url_for('static', filename='css/empresa_fumigadora/mensaje_empleado1.css')}}"
+/>
+
+<link
+  rel="stylesheet"
+  href="{{url_for('static', filename='css/empresa_fumigadora/empleados_agregar.css')}}"
+/>
+
+<link
+  rel="stylesheet"
+  href="{{url_for('static', filename='css/empresa_fumigadora/estilos_empleados.css')}}"
+/>
+
+<link
+  rel="stylesheet"
+  href="{{url_for('static', filename='css/empresa_fumigadora/menu/menu.css')}}"
+/>
+{% endblock %}
+
+<!--titulo de la pagina-->
+{% block titulo %}SERVICIOS SOLICITADOS{% endblock %}
+
+<!--cerrar sesion-->
+{% block cerrar_sesion %} {{url_for('Login.cerrar_sesion')}} {% endblock %}
+
+<!--logo de la empresa-->
+{% block logo %} {{ logo_Cliente }} {% endblock %}
+
+<!--titulos de cada pagina-->
+{% block titulos_contenido %}
+<div class="menu_empleados">
+  <button id="abrir_menu">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="16"
+      height="16"
+      fill="currentColor"
+      class="bi bi-list"
+      viewBox="0 0 16 16"
+      id="abrir_men2"
+    >
+      <path
+        fill-rule="evenodd"
+        d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"
+      />
+    </svg>
+  </button>
+
+  <!--barra de navegacion-->
+  <nav class="barra2">
+    <button id="cerrar_menu">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="16"
+        height="16"
+        fill="currentColor"
+        class="bi bi-x-lg"
+        viewBox="0 0 16 16"
+        id="cerrar_men2"
+      >
+        <path
+          d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z"
+        />
+      </svg>
+    </button>
+
+    <!--contendor de los botones-->
+    <div class="contenedor_botones">
+      <div class="titulo_contenido_pag">
+        <span class="txt_contenido_pag" id="titulo1"
+          ><a href="{{url_for('Cliente.servicio')}}" class="titulos_empleados"
+            >SERVICIOS SOLICITADOS</a
+          ></span
+        >
+      </div>
+
+      <div class="titulo_contenido_pag" id="empleados_inactivos">
+        <span class="txt_contenido_pag" id="titulo2"
+          ><a href="{{url_for('Cliente.solicitar')}}" class="titulos_empleados"
+            >SOLICITAR SERVICIO</a
+          ></span
+        >
+      </div>
+    </div>
+  </nav>
+
+  <style>
+    .titulo_contenido_pag {
+      background-color: rgb(80, 0, 230);
+    }
+
+    .contendor_imagen {
+      width: 50%;
+      overflow-y: hidden;
+      max-height: 100%;
+      display: flex;
+    }
+
+    .imagen_bienvenida,
+    .tabla_mobile {
+      width: 100%;
+      border-radius: 0px;
+    }
+
+    .contendor_imagen {
+      width: 100%;
+    }
+
+    #empresa {
+      width: 20%;
+    }
+
+    #sede,
+    #descripcion,
+    #solicitud,
+    #inicio,
+    #fin,
+    #estado,
+    #empleado,
+    #docs {
+      width: 10%;
+    }
+
+    #acciones_div {
+      border-bottom: 2px solid rgb(179, 179, 179);
+    }
+    /*-----------------*/
+    @media screen and (max-width: 1590px) {
+      .titulos_tabla {
+        color: rgb(80, 0, 230);
+        font-size: 16px;
+      }
+    }
+
+    @media screen and (max-width: 1425px) {
+      .tabla_mobile {
+        display: flex;
+      }
+      .contendor_mensaje_bienvenida {
+        display: none;
+      }
+
+      .titulos_tabla {
+        color: rgb(80, 0, 230);
+        font-size: 20px;
+      }
+
+      .titulos_tabla,
+      .txt_tabla_mobile {
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+      }
+    }
+  </style>
+</div>
+{% endblock %}
+
+<!--imagen de bienvenida-->
+{% block contenido_usuario%}
+<div class="contendor_mensaje_bienvenida">
+  <div class="contendor_imagen">
+    <table>
+      <thead>
+        <tr>
+          <th class="titulos_tabla" id="empresa">EMPRESA</th>
+          <th class="titulos_tabla" id="sede">SEDE</th>
+          <th class="titulos_tabla" id="descripcion">DESCRIPCIÓN</th>
+          <th class="titulos_tabla" id="solicitud">SOLICITUD</th>
+          <th class="titulos_tabla" id="inicio">INICIO</th>
+          <th class="titulos_tabla" id="fin">FIN</th>
+          <th class="titulos_tabla" id="estado">ESTADO</th>
+          <th class="titulos_tabla" id="empleado">EMPLEADO</th>
+          <th class="titulos_tabla" id="docs">DOCS</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!--recorres diccionario-->
+        {% for servicio in session['servicios'] %}
+        <tr>
+          <td class="txt_tabla">{{ servicio['empresa_fumigadora'] }}</td>
+          <td class="txt_tabla">{{ servicio['sede'] }}</td>
+          <td class="txt_tabla">{{ servicio['descripcion'] }}</td>
+          <td class="txt_tabla">{{ servicio['solicitud'] }}</td>
+          <td class="txt_tabla">{{ servicio['inicio'] }}</td>
+          <td class="txt_tabla">{{ servicio['final'] }}</td>
+          <td class="txt_tabla">{{ servicio['estado'] }}</td>
+          <td class="txt_tabla">{{ servicio['empleado'] }}</td>
+          <!--vector1-->
+          <td class="iconos_campo">
+            <!--edita-->
+            <a
+              href="{{url_for('Cliente.reporte', indice=loop.index0)}}"
+              id="icono_editar"
+              class="acciones_empleado"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                width="16"
+                height="16"
+                fill="currentColor"
+                class="bi bi-file-earmark"
+                viewBox="0 0 16 16"
+                id="editar_empleado"
+              >
+                <path
+                  d="M14 4.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h5.5zm-3 0A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5z"
+                />
+              </svg>
+            </a>
+            <!--elimina-->
+            <a
+              href="{{url_for('Cliente.certificado', index=loop.index0)}}"
+              id="icono_eliminar"
+              class="acciones_empleado"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                class="bi bi-patch-check-fill"
+                viewBox="0 0 16 16"
+                id="eliminar_empleado"
+              >
+                <path
+                  d="M10.067.87a2.89 2.89 0 0 0-4.134 0l-.622.638-.89-.011a2.89 2.89 0 0 0-2.924 2.924l.01.89-.636.622a2.89 2.89 0 0 0 0 4.134l.637.622-.011.89a2.89 2.89 0 0 0 2.924 2.924l.89-.01.622.636a2.89 2.89 0 0 0 4.134 0l.622-.637.89.011a2.89 2.89 0 0 0 2.924-2.924l-.01-.89.636-.622a2.89 2.89 0 0 0 0-4.134l-.637-.622.011-.89a2.89 2.89 0 0 0-2.924-2.924l-.89.01zm.287 5.984-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7 8.793l2.646-2.647a.5.5 0 0 1 .708.708"
+                />
+              </svg>
+            </a>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!--tabla mobile-->
+<div class="tabla_mobile">
+  {% for servicio in session['servicios'] %}
+  <div class="fila">
+    <div class="columna">
+      <div class="titulo_tabla_mibile">
+        <span class="titulos_tabla">EMPRESA</span>
+      </div>
+      <div class="valor_tabla_mobile">
+        <span class="txt_tabla_mobile"
+          >{{ servicio['empresa_fumigadora'] }}</span
+        >
+      </div>
+    </div>
+
+    <div class="columna">
+      <div class="titulo_tabla_mibile">
+        <span class="titulos_tabla">SEDE</span>
+      </div>
+      <div class="valor_tabla_mobile">
+        <span class="txt_tabla_mobile">{{ servicio['sede'] }}</span>
+      </div>
+    </div>
+
+    <div class="columna">
+      <div class="titulo_tabla_mibile">
+        <span class="titulos_tabla">DESCRIPCIÓN</span>
+      </div>
+      <div class="valor_tabla_mobile">
+        <span class="txt_tabla_mobile">{{ servicio['descripcion'] }}</span>
+      </div>
+    </div>
+
+    <div class="columna">
+      <div class="titulo_tabla_mibile">
+        <span class="titulos_tabla">SOLICITUD</span>
+      </div>
+      <div class="valor_tabla_mobile">
+        <span class="txt_tabla_mobile"> {{ servicio['solicitud'] }}</span>
+      </div>
+    </div>
+
+    <div class="columna">
+      <div class="titulo_tabla_mibile">
+        <span class="titulos_tabla">INICIO</span>
+      </div>
+      <div class="valor_tabla_mobile">
+        <span class="txt_tabla_mobile"> {{ servicio['inicio'] }}</span>
+      </div>
+    </div>
+
+    <div class="columna">
+      <div class="titulo_tabla_mibile">
+        <span class="titulos_tabla">FIN</span>
+      </div>
+      <div class="valor_tabla_mobile">
+        <span class="txt_tabla_mobile"> {{ servicio['final'] }}</span>
+      </div>
+    </div>
+
+    <div class="columna">
+      <div class="titulo_tabla_mibile">
+        <span class="titulos_tabla">ESTADO</span>
+      </div>
+      <div class="valor_tabla_mobile">
+        <span class="txt_tabla_mobile"> {{ servicio['estado'] }}</span>
+      </div>
+    </div>
+
+    <div class="columna">
+      <div class="titulo_tabla_mibile">
+        <span class="titulos_tabla">EMPLEADO</span>
+      </div>
+      <div class="valor_tabla_mobile">
+        <span class="txt_tabla_mobile"> {{ servicio['empleado'] }}</span>
+      </div>
+    </div>
+
+    <div class="columna" id="acciones_div">
+      <div class="titulo_tabla_mibile">
+        <span class="titulos_tabla">DOCS</span>
+      </div>
+      <div class="valor_tabla_mobile" style="flex-direction: column">
+        <span class="acciones_empleado"
+          ><a
+            href="{{url_for('Cliente.reporte', indice=loop.index0)}}"
+            id="icono_editar"
+            class="acciones_empleado"
+            style="color: rgb(249, 210, 145); text-decoration: none"
+          >
+            Reporte
+          </a></span
+        >
+        <span class="acciones_empleado"
+          ><a
+            href="{{url_for('Cliente.certificado', index=loop.index0)}}"
+            id="icono_editar"
+            class="acciones_empleado"
+            style="color: rgb(80, 0, 230); text-decoration: none"
+          >
+            Certificado
+          </a></span
+        >
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}
+
+<!--script-->
+{% block javascript %} {{super()}}
+<script src="/static/js/empresa_fumigadora/menu_opciones/opciones.js"></script>
+{% endblock %}

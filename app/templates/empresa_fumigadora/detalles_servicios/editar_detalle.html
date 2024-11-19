@@ -1,0 +1,150 @@
+{% extends 'empresa_fumigadora/components/plantilla.html' %}
+
+<!--extensiones css/bootstrap-->
+{% block extensiones %} {{super()}}
+<link
+  rel="stylesheet"
+  href="{{url_for('static', filename='css/empresa_fumigadora/estilos_empleados.css')}}"
+/>
+
+<link
+  rel="stylesheet"
+  href="{{url_for('static', filename='css/empresa_fumigadora/actualizar_detalles.css')}}"
+/>
+{% endblock %}
+
+<!--titulo de la pagina-->
+{% block titulo %} MODIFICAR DETALLE {% endblock %}
+
+<!--cerrar sesion-->
+{% block cerrar_sesion %} {{url_for('Login.cerrar_sesion')}} {% endblock %}
+
+<!--logo de la empresa-->
+{% block logo %} {{ file_path }} {% endblock %}
+
+<!--boton de borrado de cuenta-->
+
+<!--foto del encargado-->
+{% block encargado %} {{file_path_encargado}} {% endblock %}
+
+<!--titulos de cada pagina-->
+{% block titulos_contenido %}
+<div class="titulo_contenido_pag">
+  <span class="txt_contenido_pag">DETALLES DE SERVICIOS ATENDIDOS </span>
+</div>
+{% endblock %}
+
+<!--imagen de bienvenida-->
+{% block contenido_usuario%}
+<div class="imagen_form">
+  <img
+    src="/static/src/images/imagen22.png"
+    alt="imagen_fomr"
+    class="imagen_contenedor"
+  />
+</div>
+<div class="formulario_empleados">
+  <form
+    action="{{ url_for('Empresa_fumigadora.actualizar_detalle') }}"
+    method="post"
+    class="formulario_ñregistrar_empleado"
+  >
+    <!--mensajes-->
+    {% with messages = get_flashed_messages() %} {% if messages %} {% for
+    message in messages %}
+    <div
+      class="mensaje_error"
+      style="
+        width: 100%;
+        background-color: #f25044;
+        border-radius: 40px;
+        padding: 15px 20px;
+      "
+    >
+      <span>{{message}}</span>
+    </div>
+
+    {% endfor %} {% endif %} {% endwith %}
+
+    <div class="contendor_pares" style="display: none">
+      <!--nombre del empleado-->
+      <div class="inputs_crear_empleado" style="display: none">
+        <label for="id">ID</label>
+        <input type="text" readonly value="{{ id_detalle }}" name="id" />
+      </div>
+    </div>
+
+    <div class="contendor_pares">
+      <!--nombre del empleado-->
+      <div class="inputs_crear_empleado">
+        <label for="">CLIENTE</label>
+        <input type="text" readonly value="{{ nombre_cliente }}" />
+      </div>
+
+      <!--apellido del empleado-->
+      <div class="inputs_crear_empleado">
+        <label for="">SEDE</label>
+        <input type="text" readonly value="{{ sede_cliente }}" />
+      </div>
+    </div>
+
+    <div class="contendor_pares">
+      <!--numero telefonico del empleado-->
+      <div class="inputs_crear_empleado" id="clases_cont">
+        <label for="clase">CLASE</label>
+        <select name="clase" class="clase">
+          <option value="" disabled selected></option>
+          {% for consulta1 in session['clases'] %}
+          <option
+            value="{{ consulta1['nombre_clase'] }}"
+            class="{{consulta1['campo2']}}"
+          >
+            {{ consulta1['nombre_clase'] }}
+          </option>
+          {% endfor %}
+        </select>
+      </div>
+
+      <!--corre personal-->
+      <div class="inputs_crear_empleado" id="caracteristicas_cont">
+        <label for="correo_personal">CARACTERISTICA</label>
+        <select name="caracteristica" class="caracteristica">
+          <option value="" disabled selected></option>
+          {% for consulta2 in session['caracteristicas'] %}
+          <option class="{{ consulta2['nombre_clase_fk'] }}">
+            {{ consulta2['nombre_caracteristica'] }}
+          </option>
+          {% endfor %}
+        </select>
+      </div>
+    </div>
+
+    <div class="contendor_pares">
+      <!--correo empresarial-->
+      <div class="inputs_crear_empleado" id="textarea">
+        <label for="detalle_servicio">DETALLE</label>
+        <textarea
+          name="detalle_servicio"
+          id="detalle_servicio"
+          minlength="30"
+          maxlength="500"
+          required
+          value="{{ detalle }}"
+        ></textarea>
+        <span>Caracteres: <span id="caracteres">0</span> /500 </span>
+      </div>
+    </div>
+
+    <!--enviar formulario-->
+    <div class="inputs_crear_empleado" id="boton_enviar">
+      <input type="submit" value="EDITAR DETALLE" id="boton_enviar_input" />
+    </div>
+  </form>
+</div>
+{% endblock %}
+
+<!--script-->
+{% block javascript %} {{super()}}
+<script src="/static/js/empresa_fumigadora/detalles_servicios/detalles.js"></script>
+<script src="/static/js/empresa_fumigadora/detalles_servicios/contador.js"></script>
+{% endblock %}

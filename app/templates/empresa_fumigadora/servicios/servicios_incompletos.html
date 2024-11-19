@@ -1,0 +1,288 @@
+{% extends 'empresa_fumigadora/components/plantilla.html' %}
+
+<!--extensiones css/bootstrap-->
+{% block extensiones %} {{super()}}
+<link
+  rel="stylesheet"
+  href="{{url_for('static', filename='css/empresa_fumigadora/servicios/general_incompletos.css')}}"
+/>
+
+<link
+  rel="stylesheet"
+  href="{{url_for('static', filename='css/empresa_fumigadora/servicios.css')}}"
+/>
+{% endblock %}
+
+<!--titulo de la pagina-->
+{% block titulo %} SERVICIOS INCOMPLETOS {% endblock %}
+
+<!--cerrar sesion-->
+{% block cerrar_sesion %} {{url_for('Login.cerrar_sesion')}} {% endblock %}
+
+<!--logo de la empresa-->
+{% block logo %} {{ file_path }} {% endblock %}
+
+<!--boton de borrado de cuenta-->
+
+<!--foto del encargado-->
+{% block encargado %} {{file_path_encargado}} {% endblock %}
+
+<!--titulos de cada pagina-->
+{% block titulos_contenido %}
+<div class="menu_empleados">
+  <button id="abrir_menu">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="16"
+      height="16"
+      fill="currentColor"
+      class="bi bi-list"
+      viewBox="0 0 16 16"
+      id="abrir_men2"
+    >
+      <path
+        fill-rule="evenodd"
+        d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"
+      />
+    </svg>
+  </button>
+
+  <!--barra de navegacion-->
+  <nav class="barra2">
+    <button id="cerrar_menu">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="16"
+        height="16"
+        fill="currentColor"
+        class="bi bi-x-lg"
+        viewBox="0 0 16 16"
+        id="cerrar_men2"
+      >
+        <path
+          d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z"
+        />
+      </svg>
+    </button>
+
+    <!--contendor de los botones-->
+    <div class="contenedor_botones">
+      <div class="titulo_contenido_pag" id="servicios_atendidos">
+        <span class="txt_contenido_pag"
+          ><a
+            href="{{url_for('Empresa_fumigadora.servicios_atendidos')}}"
+            class="titulos_empleados"
+            >SERVICIOS ATENDIDOS</a
+          ></span
+        >
+      </div>
+
+      <div class="titulo_contenido_pag" id="servicios_incompletos">
+        <span class="txt_contenido_pag" id="titulo2"
+          ><a
+            href="{{url_for('Empresa_fumigadora.servicios_icompletos')}}"
+            class="titulos_empleados"
+            >SERVICIOS INCOMPLETOS</a
+          ></span
+        >
+      </div>
+
+      <div class="titulo_contenido_pag" id="servicios_disponibles">
+        <span class="txt_contenido_pag" id="txt_agregar"
+          ><a
+            href="{{url_for('Empresa_fumigadora.servicios_disponibles')}}"
+            class="titulos_empleados"
+            id="conexion_agregar"
+            >SERVICIOS DISPONIBLES</a
+          ></span
+        >
+      </div>
+    </div>
+  </nav>
+</div>
+{% endblock %}
+
+<!--mensaje-->
+{% with messages = get_flashed_messages() %} {% if messages %} {% for message in
+messages %}
+<p>{{message}}</p>
+{% endfor %} {% endif %} {% endwith %}
+
+<!--imagen de bienvenida-->
+{% block contenido_usuario%}
+<div class="contendor_mensaje_bienvenida">
+  <div class="contendor_imagen">
+    <table>
+      <thead>
+        <tr>
+          <th class="titulos_tabla" id="cliente">CLIENTE</th>
+          <th class="titulos_tabla" id="sede">SEDE</th>
+          <th class="titulos_tabla" id="solicitud">SOLICITUD</th>
+          <th class="titulos_tabla" id="servicios">INICIO</th>
+          <th class="titulos_tabla" id="fin">FIN</th>
+          <th class="titulos_tabla" id="cambiar">ESTADO</th>
+          <th class="titulos_tabla" id="empleado">EMPLEADO</th>
+          <th class="titulos_tabla" id="accion">ACCIÓN</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!--recorres diccionario-->
+        {% for servicios_incompletos in session['servicios_incompletos'] %}
+        <tr>
+          <td class="txt_tabla">{{ servicios_incompletos['cliente'] }}</td>
+          <td class="txt_tabla">{{ servicios_incompletos['sede_cliente'] }}</td>
+          <td class="txt_tabla">
+            {{ servicios_incompletos['fecha_solicitud'] }}
+          </td>
+          <td class="txt_tabla">{{ servicios_incompletos['fecha_inicio'] }}</td>
+          <td class="txt_tabla">{{ servicios_incompletos['fecha_fin'] }}</td>
+          <td class="txt_tabla">
+            {{ servicios_incompletos['estado_Servicio'] }}
+          </td>
+          <td class="txt_tabla">{{ servicios_incompletos['empleado'] }}</td>
+          <!--vector2-->
+          <td class="iconos_campos">
+            <!--edita-->
+            <a
+              href="{{url_for('Empresa_fumigadora.actualizar_servicio_incompleto', index_servicio_incompleto=loop.index0)}}"
+              id="icono_editar"
+              class="acciones_empleado"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                class="bi bi-pencil-fill"
+                viewBox="0 0 16 16"
+                id="editar_servicio"
+              >
+                <path
+                  d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.5.5 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11z"
+                />
+              </svg>
+            </a>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!--tabla mobile-->
+<div class="tabla_mobile">
+  {% for servicios_incompletos in session['servicios_incompletos'] %}
+  <div class="fila">
+    <div class="columna">
+      <div class="titulo_tabla_mibile">
+        <span class="titulos_tabla">CLIENTE</span>
+      </div>
+      <div class="valor_tabla_mobile">
+        <span class="txt_tabla_mobile"
+          >{{ servicios_incompletos['cliente'] }}</span
+        >
+      </div>
+    </div>
+
+    <div class="columna">
+      <div class="titulo_tabla_mibile">
+        <span class="titulos_tabla">SEDE</span>
+      </div>
+      <div class="valor_tabla_mobile">
+        <span class="txt_tabla_mobile"
+          >{{ servicios_incompletos['sede_cliente'] }}</span
+        >
+      </div>
+    </div>
+
+    <div class="columna">
+      <div class="titulo_tabla_mibile">
+        <span class="titulos_tabla">SOLICITUD</span>
+      </div>
+      <div class="valor_tabla_mobile">
+        <span class="txt_tabla_mobile"
+          >{{ servicios_incompletos['fecha_solicitud'] }}</span
+        >
+      </div>
+    </div>
+
+    <div class="columna">
+      <div class="titulo_tabla_mibile">
+        <span class="titulos_tabla">INICIO</span>
+      </div>
+      <div class="valor_tabla_mobile">
+        <span class="txt_tabla_mobile">
+          {{ servicios_incompletos['fecha_inicio'] }}</span
+        >
+      </div>
+    </div>
+
+    <div class="columna">
+      <div class="titulo_tabla_mibile">
+        <span class="titulos_tabla">FIN</span>
+      </div>
+      <div class="valor_tabla_mobile">
+        <span class="txt_tabla_mobile">
+          {{ servicios_incompletos['fecha_fin'] }}</span
+        >
+      </div>
+    </div>
+
+    <div class="columna">
+      <div class="titulo_tabla_mibile">
+        <span class="titulos_tabla">ESTADO</span>
+      </div>
+      <div class="valor_tabla_mobile">
+        <span class="txt_tabla_mobile">
+          {{ servicios_incompletos['estado_Servicio'] }}</span
+        >
+      </div>
+    </div>
+
+    <div class="columna">
+      <div class="titulo_tabla_mibile">
+        <span class="titulos_tabla">EMPLEADO</span>
+      </div>
+      <div class="valor_tabla_mobile">
+        <span class="txt_tabla_mobile">
+          {{ servicios_incompletos['empleado'] }}</span
+        >
+      </div>
+    </div>
+
+    <div class="columna">
+      <div
+        class="titulo_tabla_mibile"
+        style="border-bottom: 2px solid rgb(179, 179, 179)"
+      >
+        <span class="titulos_tabla">ACCIÓN</span>
+      </div>
+      <div
+        class="valor_tabla_mobile"
+        style="
+          border-bottom: 2px solid rgb(179, 179, 179);
+          flex-direction: column;
+        "
+      >
+        <span class="acciones_empleado"
+          ><a
+            href="{{url_for('Empresa_fumigadora.actualizar_servicio_incompleto', index_servicio_incompleto=loop.index0)}}"
+            id="icono_editar"
+            class="acciones_empleado"
+            style="color: rgb(249, 210, 145); text-decoration: none"
+          >
+            ¿Editar?
+          </a></span
+        >
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}
+
+<!--script-->
+{% block javascript %} {{super()}}
+<script src="/static/js/empresa_fumigadora/menu_opciones/opciones.js"></script>
+{% endblock %}

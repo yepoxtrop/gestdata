@@ -1,0 +1,791 @@
+body {
+  font-family: "Nexa";
+  font-weight: bold;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-image: url("/static/src/patrones/morado1.png");
+  margin: 0;
+  width: 100%;
+  max-width: 100%;
+  min-width: 100%;
+  background-size: cover;
+}
+
+.caja0 {
+  width: 100%;
+  padding: 3% 5%;
+  background-image: url("/static/src/patrones/morado1.png");
+  margin: 0;
+  width: 100%;
+  max-width: 100%;
+  min-width: 100%;
+  background-size: cover;
+}
+
+/*contendor con transparencia*/
+.caja1 {
+  width: 100%;
+  background-color: rgba(217, 217, 217, 0.8);
+  box-shadow: 8px 4px 20px 10px rgba(0, 0, 0, 0.35);
+  padding: 50px 50px;
+  border-radius: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.caja2 {
+  width: 100%;
+  background-color: rgb(247, 247, 250);
+  padding: 48px 74px;
+  border-radius: 40px;
+}
+
+.contendor1 {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  &.no_visible {
+    display: none;
+  }
+}
+
+.contendor1.no_visible {
+  display: none;
+}
+
+.contenedor2 {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  &.visible {
+    display: flex;
+  }
+}
+
+.contenedor2.visible {
+  display: flex;
+}
+
+.contendor_inputs_form {
+  display: flex;
+  flex-direction: row;
+}
+
+.caja_campos {
+  display: flex;
+  flex-direction: column;
+}
+
+/*ESTILOS LABELS GENERAL*/
+.labels_form {
+  font-size: 22px;
+  color: rgb(85, 0, 230);
+}
+/*estilos inputs general*/
+.inputs_form {
+  color: rgb(179, 179, 179);
+  background-color: rgb(255, 255, 255);
+  border-color: rgb(217, 217, 217);
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 8px;
+  padding: 14px 16px;
+  font-size: 20px;
+}
+
+.inputs_form:focus {
+  outline-color: rgb(158, 120, 230);
+}
+
+/*campos de cliente*/
+.razon_Social {
+  display: none;
+}
+
+.titulos_checkbox {
+  font-size: 24px;
+  color: rgb(85, 0, 230);
+}
+
+.contendor_rol1 {
+  width: 50%;
+  background-color: rgb(158, 120, 230);
+  border-width: 4px;
+  border-style: solid;
+  border-color: rgb(85, 0, 230);
+  border-radius: 8px;
+  padding: 1px 10px;
+  display: flex;
+  align-items: center;
+  &.no_visible {
+    display: none;
+  }
+}
+
+.contendor_rol2 {
+  width: 50%;
+  background-color: rgb(158, 120, 230);
+  border-width: 4px;
+  border-style: solid;
+  border-color: rgb(85, 0, 230);
+  border-radius: 8px;
+  padding: 1px 10px;
+  display: flex;
+  align-items: center;
+  &.no_visible {
+    display: none;
+  }
+}
+
+/*FORMULARIO*/
+.formulario_register {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/*INPUTS*/
+#logo_empresa {
+  width: 100%;
+}
+
+#logo {
+  display: none;
+}
+
+#nombre_encargado {
+  width: 50%;
+}
+
+#correo_encargado {
+  width: 50%;
+}
+
+.custom-file-label {
+  color: white;
+  cursor: pointer;
+  border-radius: 360px;
+  width: 85%;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+#logo_ejemplo {
+  width: 100%;
+  border-radius: 360px;
+}
+
+#foto_ejemplo {
+  width: 100%;
+  border-radius: 360px;
+}
+
+#file-name {
+  margin-left: 10px;
+  font-size: 14px;
+  color: #333;
+}
+
+#file-name2 {
+  margin-left: 10px;
+  font-size: 14px;
+  color: #333;
+}
+
+#foto_encargado {
+  width: 100%;
+}
+
+#encargado_foto {
+  display: none;
+}
+
+.contendor1_de1 {
+  width: 20%;
+  display: flex;
+  flex-direction: row;
+}
+
+.contenedor2_de1 {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+}
+
+.contenedor1_de2 {
+  width: 20%;
+  display: flex;
+  flex-direction: row;
+}
+
+.contenedor2_de2 {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.contendor_inputs_form {
+  width: 100%;
+  gap: 1rem;
+}
+
+#nit_empresa {
+  display: none;
+  &.visible {
+    display: flex;
+    width: 50%;
+  }
+}
+
+#nombre_comercial {
+  width: 100%;
+  &.reduce {
+    width: 50%;
+  }
+}
+
+#solo_razonSocial {
+  display: none;
+  &.visible {
+    display: flex;
+    width: 100%;
+  }
+}
+
+#direccion_empresa {
+  width: 100%;
+  &.reduce {
+    width: 50%;
+  }
+}
+
+#departamento_empresa {
+  display: none;
+  &.visible {
+    display: flex;
+    width: 50%;
+  }
+}
+
+#telefono_empresa {
+  width: 50%;
+}
+
+#correo_empresa {
+  width: 50%;
+}
+
+.contenedor1_de2 {
+  display: none;
+  &.visible {
+    display: flex;
+    width: 20%;
+  }
+}
+
+.contenedor2_de2 {
+  width: 100%;
+  &.reduce {
+    width: 80%;
+  }
+}
+
+#descripcion_empresa {
+  width: 50%;
+}
+
+#caracteres.mal {
+  color: rgb(242, 80, 68);
+}
+
+#caracteres.bien {
+  color: rgb(85, 0, 230);
+}
+
+#caracteres2.mal {
+  color: rgb(242, 80, 68);
+}
+
+#caracteres2.bien {
+  color: rgb(85, 0, 230);
+}
+
+#contraseña_empresa {
+  width: 50%;
+}
+
+#Enombre_Ecorreo {
+  display: none;
+  &.visible {
+    width: 100%;
+    display: flex;
+  }
+}
+
+#Etelefono_solo {
+  display: none;
+  &.visible {
+    width: 100%;
+    display: flex;
+  }
+}
+
+#telefono_encargado {
+  width: 100%;
+}
+
+#razon_Social {
+  width: 100%;
+}
+
+/*CREDENCIALES*/
+.credenciales {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.roles {
+  width: 100%;
+}
+
+div.contendor_checkbox#roles {
+  width: 100%;
+  display: flex;
+  gap: 1rem;
+}
+
+.boton_registrar {
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+#btn {
+  width: 50%;
+  background-color: black;
+  border-radius: 8px;
+  border-color: black;
+  border-style: solid;
+  color: rgb(255, 255, 255);
+  font-size: 36px;
+  cursor: pointer;
+  padding: 5px;
+}
+
+#btn:hover {
+  background-color: rgb(158, 120, 230);
+  border-color: rgb(158, 120, 230);
+}
+
+#btn:active {
+  background-color: rgb(85, 0, 230);
+  border-color: rgb(85, 0, 230);
+}
+
+.intermedio {
+  display: none;
+}
+
+.intermedio2 {
+  display: none;
+}
+
+input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  accent-color: rgb(0, 0, 0);
+}
+
+/*RESPONSIVE*/
+@media screen and (max-width: 1500px) {
+  .contendor1_de1 {
+    width: 25%;
+  }
+
+  .contenedor2_de1 {
+    width: 75%;
+  }
+
+  .contenedor1_de2 {
+    &.visible {
+      width: 25%;
+    }
+  }
+
+  .contenedor2_de2 {
+    &.reduce {
+      width: 75%;
+    }
+  }
+
+  .titulos_checkbox {
+    font-size: 22px;
+  }
+}
+
+@media screen and (max-width: 1300px) {
+  .labels_form {
+    font-size: 20px;
+  }
+}
+
+@media screen and (max-width: 1300px) {
+  .inputs_form {
+    padding: 12px 16px;
+    font-size: 17px;
+  }
+
+  .labels_form {
+    font-size: 17px;
+  }
+}
+
+@media screen and (max-width: 1050px) {
+  .contendor1_de1 {
+    width: 30%;
+  }
+
+  .contenedor2_de1 {
+    width: 70%;
+  }
+
+  #telefono_correo {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  #telefono_empresa {
+    width: 100%;
+  }
+
+  #correo_empresa {
+    width: 100%;
+  }
+
+  .inputs_form {
+    padding: 8px 16px;
+  }
+
+  #nit_empresa {
+    &.visible {
+      display: flex;
+      width: 100%;
+    }
+  }
+
+  #nombre_comercial {
+    &.reduce {
+      width: 100%;
+    }
+  }
+
+  #nit_nombreComercial {
+    gap: 0rem;
+    flex-direction: column;
+  }
+
+  #direccion_departamento {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  #direccion_empresa {
+    &.reduce {
+      width: 100%;
+    }
+  }
+
+  #departamento_empresa {
+    &.visible {
+      display: flex;
+      width: 100%;
+    }
+  }
+
+  #descripcion_password {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  #descripcion_empresa {
+    width: 100%;
+  }
+
+  #contraseña_empresa {
+    width: 100%;
+  }
+
+  #Enombre_Ecorreo {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  #nombre_encargado {
+    width: 100%;
+  }
+
+  #correo_encargado {
+    width: 100%;
+  }
+
+  .contenedor1_de2 {
+    &.visible {
+      width: 30%;
+    }
+  }
+
+  .contenedor2_de2 {
+    &.reduce {
+      width: 70%;
+    }
+  }
+
+  .titulos_checkbox {
+    font-size: 20px;
+  }
+}
+
+@media screen and (max-width: 905px) {
+  div.contendor_checkbox#roles {
+    flex-direction: column;
+  }
+
+  .user_rol1,
+  .user_rol2 {
+    width: 100%;
+  }
+
+  .contendor_rol1,
+  .contendor_rol2 {
+    width: 100%;
+  }
+
+  .inputs_form {
+    padding: 8px 11px;
+    font-size: 17px;
+  }
+
+  .contendor1_de1 {
+    width: 40%;
+  }
+
+  .contenedor2_de1 {
+    width: 60%;
+  }
+
+  .contenedor1_de2 {
+    &.visible {
+      width: 40%;
+    }
+  }
+
+  .contenedor2_de2 {
+    &.reduce {
+      width: 60%;
+    }
+  }
+}
+
+@media screen and (max-width: 815px) {
+  #btn {
+    font-size: 30px;
+    width: 70%;
+  }
+
+  .contenedor2 {
+    display: none;
+  }
+
+  .contendor1 {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .contenedor2_de1 {
+    width: 100%;
+  }
+
+  .contendor1_de1 {
+    width: 50%;
+  }
+
+  .labels_form {
+    font-size: 20px;
+  }
+
+  #logo_empresa {
+    justify-content: center;
+    align-items: center;
+  }
+
+  .intermedio {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
+
+  .intermedio.no_visible {
+    display: none;
+  }
+
+  .intermedio2 {
+    display: none;
+    &.visible {
+      display: flex;
+      width: 100%;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+    }
+  }
+
+  .intermedio2.visible {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
+
+  .intermedio div {
+    font-size: 30px;
+    padding: 5px;
+    border-radius: 8px;
+    border-style: solid;
+    background: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
+  }
+
+  .intermedio2 div {
+    font-size: 30px;
+    padding: 5px;
+    border-radius: 8px;
+    border-style: solid;
+    background: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
+  }
+
+  .intermedio div:hover {
+    background-color: rgb(158, 120, 230);
+    border-color: rgb(158, 120, 230);
+  }
+
+  .intermedio div:active {
+    background-color: rgb(85, 0, 230);
+    border-color: rgb(85, 0, 230);
+  }
+
+  .intermedio2 div:hover {
+    background-color: rgb(158, 120, 230);
+    border-color: rgb(158, 120, 230);
+  }
+
+  .intermedio2 div:active {
+    background-color: rgb(85, 0, 230);
+    border-color: rgb(85, 0, 230);
+  }
+
+  .contenedor1_de2 {
+    &.visible {
+      width: 60%;
+    }
+  }
+
+  .contenedor2_de2 {
+    &.reduce {
+      width: 100%;
+    }
+  }
+
+  #titulo_encargado {
+    text-align: center;
+  }
+
+  #file-name2 {
+    text-align: center;
+  }
+
+  #foto_encargado {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .contenedor2 {
+    &.visible {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+}
+
+@media screen and (max-width: 815px) {
+  .contendor1_de1 {
+    width: 55%;
+  }
+}
+
+@media screen and (max-width: 815px) {
+  .contendor1_de1 {
+    width: 60%;
+  }
+
+  .labels_form {
+    line-height: 25px;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  #btn {
+    width: 100%;
+  }
+
+  .caja2 {
+    width: 100%;
+    background-color: rgb(247, 247, 250);
+    padding: 50px 50px;
+    border-radius: 40px;
+  }
+
+  .titulos_checkbox {
+    font-size: 18px;
+  }
+}
+
+@media screen and (max-width: 580px) {
+  .labels_form {
+    line-height: 20px;
+  }
+  #primer_label {
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .caja1 {
+    padding: 30px 30px;
+  }
+
+  .caja2 {
+    padding: 30px 30px;
+  }
+
+  #file-name {
+    text-align: center;
+  }
+}

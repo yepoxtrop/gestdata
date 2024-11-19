@@ -1,0 +1,344 @@
+/*estilos de la pagina*/
+#hoja4 {
+  background-color: rgb(247, 247, 250);
+  padding: 59px 78px 59px 78px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+#container_titulo4 {
+  width: 100%;
+  text-align: center;
+}
+
+/*titulo de la pagina*/
+.titulo_morado4 {
+  color: rgb(85, 0, 230);
+  font-size: 60px;
+  font-weight: bold;
+  line-height: 50px;
+}
+
+/*contendor de la descripcion de la pagina*/
+#mensaje4 {
+  width: 50%;
+  min-width: 50%;
+  max-width: 100%;
+  text-align: center;
+  margin-bottom: 49px;
+  margin-top: 34px;
+}
+
+/*descripcion de la pagina*/
+#txt_mensaje4 {
+  font-size: 25px;
+  color: rgb(108, 108, 114);
+  font-weight: bold;
+  line-height: 24px;
+  text-align: center;
+}
+
+/**/
+.contenedor_tarjetas {
+  display: flex;
+  width: 100%;
+  max-width: 100%;
+  min-width: 100%;
+  gap: 2rem;
+  justify-content: center;
+}
+
+/*contenedor de cartas l & r*/
+.card_lr {
+  display: flex;
+  width: 50%;
+  max-width: 100%;
+  gap: 2rem;
+}
+
+/*estilo de cartas luis & rafael*/
+.cartas_personales1 {
+  width: 50%;
+  max-width: 100%;
+  background-color: rgb(255, 255, 255);
+  border-radius: 40px;
+  padding: 34px 22px 34px 22px;
+  box-shadow: 4px 8px 20px rgba(0, 0, 0, 0.35);
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.contenedor_foto_admin {
+  width: 60%;
+}
+
+/*foto de perfil*/
+.foto_perfil {
+  width: 100%;
+  border-radius: 270px;
+  border-width: 4px;
+  border-color: rgb(85, 0, 230);
+  border-style: solid;
+}
+
+.info_detallada {
+  gap: 0.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.nombre {
+  width: 100%;
+  text-align: center;
+}
+
+/*nombres*/
+.nombre_expertos {
+  font-size: 30px;
+  color: rgb(85, 0, 230);
+  margin-bottom: 0px;
+}
+
+.frase_profesion {
+  width: 100%;
+  text-align: center;
+}
+
+/*frase y autor*/
+.frase {
+  text-align: center;
+}
+
+.autor {
+  width: 100%;
+  text-align: center;
+}
+
+/*rol de encargado*/
+.profesion {
+  color: rgb(0, 0, 0);
+  margin-bottom: 0px;
+}
+
+.frase_completa {
+  width: 100%;
+  text-align: center;
+}
+
+.profesion {
+  font-size: 20px;
+}
+
+/*contenedor de cartas j & b*/
+.card_jb {
+  width: 50%;
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+}
+
+/*estilo de cartas jorge & el mike*/
+.cartas_personales2 {
+  background-color: rgb(255, 255, 255);
+  justify-content: center;
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+  height: 100%;
+  align-items: center;
+}
+
+/*foto de perfil j&rn*/
+.foto_perfil2 {
+  border-radius: 270px;
+  border-width: 4px;
+  border-color: rgb(85, 0, 230);
+  border-style: solid;
+}
+
+/*contendor de redes sociales*/
+.redes_sociales {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+/*contedor individual de cada red*/
+.red {
+  width: calc(100% / 4);
+}
+
+/*contenedor del vector de fb*/
+#facebook {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+/*contenedor del vector de ig*/
+#instagram {
+  border-left-width: 3px;
+  border-left-style: solid;
+  border-color: rgb(108, 108, 114);
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+/*contenedor del vector de x*/
+#twitter-x {
+  border-left-width: 3px;
+  border-left-style: solid;
+  border-color: rgb(108, 108, 114);
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+/*contenedor del vector de gh*/
+#github {
+  border-left-width: 3px;
+  border-left-style: solid;
+  border-color: rgb(108, 108, 114);
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+/*boton que contiene cada red*/
+.bnt_red {
+  border: none;
+  background-color: rgb(255, 255, 255);
+}
+
+/*estilos de iconos facebook*/
+.bi.bi-facebook {
+  color: rgb(85, 0, 230);
+}
+
+.bi.bi-facebook:hover {
+  color: rgb(158, 120, 230);
+}
+
+.bi.bi-facebook:active {
+  color: rgb(0, 0, 0);
+}
+
+/*estilos icono instagram*/
+.bi.bi-instagram {
+  color: rgb(85, 0, 230);
+}
+
+.bi.bi-instagram:hover {
+  color: rgb(158, 120, 230);
+}
+
+.bi.bi-instagram:active {
+  color: rgb(0, 0, 0);
+}
+
+/*estilos de icono de x-twitter*/
+.bi.bi-twitter-x {
+  color: rgb(85, 0, 230);
+}
+
+.bi.bi-twitter-x:hover {
+  color: rgb(158, 120, 230);
+}
+
+.bi.bi-twitter-x:active {
+  color: rgb(0, 0, 0);
+}
+
+/*estilos de icono de github*/
+.bi.bi-github {
+  color: rgb(85, 0, 230);
+}
+
+.bi.bi-github:hover {
+  color: rgb(158, 120, 230);
+}
+
+.bi.bi-github:active {
+  color: rgb(0, 0, 0);
+}
+
+/*------------------------------*/
+@media screen and (max-width: 1200px) {
+  .contenedor_tarjetas {
+    flex-direction: column;
+  }
+
+  .card_lr {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .card_jb {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .cartas_personales1 {
+    width: 100%;
+    flex-direction: row;
+  }
+
+  .info_detallada {
+    width: 70%;
+  }
+  .contenedor_foto_admin {
+    width: 30%;
+  }
+
+  #mensaje4 {
+    width: 85%;
+  }
+}
+
+@media screen and (max-width: 749px) {
+  .contenedor_foto_admin {
+    display: none;
+  }
+
+  .info_detallada {
+    width: 100%;
+  }
+
+  .titulo_morado4 {
+    font-size: 55px;
+  }
+
+  #mensaje4 {
+    width: 100%;
+  }
+
+  #txt_mensaje4 {
+    font-size: 20px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  #hoja4 {
+    padding: 33px 40px;
+  }
+
+  .titulo_morado4 {
+    font-size: 40px;
+    line-height: 24px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .titulo_morado4 {
+    font-size: 35px;
+    line-height: 24px;
+  }
+}

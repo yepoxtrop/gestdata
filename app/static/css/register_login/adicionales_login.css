@@ -1,0 +1,64 @@
+a.labels_form {
+  text-decoration: none;
+}
+
+a.labels_form:hover {
+  color: rgb(158, 120, 230);
+}
+
+a.labels_form:active {
+  color: rgb(0, 0, 0);
+}
+
+.enlaces {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.roles {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.roles_campo:focus {
+  outline-color: rgb(158, 120, 230);
+}
+
+.roles_campo {
+  color: rgb(179, 179, 179);
+  background-color: rgb(255, 255, 255);
+  border-color: rgb(217, 217, 217);
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 8px;
+  padding: 14px 16px;
+  font-size: 20px;
+  width: 100%;
+}
+
+/*----------------------*/
+@media screen and (max-width: 1560px) {
+  .txt_checkbox {
+    font-size: 20px;
+  }
+}
+
+@media screen and (max-width: 1470px) {
+  .txt_checkbox {
+    font-size: 17px;
+  }
+}
+
+@media screen and (max-width: 1100px) {
+  div.boton button {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 1100px) {
+  div.boton button {
+    font-size: 30px;
+  }
+}

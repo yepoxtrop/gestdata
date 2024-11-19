@@ -1,0 +1,335 @@
+{% extends 'cliente/components/plantilla.html' %}
+
+<!--extensiones css/bootstrap-->
+{% block extensiones %} {{super()}}
+<link
+  rel="stylesheet"
+  href="{{url_for('static', filename='css/empresa_fumigadora/mensaje_empleado1.css')}}"
+/>
+
+<link
+  rel="stylesheet"
+  href="{{url_for('static', filename='css/empresa_fumigadora/empleados_agregar.css')}}"
+/>
+
+<link
+  rel="stylesheet"
+  href="{{url_for('static', filename='css/empresa_fumigadora/estilos_empleados.css')}}"
+/>
+
+<link
+  rel="stylesheet"
+  href="{{url_for('static', filename='css/empresa_fumigadora/menu/menu.css')}}"
+/>
+{% endblock %}
+
+<!--titulo de la pagina-->
+{% block titulo %}GERENTES{% endblock %}
+
+<!--cerrar sesion-->
+{% block cerrar_sesion %} {{url_for('Login.cerrar_sesion')}} {% endblock %}
+
+<!--logo de la empresa-->
+{% block logo %} {{ logo_Cliente }} {% endblock %}
+
+<!--titulos de cada pagina-->
+{% block titulos_contenido %}
+<div class="menu_empleados">
+  <button id="abrir_menu">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="16"
+      height="16"
+      fill="currentColor"
+      class="bi bi-list"
+      viewBox="0 0 16 16"
+      id="abrir_men2"
+    >
+      <path
+        fill-rule="evenodd"
+        d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"
+      />
+    </svg>
+  </button>
+
+  <!--barra de navegacion-->
+  <nav class="barra2">
+    <button id="cerrar_menu">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="16"
+        height="16"
+        fill="currentColor"
+        class="bi bi-x-lg"
+        viewBox="0 0 16 16"
+        id="cerrar_men2"
+      >
+        <path
+          d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z"
+        />
+      </svg>
+    </button>
+
+    <!--contendor de los botones-->
+    <div class="contenedor_botones">
+      <div class="titulo_contenido_pag">
+        <span class="txt_contenido_pag" id="titulo1"
+          ><a href="{{ url_for('Cliente.gerentes') }}" class="titulos_empleados"
+            >GERENTES DISPONIBLES</a
+          ></span
+        >
+      </div>
+    </div>
+  </nav>
+
+  <style>
+    .titulo_contenido_pag {
+      background-color: rgb(80, 0, 230);
+    }
+
+    .contendor_imagen {
+      width: 50%;
+      overflow-y: hidden;
+      max-height: 100%;
+      display: flex;
+    }
+
+    .imagen_bienvenida,
+    .tabla_mobile {
+      width: 100%;
+      border-radius: 0px;
+    }
+
+    .contendor_imagen {
+      width: 100%;
+    }
+
+    #empresa {
+      width: 20%;
+    }
+
+    #sede,
+    #descripcion,
+    #solicitud,
+    #inicio,
+    #fin,
+    #estado,
+    #empleado,
+    #docs {
+      width: 10%;
+    }
+
+    #acciones_div {
+      border-bottom: 2px solid rgb(179, 179, 179);
+    }
+    /*-----------------*/
+    @media screen and (max-width: 1590px) {
+      .titulos_tabla {
+        color: rgb(80, 0, 230);
+        font-size: 16px;
+      }
+    }
+
+    @media screen and (max-width: 1425px) {
+      .tabla_mobile {
+        display: flex;
+      }
+
+      .titulos_tabla {
+        color: rgb(80, 0, 230);
+        font-size: 20px;
+      }
+
+      .titulos_tabla,
+      .txt_tabla_mobile {
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+      }
+    }
+
+    .tabla_mobile {
+      display: none;
+    }
+
+    @media screen and (max-width: 1330px) {
+      .tabla_mobile {
+        display: flex;
+      }
+    }
+
+    #empresa,
+    #sede,
+    #descripcion,
+    #solicitud {
+      width: calc(90% / 4);
+    }
+
+    #inicio {
+      width: 10%;
+    }
+
+    svg#editar_empleado {
+      width: 50%;
+      align-self: center;
+    }
+
+    #icono_editar {
+      display: flex;
+      justify-content: center;
+    }
+  </style>
+</div>
+{% endblock %}
+
+<!--imagen de bienvenida-->
+{% block contenido_usuario%}
+<div class="contendor_mensaje_bienvenida" style="flex-direction: column">
+  <!--mensajes-->
+  {% with messages = get_flashed_messages() %} {% if messages %} {% for message
+  in messages %}
+  <div
+    class="mensaje_error"
+    style="
+      width: 100%;
+      background-color: #f25044;
+      border-radius: 40px;
+      padding: 15px 20px;
+    "
+  >
+    <span>{{message}}</span>
+  </div>
+
+  {% endfor %} {% endif %} {% endwith %}
+
+  <div class="contendor_imagen">
+    <table>
+      <thead>
+        <tr>
+          <th class="titulos_tabla" id="empresa">NOMBRE</th>
+          <th class="titulos_tabla" id="sede">TELÉFONO</th>
+          <th class="titulos_tabla" id="descripcion">CORREO</th>
+          <th class="titulos_tabla" id="solicitud">SEDE</th>
+          <th class="titulos_tabla" id="inicio">EDITAR</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!--recorres diccionario-->
+        {% for gerente in session['gerentes'] %}
+        <tr>
+          <td class="txt_tabla">{{ gerente['nombre'] }}</td>
+          <td class="txt_tabla">{{ gerente['tel'] }}</td>
+          <td class="txt_tabla">{{ gerente['gmail'] }}</td>
+          <td class="txt_tabla">{{ gerente['sede'] }}</td>
+          <!--vector1-->
+          <td class="iconos_campo">
+            <!--edita-->
+            <a
+              href="{{url_for('Cliente.gerentes_editar', index=loop.index0)}}"
+              id="icono_editar"
+              class="acciones_empleado"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                class="bi bi-pencil-fill"
+                viewBox="0 0 16 16"
+                id="editar_empleado"
+              >
+                <path
+                  d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.5.5 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11z"
+                />
+              </svg>
+            </a>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!--tabla mobile-->
+<div class="tabla_mobile" style="flex-direction: column">
+  <!--mensajes-->
+  {% with messages = get_flashed_messages() %} {% if messages %} {% for message
+  in messages %}
+  <div
+    class="mensaje_error"
+    style="
+      width: 100%;
+      background-color: #f25044;
+      border-radius: 40px;
+      padding: 15px 20px;
+    "
+  >
+    <span>{{message}}</span>
+  </div>
+
+  {% endfor %} {% endif %} {% endwith %} {% for gerente in session['gerentes']
+  %}
+  <div class="fila">
+    <div class="columna">
+      <div class="titulo_tabla_mibile">
+        <span class="titulos_tabla">NOMBRE</span>
+      </div>
+      <div class="valor_tabla_mobile">
+        <span class="txt_tabla_mobile">{{ gerente['nombre'] }}</span>
+      </div>
+    </div>
+
+    <div class="columna">
+      <div class="titulo_tabla_mibile">
+        <span class="titulos_tabla">TELÉFONO</span>
+      </div>
+      <div class="valor_tabla_mobile">
+        <span class="txt_tabla_mobile">{{ gerente['tel'] }}</span>
+      </div>
+    </div>
+
+    <div class="columna">
+      <div class="titulo_tabla_mibile">
+        <span class="titulos_tabla">CORREO</span>
+      </div>
+      <div class="valor_tabla_mobile">
+        <span class="txt_tabla_mobile">{{ gerente['gmail'] }}</span>
+      </div>
+    </div>
+
+    <div class="columna">
+      <div class="titulo_tabla_mibile">
+        <span class="titulos_tabla">SEDE</span>
+      </div>
+      <div class="valor_tabla_mobile">
+        <span class="txt_tabla_mobile"> {{ gerente['sedes'] }}</span>
+      </div>
+    </div>
+
+    <div class="columna" id="acciones_div">
+      <div class="titulo_tabla_mibile">
+        <span class="titulos_tabla">EDITAR</span>
+      </div>
+      <div class="valor_tabla_mobile" style="flex-direction: column">
+        <span class="acciones_empleado"
+          ><a
+            href="{{url_for('Cliente.gerentes_editar', index=loop.index0)}}"
+            id="icono_editar"
+            class="acciones_empleado"
+            style="color: rgb(249, 210, 145); text-decoration: none"
+          >
+            Actualizar
+          </a></span
+        >
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}
+
+<!--script-->
+{% block javascript %} {{super()}}
+<script src="/static/js/empresa_fumigadora/menu_opciones/opciones.js"></script>
+{% endblock %}

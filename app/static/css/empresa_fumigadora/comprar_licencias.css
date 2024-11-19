@@ -1,0 +1,64 @@
+form {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+.tarjeta {
+  width: 50%;
+  border-radius: 40px;
+  background-image: url("/static/src/patrones/morado4.jpg");
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  padding: 20px 25px;
+  box-shadow: 4px 8px 20px 10px rgba(0, 0, 0, 0.25);
+}
+
+.botones_paypal {
+  width: 50%;
+  flex-direction: column;
+  display: flex;
+  gap: 2rem;
+}
+
+.imagenes1 {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.chip {
+  width: 20%;
+}
+.logo_gestdata_comprar {
+  width: 30%;
+}
+
+.imagenes_tarjetea {
+  width: 100%;
+}
+
+form,
+.datos_emp,
+.contenedores_form_falso {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  color: rgb(255, 255, 255);
+}
+
+label:focus {
+  outline-color: rgb(158, 120, 230);
+}
+
+.titulo_pago {
+  width: 100%;
+  color: rgb(80, 0, 230);
+  text-align: center;
+}

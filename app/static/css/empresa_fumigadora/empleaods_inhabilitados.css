@@ -1,0 +1,24 @@
+svg#editar_empleado {
+  width: 50%;
+}
+
+a#icono_editar{
+    display: flex;
+    justify-content: center;
+}
+
+#empleados_inactivos {
+    background-color: rgb(80, 0, 230);
+}
+
+#empleados_inactivos:hover {
+    background-color: rgb(80, 0, 230);
+}
+
+.titulo_contenido_pag{
+    background-color: rgb(158, 120, 230);
+}
+
+.titulo_contenido_pag:hover{
+    background-color: rgb(80, 0, 230);
+}

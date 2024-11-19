@@ -1,0 +1,234 @@
+body {
+  font-family: "Nexa";
+  font-weight: bold;
+  padding: 5%;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-image: url("/static/src/patrones/reporte.jpg");
+}
+
+.contendor_general {
+  border: 3px solid rgb(80, 0, 230);
+  padding: 2%;
+  text-align: center;
+  background-color: rgb(255, 255, 255);
+  gap: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.titulo {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  gap: 0.5rem;
+  border-bottom: 2px solid rgb(80, 0, 230);
+  justify-content: center;
+  align-items: center;
+}
+
+.datos_empresa_fumigadora,
+.datos_personales {
+  width: 42.5%;
+  display: flex;
+  flex-direction: column;
+}
+
+.logo {
+  width: 15%;
+}
+
+#empresa_fumigadora,
+#slogan,
+#nit_empresa_fumigadora,
+.logo_gestdata {
+  width: 100%;
+}
+
+.numeros,
+.direccion,
+.correos {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: center;
+}
+
+.cuerpo {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.titulo_cuerpo {
+  width: 100%;
+  background-color: rgb(80, 0, 230);
+}
+
+.txt_titulo_cuerpo {
+  color: rgb(255, 255, 255);
+}
+
+.subtitulo_cuerpo {
+  width: 100%;
+  padding: 5px;
+  background-color: rgb(158, 120, 230);
+  display: flex;
+  justify-content: start;
+}
+
+.nota {
+  display: flex;
+  justify-content: start;
+}
+
+.txt_subtitulo_cuerpo {
+  color: rgb(255, 255, 255);
+  text-align: start;
+}
+
+.aprobacion {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
+
+.tabla1,
+.tabla2 {
+  width: 50%;
+}
+
+table {
+  border-collapse: collapse;
+  border: 2px solid rgb(0, 0, 0);
+  width: 100%;
+}
+
+tr,
+td,
+th {
+  border: 2px solid rgb(0, 0, 0);
+}
+
+th {
+  color: rgb(255, 255, 255);
+  background-color: rgb(158, 120, 230);
+}
+
+.pie de pagina {
+  width: 100%;
+  display: flex;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #d9d9d9;
+}
+
+.empresa_fumigadora {
+  font-size: 40px;
+  color: rgb(80, 0, 230);
+}
+
+.slogan {
+  color: rgb(158, 120, 230);
+  font-size: 20px;
+}
+
+#modal {
+  text-align: center;
+}
+
+#modal::backdrop {
+  background-color: rgba(0, 0, 0, 0.55);
+}
+
+.titulo_modal {
+  font-size: 30px;
+}
+
+.txt_modal {
+  font-size: 20px;
+  text-decoration: none;
+  color: rgb(255, 255, 255);
+}
+
+.contenedor_btn_modal {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+}
+
+.descargar_modal,
+.cerrar_modal {
+  width: 50%;
+  padding: 10px 15px;
+  display: flex;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(80, 0, 230);
+  border-radius: 4px;
+}
+
+.descargar_modal:hover,
+.cerrar_modal:hover {
+  background-color: rgb(0, 0, 0);
+}
+
+/*-----------------*/
+
+@media screen and (max-width: 1000px) {
+  .logo {
+    display: none;
+  }
+
+  .datos_empresa_fumigadora,
+  .datos_personales {
+    width: 50%;
+  }
+}
+
+@media screen and (max-width: 850px) {
+  .empresa_fumigadora {
+    font-size: 30px;
+  }
+
+  .slogan {
+    font-size: 16px;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .titulo {
+    flex-direction: column;
+  }
+
+  .datos_empresa_fumigadora,
+  .datos_personales {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .aprobacion {
+    flex-direction: column;
+  }
+
+  .tabla1,
+  .tabla2 {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 410px) {
+  body {
+    font-size: 12px;
+  }
+}

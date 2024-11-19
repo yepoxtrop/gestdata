@@ -1,0 +1,72 @@
+{% extends 'empresa_fumigadora/components/plantilla.html' %}
+
+<!--extensiones css/bootstrap-->
+{% block extensiones %} {{super()}}
+<link
+  rel="stylesheet"
+  href="{{url_for('static', filename='css/empresa_fumigadora/estilos_generales.css')}}"
+/>
+{% endblock %}
+
+<!--titulo de la pagina-->
+{% block titulo %} BIENVENIDA EMPRESA FUMIGORA {% endblock %}
+
+<!--cerrar sesion-->
+{% block cerrar_sesion %} {{url_for('Login.cerrar_sesion')}} {% endblock %}
+
+<!--logo de la empresa-->
+{% block logo %} {{ file_path }} {% endblock %}
+
+<!--boton de borrado de cuenta-->
+
+<!--foto del encargado-->
+{% block encargado %} {{file_path_encargado}} {% endblock %}
+
+<!--titulos de cada pagina-->
+{% block titulos_contenido %}
+<div class="titulo_contenido_pag">
+  <span class="txt_contenido_pag">MENSAJE DE BIENVENIDA</span>
+</div>
+{% endblock %}
+
+<!--imagen de bienvenida-->
+{% block contenido_usuario%}
+<div class="contendor_mensaje_bienvenida">
+  <div class="contendor_imagen">
+    <img
+      src="/static/src/images/imagen17.png"
+      alt="imagen_bienvenida"
+      class="imagen_bienvenida"
+    />
+    <div class="contnedor_h4_oculto">
+      <h4 class="mensaje_h4">
+        Nos alegra tenerte de vuelta. En GestData, estamos comprometidos en
+        ofrecerte la mejor experiencia de gestión de datos. Ya puedes acceder a
+        todas las herramientas y funcionalidades que necesitas para organizar,
+        analizar y visualizar tus datos de manera eficiente. Si necesitas ayuda,
+        nuestro equipo está listo para asistirte en cualquier momento. ¡Vamos a
+        trabajar juntos para que logres tus objetivos!
+      </h4>
+    </div>
+  </div>
+  <div class="contenedor_txt_bienvenida">
+    <div class="contnedor_h2">
+      <h2 class="mensaje_h2">
+        ¡Bienvenid@
+        <span class="nombre_comercial">{{ nombre_comercial }}</span>!
+      </h2>
+    </div>
+
+    <div class="contnedor_h4">
+      <h4 class="mensaje_h4">
+        Nos alegra tenerte de vuelta. En GestData, estamos comprometidos en
+        ofrecerte la mejor experiencia de gestión de datos. Ya puedes acceder a
+        todas las herramientas y funcionalidades que necesitas para organizar,
+        analizar y visualizar tus datos de manera eficiente. Si necesitas ayuda,
+        nuestro equipo está listo para asistirte en cualquier momento. ¡Vamos a
+        trabajar juntos para que logres tus objetivos!
+      </h4>
+    </div>
+  </div>
+</div>
+{% endblock %}

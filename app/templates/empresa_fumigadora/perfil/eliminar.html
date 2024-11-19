@@ -1,0 +1,104 @@
+{% extends 'empresa_fumigadora/components/plantilla.html' %}
+
+<!--extensiones css/bootstrap-->
+{% block extensiones %} {{super()}}
+<link
+  rel="stylesheet"
+  href="{{url_for('static', filename='css/empresa_fumigadora/mensaje_empleado1.css')}}"
+/>
+
+{% endblock %}
+
+<!--titulo de la pagina-->
+{% block titulo %} ELIMINAR CUENTA {% endblock %}
+
+<!--cerrar sesion-->
+{% block cerrar_sesion %} {{url_for('Login.cerrar_sesion')}} {% endblock %}
+
+<!--logo de la empresa-->
+{% block logo %} {{ file_path }} {% endblock %}
+
+<!--boton de borrado de cuenta-->
+
+<!--foto del encargado-->
+{% block encargado %} {{file_path_encargado}} {% endblock %}
+
+<!--titulos de cada pagina-->
+{% block titulos_contenido %}
+<div class="titulo_contenido_pag" style="width: 80%">
+  <span class="txt_contenido_pag">ELIMINAR CUENTA</span>
+</div>
+{% endblock %}
+
+<!--imagen de bienvenida-->
+{% block contenido_usuario%}
+<div class="contendor_mensaje_bienvenida">
+  <div
+    class="contendor_imagen"
+    style="display: flex; justify-content: center; align-items: center"
+  >
+    <img
+      src="/static/src/images/imagen2.png"
+      alt="imagen_bienvenida"
+      class="imagen_bienvenida"
+    />
+  </div>
+  <div class="contenedor_mensaje_actualizado">
+    <div class="contnedor_h2">
+      <h2 class="mensaje_h2">LAMENTAMOS TU PARTIDA</h2>
+      <h4 class="mensaje_h4">
+        Aceptamos tu decisión querido usuario, gracias por usar gestdata.
+      </h4>
+      <div class="definitvo">
+        <a
+          href="{{ url_for('Empresa_fumigadora.hacer_eliminar_cuenta') }}"
+          class="eliminar_accion"
+          >ELIMINAR</a
+        >
+      </div>
+    </div>
+  </div>
+
+  <style>
+    .contnedor_h2 {
+      gap: 1rem;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .definitvo {
+      width: 100%;
+      background-color: black;
+      border-radius: 8px;
+      padding: 20px;
+      text-align: center;
+      margin-right: 10px;
+    }
+
+    .definitvo:hover {
+      background-color: #5000e6;
+    }
+
+    .eliminar_accion {
+      text-decoration: none;
+      color: white;
+      font-size: 25px;
+    }
+
+    @media screen and (max-width: 1050px) {
+      .contendor_imagen {
+        display: none !important;
+      }
+
+      .contnedor_h2 {
+        width: 100% !important;
+      }
+    }
+  </style>
+</div>
+{% endblock %}
+
+<!--script-->
+{% block javascript %} {{super()}}
+<script src="/static/js/empresa_fumigadora/menu_opciones/opciones.js"></script>
+{% endblock %}

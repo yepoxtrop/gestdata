@@ -1,0 +1,219 @@
+{% extends 'empresa_fumigadora/components/plantilla.html' %}
+
+<!--extensiones css/bootstrap-->
+{% block extensiones %} {{super()}}
+<link
+  rel="stylesheet"
+  href="{{url_for('static', filename='css/empresa_fumigadora/servicios/general.css')}}"
+/>
+
+<link
+  rel="stylesheet"
+  href="{{url_for('static', filename='css/empresa_fumigadora/servicios.css')}}"
+/>
+
+<link
+  rel="stylesheet"
+  href="{{url_for('static', filename='css/empresa_fumigadora/servicios/bootstrap.css')}}"
+/>
+
+{% endblock %}
+
+<!--titulo de la pagina-->
+{% block titulo %} ADQUIRIR LICENCIA {% endblock %}
+
+<!--cerrar sesion-->
+{% block cerrar_sesion %} {{url_for('Login.cerrar_sesion')}} {% endblock %}
+
+<!--logo de la empresa-->
+{% block logo %} {{ file_path }} {% endblock %}
+
+<!--boton de borrado de cuenta-->
+
+<!--foto del encargado-->
+{% block encargado %} {{file_path_encargado}} {% endblock %}
+
+<!--titulos de cada pagina-->
+{% block titulos_contenido %}
+<div class="menu_empleados">
+  <button id="abrir_menu">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="16"
+      height="16"
+      fill="currentColor"
+      class="bi bi-list"
+      viewBox="0 0 16 16"
+      id="abrir_men2"
+    >
+      <path
+        fill-rule="evenodd"
+        d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"
+      />
+    </svg>
+  </button>
+
+  <!--barra de navegacion-->
+  <nav class="barra2">
+    <button id="cerrar_menu">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="16"
+        height="16"
+        fill="currentColor"
+        class="bi bi-x-lg"
+        viewBox="0 0 16 16"
+        id="cerrar_men2"
+      >
+        <path
+          d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z"
+        />
+      </svg>
+    </button>
+
+    <!--contendor de los botones-->
+    <div class="contenedor_botones">
+      <div class="titulo_contenido_pag" id="servicios_atendidos">
+        <span class="txt_contenido_pag"
+          ><a
+            href="{{url_for('Empresa_fumigadora.licencias')}}"
+            class="titulos_empleados"
+            >SERVICIOS ATENDIDOS</a
+          ></span
+        >
+      </div>
+
+      <div class="titulo_contenido_pag" id="servicios_disponibles">
+        <span class="txt_contenido_pag" id="txt_agregar"
+          ><a
+            href="{{url_for('Empresa_fumigadora.adquirir_licencia')}}"
+            class="titulos_empleados"
+            id="conexion_agregar"
+            >AQUIRIR LICENCIA</a
+          ></span
+        >
+      </div>
+    </div>
+  </nav>
+</div>
+
+<style>
+  .titulo_contenido_pag span {
+    font-size: 27px;
+  }
+
+  .titulo_contenido_pag {
+    width: calc(100% / 2);
+  }
+
+  @media screen and (max-width: 1700px) {
+    .titulo_contenido_pag span {
+      font-size: 27px;
+    }
+  }
+
+  @media screen and (max-width: 1420px) {
+    .titulo_contenido_pag span {
+      font-size: 24px;
+    }
+  }
+
+  @media screen and (max-width: 1350px) {
+    .titulo_contenido_pag span {
+      font-size: 20px;
+    }
+  }
+
+  @media screen and (max-width: 1111px) {
+    .titulo_contenido_pag {
+      width: 100%;
+    }
+  }
+
+  @media screen and (max-width: 906px) {
+    .titulo_contenido_pag span {
+      font-size: 17px;
+    }
+  }
+</style>
+{% endblock %}
+
+<!--imagen de bienvenida-->
+{% block contenido_usuario%}
+<div class="contendor_mensaje_bienvenida">
+  <div class="contendor_imagen">
+    <!--cards-->
+    <div class="container">
+      <div class="row">
+        {% for licencia in session['licencias'] %}
+        <div class="col-12 col-sm-6 col-lg-4">
+          <div class="card" style="width: 100%">
+            {% if licencia['id_licencia'] ==1 %}
+            <img
+              src="/static/src/patrones/plata.png"
+              class="card-img-top"
+              alt="..."
+            />
+            {% elif licencia['id_licencia'] ==2 %}
+            <img
+              src="/static/src/patrones/oro.png"
+              class="card-img-top"
+              alt="..."
+            />
+            {% elif licencia['id_licencia'] ==3 %}
+            <img
+              src="/static/src/patrones/ruby.png"
+              class="card-img-top"
+              alt="..."
+            />
+            {% endif %}
+            <div class="card-body">
+              <!--nombre-->
+              <h5 class="card-title" id="nombre_cliente">
+                {{ licencia['nombre_licencia'] }}
+              </h5>
+              <!--descripcion-->
+              <p class="card-text">{{ licencia['descripción_licencia'] }}</p>
+
+              <!--precio-->
+              {% if licencia['id_licencia'] ==1 %}
+              <p class="card-text">Precio: 10.000 COP</p>
+              {% elif licencia['id_licencia'] ==2 %}
+              <p class="card-text">Precio: 20.000 COP</p>
+              {% elif licencia['id_licencia'] ==3 %}
+              <p class="card-text">Precio: 30.000 COP</p>
+              {% endif %}
+
+              <!--duracion-->
+              <p class="card-text">
+                Duración: {{ licencia['duracion_licencia'] }} días
+              </p>
+
+              <div
+                class="contendores_botones"
+                style="
+                  width: 100%;
+                  display: flex;
+                  flex-direction: column;
+                  gap: 0.5rem;
+                "
+              >
+                <div class="botones_servicio" id="aceptar">
+                  <a class="txt_span" href="{{url_for('Empresa_fumigadora.comprar_licencia', indice_licencia=loop.index0)}}">ACEPTAR</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
+
+<!--script-->
+{% block javascript %} {{super()}}
+<script src="/static/js/empresa_fumigadora/menu_opciones/opciones.js"></script>
+{% endblock %}

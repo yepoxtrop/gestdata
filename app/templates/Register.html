@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!--estilos del cuerpo-->
+    <link
+      rel="stylesheet"
+      href="{{url_for('static', filename='css/register_login/register_login.css')}}"
+    />
+
+    <link
+      rel="stylesheet"
+      href="{{url_for('static', filename='css/estilos.css')}}"
+    />
+
+    <!--tipografia del documento-->
+    <link
+      rel="stylesheet"
+      href="{{url_for('static', filename='css/fuente.css')}}"
+    />
+
+    <!--estilos del encabezado-->
+    <link
+      rel="stylesheet"
+      href="{{url_for('static', filename='css/index/encabezado.css')}}"
+    />
+
+    <!--recaptcha-->
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+    <title>CREA TU CUENTA</title>
+  </head>
+  <body>
+    <!--encabezado/barra de navegacion-->
+    <header>
+      <!--logo de gestData-->
+      <div class="logo_gest_data">
+        <a href="/" class="enlace_logo">
+          <img
+            src="/static/src/images/logos/logo.png"
+            alt="logo_GestData"
+            style="width: 100%"
+          />
+        </a>
+      </div>
+
+      <!--menu abrir-->
+      <button id="abrir" class="abrirMenu">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="73"
+          height="73"
+          fill="currentColor"
+          class="bi bi-list"
+          viewBox="0 0 16 16"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"
+          />
+        </svg>
+      </button>
+
+      <!--barra de mavegacion-->
+      <nav id="barra_navegacion" class="barra_navegacion">
+        <!--menu cerrar-->
+        <button id="cerrar" class="cerrarMenu">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="73"
+            height="73"
+            fill="currentColor"
+            class="bi bi-x"
+            viewBox="0 0 16 16"
+          >
+            <path
+              d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708"
+            />
+          </svg>
+        </button>
+
+        <!--menu-->
+        <div class="contenedor_lista">
+          <ul class="lista">
+            <li>
+              <a href="{{ url_for('Index.home') }}#hoja1" class="botones"
+                >ACERCA DE</a
+              >
+            </li>
+            <li>
+              <a href="{{ url_for('Index.home') }}#hoja2" class="botones"
+                >SERVICIOS</a
+              >
+            </li>
+            <li>
+              <a href="{{ url_for('Index.home') }}#hoja3" class="botones"
+                >CONTACTO</a
+              >
+            </li>
+            <li>
+              <a href="{{ url_for('Index.home') }}#hoja4" class="botones"
+                >PREGUNTAS FRECUENTES</a
+              >
+            </li>
+            <li>
+              <a href="{{ url_for('Index.home') }}#hoja5" class="botones"
+                >LICENCIAS</a
+              >
+            </li>
+          </ul>
+        </div>
+
+        <!--contendor botones-->
+        <div class="bones_menu">
+          <!--boton de login-->
+          <button class="btn">
+            <a href="{{ url_for('Login.login') }}" class="txt_btn"
+              >INICIA SESIÓN</a
+            >
+          </button>
+
+          <!--boton de register-->
+          <button class="btn">
+            <a href="{{ url_for('Register.register') }}" class="txt_btn"
+              >CREA TU CUENTA</a
+            >
+          </button>
+        </div>
+      </nav>
+    </header>
+
+    <!--caja padre-->
+    <div class="caja0">
+      <!--caja con transparencia-->
+      <div class="caja1">
+        <!--contenedor del formulario-->
+        <div class="caja2">
+          <!--formulario-->
+          <form
+            action="{{url_for('Register.registrar_usuario')}}"
+            method="post"
+            class="formulario_register"
+            enctype="multipart/form-data"
+          >
+            <!--rol-->
+            <div class="credenciales">
+              {% with messages = get_flashed_messages() %} {% if messages %} {%
+              for message in messages %}
+              <div class="alerta_error">
+                <p>{{message}}</p>
+              </div>
+              {% endfor %} {% endif %} {% endwith %}
+              <div class="roles">
+                <!--contendor de checbox-->
+                <div class="contendor_checkbox" id="roles">
+                  <!--contendor rol1-->
+                  <div class="contendor_rol1">
+                    <input
+                      type="checkbox"
+                      name="cliente"
+                      id="rol1"
+                      required
+                    /><span class="titulos_checkbox">
+                      Solicitas servicios
+                    </span>
+                  </div>
+
+                  <!--contenedor rol2-->
+                  <div class="contendor_rol2">
+                    <input
+                      type="checkbox"
+                      name="empresa_fumigadora"
+                      id="rol2"
+                      required
+                    /><span class="titulos_checkbox">Atiendes servicios</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!--contendor 1-->
+            <div class="contendor1">
+              <!--subcontenedor 1 del contenedo 1-->
+              <div class="contendor1_de1">
+                <!--logo-->
+                <div id="logo_empresa" class="caja_campos">
+                  <label for="logo" class="labels_form" id="primer_label"
+                    >Logo de la empresa</label
+                  >
+                  <input
+                    type="file"
+                    name="logo"
+                    id="logo"
+                    class="inputs_form_file"
+                    accept="image/*"
+                    required
+                  />
+                  <label for="logo" class="custom-file-label">
+                    <img
+                      src="/static/src/images/logos/logo_ejemplo.jpg"
+                      alt="logo_ejemplo"
+                      id="logo_ejemplo"
+                    />
+                  </label>
+                  <span id="file-name">Foto no seleccionada</span>
+                </div>
+              </div>
+
+              <!--subcontenedor 2 del contedor 1-->
+              <div class="contenedor2_de1">
+                <!--nit y nombre comercial-->
+                <div class="contendor_inputs_form" id="nit_nombreComercial">
+                  <!--nit-->
+                  <div id="nit_empresa" class="caja_campos">
+                    <label for="nit" class="labels_form">Nit</label>
+                    <input
+                      type="tel"
+                      name="nit"
+                      id="nit"
+                      minlength="12"
+                      class="inputs_form"
+                      placeholder="10101010101-1"
+                      maxlength="12"
+                    />
+                  </div>
+
+                  <!--nombre comercial-->
+                  <div id="nombre_comercial" class="caja_campos">
+                    <label for="comercial" class="labels_form"
+                      >Nombre comercial</label
+                    >
+                    <input
+                      type="text"
+                      name="comercial"
+                      id="comercial"
+                      minlength="10"
+                      required
+                      class="inputs_form"
+                      placeholder="Mata Plagas Corp Co"
+                      maxlength="50"
+                    />
+                  </div>
+                </div>
+
+                <!---solo razon social-->
+                <div id="solo_razonSocial" class="contendor_inputs_form">
+                  <!--razon social-->
+                  <div id="razon_Social" class="caja_campos">
+                    <label for="razon" class="labels_form">Razón Social</label>
+                    <input
+                      type="text"
+                      name="razon"
+                      id="razon"
+                      minlength="10"
+                      class="inputs_form"
+                      placeholder="Linea mata plagas corp"
+                      maxlength="50"
+                    />
+                  </div>
+                </div>
+
+                <!--direccio y departamento-->
+                <div id="direccion_departamento" class="contendor_inputs_form">
+                  <!--direccion-->
+                  <div id="direccion_empresa" class="caja_campos">
+                    <label for="direccion" class="labels_form">Dirección</label>
+                    <input
+                      type="text"
+                      name="direccion"
+                      id="direccion"
+                      required
+                      class="inputs_form"
+                      placeholder="cra45 cd #225c-sur"
+                      minlength="10"
+                      maxlength="50"
+                    />
+                  </div>
+
+                  <!--departamento-->
+                  <div id="departamento_empresa" class="caja_campos">
+                    <label for="departamento" class="labels_form"
+                      >Departamento</label
+                    >
+                    <select
+                      name="departamento"
+                      id="departamento"
+                      class="inputs_form"
+                    >
+                      <option value="1">Amazonas</option>
+                      <option value="2">Antioquía</option>
+                      <option value="3">Arauca</option>
+                      <option value="4">Atlántico</option>
+                      <option value="5">Bolívar</option>
+                      <option value="6">Boyacá</option>
+                      <option value="7">Caldas</option>
+                      <option value="8">Caquetá</option>
+                      <option value="9">Casanare</option>
+                      <option value="10">Cauca</option>
+                      <option value="11">Cesar</option>
+                      <option value="12">Chocó</option>
+                      <option value="13">Córdoba</option>
+                      <option value="14" selected>Cundinamarca</option>
+                      <option value="15">Guainía</option>
+                      <option value="16">Guaviare</option>
+                      <option value="17">Huila</option>
+                      <option value="18">La Guajira</option>
+                      <option value="19">Magdalena</option>
+                      <option value="20">Meta</option>
+                      <option value="21">Nariño</option>
+                      <option value="22">Norte de Santander</option>
+                      <option value="23">Putumayo</option>
+                      <option value="24">Quindío</option>
+                      <option value="25">Risaralda</option>
+                      <option value="26">San Andrés y Providencia</option>
+                      <option value="27">Santander</option>
+                      <option value="28">Sucre</option>
+                      <option value="29">Tolima</option>
+                      <option value="30">Valle del Cauca</option>
+                      <option value="31">Vaupés</option>
+                      <option value="32">Vichada</option>
+                      <option value="33">Distrito Capital</option>
+                    </select>
+                  </div>
+                </div>
+
+                <!--telefono y correo-->
+                <div id="telefono_correo" class="contendor_inputs_form">
+                  <!--telefono empresa-->
+                  <div id="telefono_empresa" class="caja_campos">
+                    <label for="telefono" class="labels_form">Teléfono</label>
+                    <input
+                      type="tel"
+                      name="telefono"
+                      id="telefono"
+                      required
+                      class="inputs_form"
+                      placeholder="3215589656"
+                      minlength="10"
+                      maxlength="10"
+                    />
+                  </div>
+
+                  <!--correo empresa-->
+                  <div id="correo_empresa" class="caja_campos">
+                    <label for="correo" class="labels_form">Correo</label>
+                    <input
+                      type="email"
+                      name="correo"
+                      id="correo"
+                      required
+                      class="inputs_form"
+                      placeholder="MataPlagasCorp@gmail.com.co"
+                      minlength="10"
+                      maxlength="50"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="intermedio">
+              <div class="continuar">Continuar</div>
+            </div>
+
+            <!--contenedor 2-->
+            <div class="contenedor2">
+              <!--subcontenedor 1 del contenedor 2-->
+              <div class="contenedor1_de2">
+                <!--foto del encargado-->
+                <div id="foto_encargado" class="caja_campos">
+                  <label
+                    for="encargado_foto"
+                    class="labels_form"
+                    id="titulo_encargado"
+                    >Foto del Encargado</label
+                  >
+                  <input
+                    type="file"
+                    name="fotoEncargados"
+                    id="encargado_foto"
+                    class="inputs_form_file"
+                    accept="image/*"
+                  />
+                  <label for="encargado_foto" class="custom-file-label">
+                    <img
+                      src="/static/src/images/imagenes_adicionales/avatar1.jpg"
+                      alt="foto_ejemplo"
+                      id="foto_ejemplo"
+                    />
+                  </label>
+                  <span id="file-name2">Foto no seleccionada</span>
+                </div>
+              </div>
+
+              <!--subcontenedor 2 del contedor 2-->
+              <div class="contenedor2_de2">
+                <!--descripcion y contraseña-->
+                <div id="descripcion_password" class="contendor_inputs_form">
+                  <!--descripcion-->
+                  <div id="descripcion_empresa" class="caja_campos">
+                    <label
+                      for="descripcion"
+                      class="labels_form"
+                      id="label_descripcion"
+                      >Descripción</label
+                    >
+
+                    <textarea
+                      name="descripcion"
+                      class="inputs_form"
+                      id="descripcion"
+                      required
+                      placeholder="Somos una empresa dedicada a..."
+                      rows="5"
+                      cols="5"
+                      minlength="50"
+                      maxlength="500"
+                    ></textarea>
+                    <span
+                      >Caracteres: <span id="caracteres">0</span> /500
+                    </span>
+                  </div>
+
+                  <!--contraseña-->
+                  <div id="contraseña_empresa" class="caja_campos">
+                    <label for="contraseña" class="labels_form"
+                      >Contraseña</label
+                    >
+                    <input
+                      type="password"
+                      name="contraseña"
+                      id="contraseña"
+                      class="inputs_form"
+                      placeholder="SLIPKNOT_DE_SLIPKNOT_1999"
+                      minlength="10"
+                      maxlength="20"
+                    />
+                    <span
+                      >Caracteres: <span id="caracteres2">0</span> /20
+                    </span>
+                  </div>
+                </div>
+
+                <!--nombre y correo del encargado-->
+                <div id="Enombre_Ecorreo" class="contendor_inputs_form">
+                  <!--nombre del encargado-->
+                  <div id="nombre_encargado" class="caja_campos">
+                    <label for="encargado_nombre" class="labels_form"
+                      >Nombre encargado</label
+                    >
+                    <input
+                      type="text"
+                      name="encargado_nombre"
+                      id="encargado_nombre"
+                      class="inputs_form"
+                      placeholder="ULDARICO ANDRADE"
+                      minlength="10"
+                      maxlength="30"
+                    />
+                  </div>
+
+                  <!--correo del encargado-->
+                  <div id="correo_encargado" class="caja_campos">
+                    <label for="encargado_correo" class="labels_form"
+                      >Correo encargado</label
+                    >
+                    <input
+                      type="email"
+                      name="encargado_correo"
+                      id="encargado_correo"
+                      class="inputs_form"
+                      placeholder="ULDARICO@GMAIL.OM"
+                      minlength="10"
+                      maxlength="50"
+                    />
+                  </div>
+                </div>
+
+                <!--telefono del encargado-->
+                <div id="Etelefono_solo" class="contendor_inputs_form">
+                  <!--telefono del encargado-->
+                  <div id="telefono_encargado" class="caja_campos">
+                    <label for="encargado_telefono" class="labels_form"
+                      >Telefono encargado</label
+                    >
+                    <input
+                      type="tel"
+                      name="encargado_telefono"
+                      id="encargado_telefono"
+                      class="inputs_form"
+                      placeholder="3163413513"
+                      minlength="10"
+                      maxlength="10"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="intermedio2">
+              <div class="Atras">Atrás</div>
+            </div>
+
+            <!--boton enviar-->
+            <div class="credenciales">
+              <div class="roles">
+                <!--contendor de checbox-->
+                <div class="contendor_checkbox">
+                  <!--contendor de terminos y condiciones-->
+                  <div class="terminos_condiciones">
+                    <input type="checkbox" name="" id="" required /><span
+                      class="titulos_checkbox"
+                      >Aceptas términos y condiciones</span
+                    >
+                  </div>
+                </div>
+              </div>
+
+              <div class="boton_registrar">
+                <button type="submit" id="btn">REGISTRAR</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <style>
+        .alerta_error {
+          text-align: start;
+          border-radius: 40px;
+          background-color: #f25044;
+          padding: 15px;
+        }
+
+        .alerta_error p {
+          text-align: left;
+        }
+      </style>
+    </div>
+
+    <!--scripts-->
+    <script src="/static/js/register/register.js"></script>
+    <script src="/static/js/register/input_file.js"></script>
+    <script src="/static/js/header/header.js"></script>
+    <script src="/static/js/register/contadores_caracteres.js"></script>
+  </body>
+</html>

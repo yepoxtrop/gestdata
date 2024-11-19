@@ -1,0 +1,90 @@
+{% extends 'cliente/components/plantilla.html' %}
+
+<!--extensiones css/bootstrap-->
+{% block extensiones %} {{super()}}
+<link
+  rel="stylesheet"
+  href="{{url_for('static', filename='css/empresa_fumigadora/estilos_encargado.css')}}"
+/>
+
+<link
+  rel="stylesheet"
+  href="{{url_for('static', filename='css/empresa_fumigadora/perfil/perfil.css')}}"
+/>
+{% endblock %}
+
+<!--titulo de la pagina-->
+{% block titulo %} EDITA TU CUENTA {% endblock %}
+
+<!--cerrar sesion-->
+{% block cerrar_sesion %} {{url_for('Login.cerrar_sesion')}} {% endblock %}
+
+<!--logo de la empresa-->
+{% block logo %} {{ logo_Cliente }} {% endblock %}
+
+
+<!--titulos de cada pagina-->
+{% block titulos_contenido %}
+<div class="titulo_contenido_pag">
+  <span class="txt_contenido_pag">EDITA TU CUENTA </span>
+</div>
+{% endblock %}
+
+<!--imagen de bienvenida-->
+{% block contenido_usuario%}
+<div class="contendor_mensaje_bienvenida">
+  <form
+    action="{{ url_for('Cliente.editado_user')}}"
+    method="post"
+  >
+    <div class="contenedor_de_inputs">
+      <div class="input1">
+        <label for="comercial">Nombre comercial</label>
+        <input
+          type="text"
+          name="comercial"
+          required
+          minlength="10"
+          maxlength="50"
+          value="{{ nombre_Comercial_Cliente }}"
+          id="comercial"
+        />
+      </div>
+      <div class="input2">
+        <label for="direccion">Dirección</label>
+          <input
+            type="text"
+            name="direccion"
+            required
+            minlength="10"
+            maxlength="50"
+            value="{{ direcion_Cliente }}"
+            id="direccion"
+          />
+      </div>
+    </div>
+
+
+    <div class="contenedor_de_inputs">
+      <div class="input1" style="width: 100%">
+        <label for="Descripción">Descripción</label>
+        <textarea
+          name="Descripción"
+          id="Descripción"
+          style="resize: none; width: 100%"
+          minlength="50"
+          maxlength="500"
+        >
+{{ descripcion_Cliente }}</textarea
+        >
+      </div>
+    </div>
+
+    <div class="contenedor_de_inputs" id="enviar_cambios">
+      <div class="input1" style="width: 70%">
+        <input type="submit" id="enviar_cambios_boton" />
+      </div>
+    </div>
+  </form>
+</div>
+{% endblock %}

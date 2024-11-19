@@ -1,0 +1,24 @@
+{% extends 'pdfs/Plantilla.html' %}
+<!--Titulo de la pagina-->
+{% block titulo %}Certificado de servicio cumplido{% endblock %}
+
+<!--Nombre del cliente-->
+{% block nombre_cliente%} {{ nombre_Comercial_Cliente }} {% endblock %}
+
+<!--empresa fumigadora-->
+{% block empresa_fumigadora %} {{ empresa_fumigadora }} {% endblock %}
+
+<!--sede del cliente-->
+{% block sede_cliente %} {{ sede }} {% endblock %}
+
+<!--encargado de la sede-->
+{% block encargado %} {{ encargado_sede }} {% endblock %}
+
+<!--encargado empresa fumigadora-->
+{% block encargado2 %} {{ encargado_fumigadora }} {% endblock %}
+
+<!--empresa fumigadora-->
+{% block empresa_fumigadora2 %} {{ empresa_fumigadora }} {% endblock %}
+
+<!--hora de finalizacion de servicio-->
+{% block fecha %} {{ final }} {% endblock %}

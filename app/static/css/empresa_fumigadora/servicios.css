@@ -1,0 +1,284 @@
+#cliente,
+#sede {
+  width: 15%;
+}
+
+#solicitud,
+#servicios,
+#fin,
+#cambiar,
+#empleado,
+#documentos,
+#accion {
+  width: 10%;
+}
+
+#certificado,
+#reporte {
+  width: 100%;
+  height: 100%;
+}
+
+#reporte {
+  color: rgb(249, 210, 145);
+}
+
+#certificado {
+  color: rgb(80, 0, 230);
+}
+
+#editar_servicio {
+  width: 46%;
+  height: 100%;
+  color: rgb(242, 80, 68);
+}
+
+#certificado:hover,
+#reporte:hover,
+#editar_servicio:hover {
+  color: rgb(0, 0, 0);
+}
+
+.titulo_contenido_pag {
+  background-color: rgb(158, 120, 230);
+}
+
+.titulo_contenido_pag:hover {
+  background-color: rgb(80, 0, 230);
+}
+
+.titulos_tabla {
+  font-size: 18px;
+}
+
+#agregar_empleados {
+  background-color: rgb(80, 0, 230);
+}
+
+#agregar_empleados:hover {
+  background-color: rgb(80, 0, 230);
+}
+
+.contendor_pares {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
+
+.inputs_crear_empleado {
+  display: flex;
+  justify-content: center;
+  width: 50%;
+  flex-direction: column;
+}
+
+.titulo_contenido_pag {
+  width: calc(100% / 3);
+}
+
+/* #servicios_disponibles,
+#servicios_incompletos,
+#servicios_atendidos {
+  width: calc(100% / 3);
+} */
+
+#servicios_atendidos {
+  background-color: rgb(80, 0, 230);
+}
+
+/*menu*/
+.menu_empleados {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+#abrir_menu {
+  display: none;
+}
+
+.barra2 {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+#cerrar_menu {
+  display: none;
+}
+
+.contenedor_botones {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
+
+#conexion_agregar2 {
+  display: none;
+}
+
+/*----------------------------------------*/
+@media screen and (max-width: 1420px) {
+  #titulo1,
+  #titulo2 {
+    font-size: 24px;
+  }
+
+  label {
+    font-size: 27px;
+  }
+}
+
+@media screen and (max-width: 1350px) {
+  #titulo1,
+  #titulo2,
+  #conexion_agregar2 {
+    font-size: 20px;
+  }
+
+  label {
+    font-size: 22px;
+  }
+}
+
+@media screen and (max-width: 1301px) {
+  #agregar_empleados {
+    padding: 15px;
+  }
+}
+
+@media screen and (max-width: 1260px) {
+  label {
+    font-size: 20px;
+  }
+}
+
+@media screen and (max-width: 1160px) {
+  label {
+    font-size: 20px;
+  }
+}
+
+@media screen and (max-width: 1111px) {
+  #abrir_menu,
+  #cerrar_menu {
+    display: block;
+    border: none;
+    cursor: pointer;
+  }
+
+  #abrir_menu {
+    background-color: transparent;
+    border: none;
+  }
+
+  #abrir_men2,
+  #cerrar_men2 {
+    width: 40px;
+    height: 100%;
+  }
+
+  #cerrar_menu {
+    background-color: transparent;
+    color: #ececec;
+  }
+
+  #cerrar_menu:hover {
+    color: rgb(85, 0, 230);
+  }
+
+  #cerrar_menu:active {
+    color: rgb(158, 120, 230);
+  }
+
+  .barra2 {
+    max-width: 90%;
+    min-width: 40%;
+    width: 40%;
+    opacity: 0;
+    visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 1.5rem;
+    position: absolute;
+    background-color: rgb(28, 28, 28);
+    padding: 2rem;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+  }
+
+  .contenedor_botones {
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+  }
+
+  .barra2.visible {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .titulo_contenido_pag,
+  #empleados_inactivos,
+  #agregar_empleados {
+    width: 100%;
+  }
+
+  .titulo_contenido_pag {
+    padding: 20px;
+  }
+
+  #agregar_empleados {
+    justify-content: left;
+  }
+}
+
+@media screen and (max-width: 1070px) {
+  label {
+    font-size: 20px;
+  }
+
+  .imagen_form {
+    display: none;
+  }
+
+  .formulario_empleados {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 906px) {
+  #titulo1,
+  #titulo2,
+  #conexion_agregar2 {
+    font-size: 17px;
+  }
+
+  .titulo_contenido_pag {
+    padding: 15px;
+  }
+}
+
+@media screen and (max-width: 790px) {
+  .barra2 {
+    width: 60%;
+  }
+}
+
+@media screen and (max-width: 670px) {
+  .contendor_pares {
+    flex-direction: column;
+  }
+
+  .inputs_crear_empleado {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 632px) {
+  .barra2 {
+    width: 80%;
+  }
+}

@@ -1,0 +1,69 @@
+{% extends 'empresa_fumigadora/components/plantilla.html' %}
+
+<!--extensiones css/bootstrap-->
+{% block extensiones %} {{super()}}
+<link
+  rel="stylesheet"
+  href="{{url_for('static', filename='css/empresa_fumigadora/estilos_encargado.css')}}"
+/>
+
+<link
+  rel="stylesheet"
+  href="{{url_for('static', filename='css/empresa_fumigadora/servicios/estilos_licencias.css')}}"
+/>
+{% endblock %}
+
+<!--titulo de la pagina-->
+{% block titulo %} LICENCIA ADQUIRIDA {% endblock %}
+
+<!--cerrar sesion-->
+{% block cerrar_sesion %} {{url_for('Login.cerrar_sesion')}} {% endblock %}
+
+<!--logo de la empresa-->
+{% block logo %} {{ file_path }} {% endblock %}
+
+<!--boton de borrado de cuenta-->
+
+<!--foto del encargado-->
+{% block encargado %} {{file_path_encargado}} {% endblock %}
+
+<!--titulos de cada pagina-->
+{% block titulos_contenido %}
+<div class="titulo_contenido_pag">
+  <span class="txt_contenido_pag">LICENCIA ADQUIRIDA </span>
+</div>
+{% endblock %}
+
+<!--imagen de bienvenida-->
+{% block contenido_usuario%}
+<div class="contenedor_datos_licencia">
+  <!--imagen-->
+  <div class="imagen_licencia_usuario">
+    <img
+      src="/static/src/images/imagen4.png"
+      alt="imagen_licencia"
+      class="imagen_licenia_actual"
+    />
+  </div>
+
+  <!--licencia-->
+  <div class="contenedor_licencia-dato" id="{{ id_licencia_html }}">
+    <div class="datos_bd_licencia">
+      <div class="membresia_titulo1">
+        <span class="licencia_titulo1"> {{ licencia }} </span>
+      </div>
+      <div class="membresia_titulo2">
+        <span class="licencia_titulo2"> Tiempo disponible </span>
+      </div>
+      <div class="membresia_titulo3">
+        <span class="licencia_titulo3"> {{ duracion_renta }} </span>
+      </div>
+      <div class="membresia_titulo4">
+        <span class="licencia_titulo4">
+          Cuando el tiempo se agote, tu licencia habrá expirado.
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
