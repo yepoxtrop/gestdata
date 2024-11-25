@@ -9,6 +9,8 @@ from app.Empresa_fumigadora import Empresa_fumigadora
 from app.Documentos import Documentos
 from app.Recuperar_cuenta import Activar_cuenta
 from app.Cliente import Cliente; 
+from app.Emp_empresa_fumigadora import Emp_empresa_fumigadora
+from app.Sedes_cliente import Sede_cliente
 
 from flask_mysqldb import MySQL
 
@@ -33,6 +35,8 @@ def crear_app():
     app.register_blueprint(Documentos)
     app.register_blueprint(Activar_cuenta)
     app.register_blueprint(Cliente)
+    app.register_blueprint(Emp_empresa_fumigadora)
+    app.register_blueprint(Sede_cliente)
     
     #sesiones de login - logout
     return app

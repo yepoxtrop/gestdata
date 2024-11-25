@@ -1,0 +1,34 @@
+{% extends 'pdfs/Plantilla.html' %}
+
+<!-- Titulo de la pagina -->
+{% block titulo %} Certificado de servicio cumplido {% endblock %}
+
+<!-- Nombre del cliente -->
+{% block nombre_cliente %} {{ cliente }} {% endblock %}
+
+<!-- Empresa fumigadora -->
+{% block empresa_fumigadora %} {{ nombreEmpresaFumigadora }} {% endblock %}
+
+<!-- Sede del cliente -->
+{% block sede_cliente %} {{ sede }} {% endblock %}
+
+<!-- Encargado de la sede -->
+{% block encargado %} {{ nombresEmpleado }} {{ apellidosEmpleado }} {% endblock %}
+
+<!-- Encargado empresa fumigadora -->
+{% block encargado2 %} {{ estadoEmpleado }} {% endblock %}
+
+<!-- Empresa fumigadora (repetida, se puede eliminar si no se necesita) -->
+{% block empresa_fumigadora2 %} {{ nombreEmpresaFumigadora }} {% endblock %}
+
+<!-- Hora de finalización de servicio -->
+{% block fecha %} {{ fin }} {% endblock %}
+
+<!-- Ventana modal (emergente) -->
+{% block descargar %} {{ url_for('Empresa_fumigadora.desacragr_certificado', 
+nombre_cliente=cliente, 
+sede_cliente=sede, 
+encargado_sede=nombresEmpleado, 
+encargado_empresa_fumigador=estadoEmpleado, 
+fecha_final=fin, 
+empresa_fumigadora=nombreEmpresaFumigadora) }} {% endblock %}

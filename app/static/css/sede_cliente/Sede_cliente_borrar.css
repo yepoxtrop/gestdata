@@ -1,0 +1,930 @@
+ 
+/*-----------------------------------------------------------*/
+
+/*                           CUERPO                          */
+
+/*-----------------------------------------------------------*/
+
+/* ESTILO DEL CUERPO */
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; 
+  margin: 0;
+  padding: 0;
+  font-family: 'Nexa';
+  font-weight: bold;
+  background-image: url("/static/src/patrones/morado1.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: fixed;
+  box-sizing: border-box;
+}
+
+ 
+/*-----------------------------------------------------------*/
+
+/*                           HEADER                          */
+
+/*-----------------------------------------------------------*/
+
+/* ESTILO DEL ENCABEZADO */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: white;
+    color: black;
+    z-index: 1000;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 110px;
+    font-family: 'Nexa';
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+}
+
+/* LOGO DEL HEADER */
+header .logo {
+    display: flex;
+    align-items: center;
+}
+
+header .logo img {
+    height: 80px;
+    margin-right: 10px;
+}
+
+/* NAVEGACION DEL HEADER */
+header nav {
+    display: flex;
+}
+
+header nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    font-size: 20px;
+}
+
+header nav ul li {
+    margin: 0 15px;
+}
+
+header nav ul li a {
+    color: black;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* BOTONES DEL HEADER */
+header .actions {
+    display: flex;
+    gap: 10px;
+}
+
+header .actions .btn {
+    background-color: #9e77e6;
+    color: white;
+    padding: 26px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    margin-right: 20px;
+    text-decoration: none;
+}
+
+header .actions .btn:hover {
+    background-color: #7a3ed7;
+}
+
+header .actions .btn:active {
+    background-color: #6b2ac2;
+}
+
+.header-content a.active {
+    color: #5000e6;   
+    padding: 10px 15px;      
+}
+
+/* OCULTAR ELEMENTOS DEL ENCABEZADO */
+.header-content.hidden {
+    display: none;
+}
+
+
+/*-----------------------------------------------------------*/
+
+/*                      MENU HAMBURGUESA                     */
+
+/*-----------------------------------------------------------*/
+
+
+/* MENU HAMBURGUESA */
+.hamburger-menu {
+display: none;
+position: absolute;
+top: 20px;
+right: 20px;
+z-index: 1000;
+cursor: pointer;
+background: none; 
+border: none; 
+}
+
+.hamburger-menu span {
+display: block;
+width: 30px;
+height: 4px;
+background-color: #000;
+margin: 6px 0;
+transition: 0.4s;
+}
+
+/* MENÚ */
+.menu {
+display: none;
+position: fixed;
+top: 70px; 
+right: 0;
+background: white;
+color: black;
+width: 100%;
+max-width: 300px;
+box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+z-index: 1000;
+flex-direction: column;
+overflow: auto;
+transition: transform 0.3s ease-in-out;
+text-align: right;
+padding-right: 20px;
+font-family: 'Nexa', sans-serif;
+padding: 50px 20px;
+margin-top: -50px;
+}
+
+.menu.open {
+display: flex;
+background-color: black;
+z-index: 2000; /* Aumentar z-index cuando está abierto */
+}
+
+.menu .btn {
+background-color: #9e77e6;
+color: white;
+padding: 10px;
+border: none;
+border-radius: 5px;
+cursor: pointer;
+text-align: center;
+font-size: 16px;
+margin: 10px;
+}
+
+.menu .btn:hover {
+background-color: #7a3ed7;
+}
+
+.menu .btn:active {
+background-color: #6b2ac2;
+}
+
+
+
+.menu .btn:nth-child(1), .menu .btn:nth-child(2), .menu .btn:nth-child(3), .btn:nth-child(4), .btn:nth-child(5) {
+background: none;
+color: white;
+text-align: right;
+text-decoration: none;
+}
+
+.menu .btn:nth-child(6), .menu .btn:nth-child(7) {
+background-color: #9e77e6;
+color: white;
+text-decoration: none;
+}
+
+/* X */
+.close-menu {
+position: absolute;
+top: 10px;
+right: 20px;
+cursor: pointer;
+z-index: 2001; 
+  color: white;
+}
+
+.overlay {
+display: none;
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background: rgba(0, 0, 0, 0.5);
+z-index: 1999;
+}
+
+.overlay.show {
+display: block;
+}
+
+
+/*-----------------------------------------------------------*/
+
+/*                         MAIN LAYOUT                       */
+
+/*-----------------------------------------------------------*/
+
+.main-layout {
+  display: flex;
+  flex-grow: 1; 
+  width: 100%; 
+  box-sizing: border-box;
+  margin-top: 140px;
+}
+
+
+/*-----------------------------------------------------------*/
+
+/*                           SIDEBAR                          */
+
+/*-----------------------------------------------------------*/
+
+/* ESTILOS DEL SIDEBAR */
+.sidebar {
+  width: 220px;
+  padding: 15px;
+  background-color: #f7f7fa;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+  height: auto;
+  position: relative;
+  z-index: 999;
+  margin-top: -30px;
+}
+
+/* PERFIL DEL SIDEBAR */
+.sidebar .profile {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #5000e6;
+    
+}
+
+.sidebar .profile img {
+    max-width: 160px;
+    height: auto;
+    margin-bottom: 10px; 
+    border-radius: 50%; 
+    margin-top: 10px;
+}
+
+.sidebar .logo-text {
+    font-size: 18px; 
+    color: #5000e6; 
+    margin-bottom: 10px;
+}
+
+/* BOTONES DEL SIDEBAR */
+.sidebar .btn {
+    background-color: #9e77e6;
+    color: white;
+    padding: 10px 15px; 
+    border: none;
+    width: calc(100% - 15px);
+    cursor: pointer;
+    text-align: center;
+    margin: 15px 0; 
+    border-radius: 8px;
+    font-size: 16px;
+    font-family: 'Nexa', sans-serif;
+    display: flex; 
+    align-items: center;
+    justify-content: center; 
+    transition: background-color 0.3s; 
+    margin-left: 8px;
+}
+
+/* HOVER EN BOTONES */
+.sidebar .btn:hover {
+    background-color: #7e5cc3;
+}
+
+/* QUITAR SUBRAYADO DE ENLACES */
+.sidebar .btn-link {
+    text-decoration: none; 
+}
+
+/* NO SUBRAYADOS CON HOVER ACTIVO */
+.sidebar .btn-link:hover,
+.sidebar .btn-link:focus {
+    text-decoration: none; 
+}
+
+
+/*-----------------------------------------------------------*/
+
+/*                    CONTENIDO PRINCIPAL                    */
+
+/*-----------------------------------------------------------*/
+
+.cuerpo {
+  display: flex;
+  flex-direction: column;
+  padding: 1.5%;
+  margin-left: 10px;
+  width: 100%;
+}
+
+.fondo_blanco {
+  background-color: white;
+  border-radius: 40px;
+  padding: 3%;
+}
+
+/* CONTENEDOR DE CONTENIDO PRINCIPAL */
+.content-container {
+  display: flex;
+  flex-direction: column;
+  padding: 3%;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+  width: 100%;
+}
+
+/* BOTON INFORMATIVO PRINCIPAL */
+.content-container .info-button {
+  background-color: #5000e6;
+  color: white;
+  padding: 20px;
+  border: none;
+  border-radius: 40px;
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  cursor: not-allowed;
+  pointer-events: none;
+  display: block;
+  text-align: left;
+  margin-left: 0; 
+  width: 200px
+}
+
+/* CONTENEDOR CUERPO */
+.client-info-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f7f7fa;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+  font-family: 'Nexa', sans-serif;
+}
+
+/* FILAS DE INFORMACIÓN */
+.client-info-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+  flex-wrap: wrap;
+}
+
+/* BLOQUES INFORMACIÓN */
+.info-block {
+  width: 48%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ESTILO PARA LOS LABELS */
+.info-block label {
+  font-weight: bold;
+  color: #5000e6;
+  display: block;
+  margin-bottom: 5px;
+}
+
+/* ESTILO PARA LOS INPUTS */
+.info-block input {
+  background-color: white;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  color: #b3b3b3;
+  width: 100%;
+  box-sizing: border-box;
+  font-size: 16px;
+  cursor: not-allowed;
+  font-family: 'Nexa';
+}
+
+/* COLOR DE BORDES EN INPUTS */
+.info-block input:focus {
+  outline: none; 
+  border-color: #5000e6;
+  border-width: 2px;
+}
+
+/* CONTENEDOR DE IMAGEN */
+.image-container {
+  flex: 1; 
+  text-align: center;
+}
+
+.image-container img {
+  max-width: 260px;
+  height: auto;
+}
+
+/* CONTENEDOR DE INFORMACIÓN */
+.info-box {
+  flex: 1;
+  padding: 20px;
+  border: 1px solid #f7f7fa; 
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+}
+
+/* ESTILOS PARA EL BOTÓN DE BORRAR */
+.btn-delete {
+  background-color: #2b2b2b; 
+  color: white;
+  padding: 10px 20px; 
+  border: none; 
+  border-radius: 5px;
+  font-size: 16px; 
+  font-weight: bold; 
+  cursor: pointer; 
+  transition: background-color 0.3s ease;
+  display: block; 
+  margin: 0 auto;
+  font-size: 'Nexa';
+}
+
+/* Efecto al pasar el ratón */
+.btn-delete:hover {
+  background-color:rgb(85, 0, 230);
+}
+
+/* Efecto al hacer clic */
+.btn-delete:active {
+  background-color:rgb(64, 0, 175);
+}
+
+
+/*-----------------------------------------------------------*/
+
+/*                          FOOTER                           */
+
+/*-----------------------------------------------------------*/
+
+footer {
+  background-color: rgb(85, 0, 230);
+  padding: 40px 0;
+  position: relative;
+}
+
+.contenedor_footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: rgb(255, 255, 255);
+}
+
+.contenido {
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+  max-width: 1200px;
+}
+
+.contendor1,
+.contendor2,
+.contendor3,
+.contendor4 {
+  flex: 1;
+  margin: 0 10px;
+}
+
+.titulo {
+  font-weight: bold;
+  margin-bottom: 15px;
+  font-size: 25px;
+}
+
+.texto_footer {
+  font-size: 16px;
+  line-height: 24px;
+}
+
+/* Color de texto para todas las listas */
+.lista2 {
+  list-style-type: none;
+  padding: 0;
+  color: rgb(255, 255, 255);
+}
+
+.lista2 li {
+  margin-bottom: 10px;
+}
+
+/* Asegura que los iconos sean blancos */
+.redes_sociales {
+  display: flex;
+  margin-top: 20px; 
+}
+
+.red_footer {
+  margin-right: 25px;
+  position: relative;
+}
+
+.red_footer:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  right: -15px;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 20px;
+  border-right: 3px solid rgb(255, 255, 255);
+}
+
+
+/* Asegura que los botones no tengan fondo ni bordes */
+.red_footer .bnt_red2 {
+  background: none;
+  border: none;
+  color: rgb(255, 255, 255); 
+  padding: 0;
+  cursor: pointer;
+}
+
+/* Enlaces en blanco */
+.lista2 a {
+  color: rgb(255, 255, 255); 
+  text-decoration: none; 
+}
+
+.lista2 a:hover {
+  text-decoration: underline; 
+}
+
+/* Ajustes para el copyright */
+.copyright {
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  width: 100%;
+  border-top: 1px solid #ccc;
+  text-align: center;
+  padding: 20px 0;
+  color: rgb(255, 255, 255);
+}
+
+/* Ajusta el tamaño de la línea de arriba del copyright aquí */
+.derechos {
+  display: block; 
+  margin-top: 10px;
+  font-size: 26px;
+}
+
+
+
+/*-----------------------------------------------------------*/
+
+/*                         RESPONSIVE                        */
+
+/*-----------------------------------------------------------*/
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .client-info-row {
+        flex-direction: column;
+    }
+    .info-block {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+}
+
+
+/*-----------------------------------------------------------*/
+
+/*           RESPONSIVE SIDEBAR Y CONTENT CONTAINER          */
+
+/*-----------------------------------------------------------*/
+
+/* ESTILOS PARA PANTALLAS PEQUEÑAS */
+@media (max-width: 1024px) {
+    .sidebar {
+        width: 70px;
+        padding: 10px;
+    }
+
+    .content-container {
+        width: calc(100% - 70px);
+        margin-left: 70px;
+        margin-top: 120px;
+    }
+
+    .info-button {
+        margin-top: 40px;
+    }
+}
+
+@media (max-width: 1018px) {
+  .actions.header-content {
+      display: none; /* Ocultar el botón de cerrar sesión */
+  }
+}
+
+@media (min-width: 1019px) {
+  #hamburger-menu {
+      display: none; /* Ocultar el menú hamburguesa */
+  }
+
+  .menu {
+      display: none; /* Asegúrate de que el menú esté oculto */
+  }
+}
+
+@media (max-width: 1018px) {
+  #logout-button {
+      display: none;
+  }
+}
+
+
+@media (max-width: 768px) {
+    .sidebar {
+        width: 50px;
+        padding: 5px;
+    }
+
+    .content-container {
+        width: calc(100% - 50px);
+        margin-left: 50px;
+        margin-top: 150px;
+    }
+
+    .sidebar .profile img {
+        max-width: 40px;
+    }
+
+    .sidebar .btn {
+        padding: 5px;
+        font-size: 12px;
+    }
+    
+}
+
+
+/* QUITAR IMAGEN CUANDO SE LLEGUEN A LOS 800PX */
+@media (max-width: 800px) {
+.image-container {
+    display: none; 
+}
+}
+
+
+
+@media (max-width: 480px) {
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+        padding: 10px;
+    }
+
+    .content-container {
+        width: 100%;
+        margin-left: 0;
+        margin-top: 50px;
+    }
+}
+
+
+
+/* OCULTAR SIDEBAR EN MÓVILES */
+@media (max-width: 1018px) {
+    .sidebar {
+        display: none;
+    }
+
+    .content-container {
+        width: 100%;
+        margin-left: 0;
+        margin-top: 70px;
+    }
+}
+
+@media (max-width: 1018px) {
+    .header-content {
+        display: none;
+    }
+    .hamburger-menu {
+        display: block;
+    }
+    header {
+        padding: 10px;
+    }
+}
+
+/* HACER QUE EL SIDEBAR SEA DESPLEGABLE EN MÓVILES */
+.sidebar.show {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 250px;
+    height: 100%;
+    background-color: #f7f7fa;
+    z-index: 9999;
+    transition: all 0.3s ease-in-out;
+}
+
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 10000;
+}
+
+/* MOSTRAR OVERLAY CUANDO ABRE MENU */
+.sidebar.show + .overlay {
+    display: block;
+}
+
+
+
+  /*-----------------------------------------------------------*/
+  @media (max-width: 1200px) {
+    /*body {
+      background-color: red;
+    }*/
+  
+    .titulos {
+      font-size: 19px;
+    }
+  
+    .contendor1 {
+      margin-right: 2%;
+    }
+  
+    .texto_footer {
+      font-size: 13px;
+      line-height: 20px;
+    }
+  
+    .derechos {
+      font-size: 13px;
+    }
+  
+    #copyright {
+      width: 28px;
+      height: 28px;
+    }
+  
+    li.contenido a {
+      font-size: 13px;
+    }
+  }
+  
+  /*-----------------------------------------------------------*/
+  @media (max-width: 905px) {
+    /*body {
+      background-color: darkblue;
+    }*/
+  
+    .titulos {
+      font-size: 13px;
+    }
+  
+    .texto_footer {
+      font-size: 11px;
+      line-height: 20px;
+    }
+  
+    .derechos {
+      color: rgb(255, 255, 255);
+      font-size: 13px;
+    }
+  
+    #copyright {
+      width: 28px;
+      height: 28px;
+    }
+  
+    li.contenido a {
+      font-size: 11px;
+    }
+  }
+  
+  /*-----------------------------------------------------------*/
+  @media (max-width: 800px) {
+    /*body {
+      background-color: yellow;
+    }*/
+  
+    footer {
+      padding: 44px 50px 44px 50px;
+    }
+  
+    .titulos {
+      font-size: 18px;
+    }
+  
+    .contenido {
+      max-width: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+  
+    .contendor1 {
+      max-width: calc(100% / 1);
+      width: calc(100% / 1);
+      margin-right: 0%;
+      margin-bottom: 30px;
+    }
+  
+    .contendor2 {
+      max-width: calc(100% / 1);
+      width: calc(100% / 1);
+      margin-bottom: 30px;
+    }
+  
+    .contendor3 {
+      max-width: calc(100% / 1);
+      width: calc(100% / 1);
+      margin-bottom: 30px;
+    }
+  
+    .contendor4 {
+      max-width: calc(100% / 1);
+      width: calc(100% / 1);
+    }
+  
+    .texto_footer {
+      font-size: 13px;
+      line-height: 20px;
+    }
+  
+    .derechos {
+      font-size: 13px;
+    }
+  
+    #copyright {
+      width: 28px;
+      height: 28px;
+    }
+  
+    li.contenido a {
+      font-size: 13px;
+      justify-content: start;
+      align-items: start;
+      display: flex;
+    }
+  }
+  
+  /*-----------------------------------------------------------*/
+  @media (max-width: 480px) {
+    /*body {
+      background-color: green;
+    }*/
+  
+    footer {
+      padding: 44px 50px 44px 50px;
+    }
+  
+    .titulos {
+      font-size: 25px;
+    }
+  
+    li.contenido a {
+      font-size: 14px;
+      justify-content: start;
+      align-items: start;
+      display: flex;
+    }
+  
+    .texto_footer {
+      font-size: 14px;
+    }
+  }
+  

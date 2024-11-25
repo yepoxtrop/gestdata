@@ -82,7 +82,7 @@ def iniciar_sesion():
                         flash('Cuenta inactiva')
                         return redirect(url_for('Login.login'))
                     
-                    return redirect(url_for('Recuperar_password.recuperar_password'))
+                    return redirect(url_for('Emp_empresa_fumigadora.Emp_empre_ui'))
                 else:
                     flash('Contraseña incorrecta.')
                     return redirect(url_for('Login.login'))
@@ -152,7 +152,7 @@ def iniciar_sesion():
                         flash('Cuenta inactiva')
                         return redirect(url_for('Login.login'))
                     
-                    return redirect(url_for('Recuperar_password.recuperar_password'))
+                    return redirect(url_for('Sede_cliente.sede_cliente_ui'))
                 else:
                     flash('Contraseña incorrecta.')
                     return redirect(url_for('Login.login'))

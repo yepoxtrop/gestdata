@@ -35,7 +35,7 @@ def ui_empresa_fumigadora_index():
     return render_template('empresa_fumigadora/ui_empresa_fumigadora.html', **context)
 
 #Servicios completos
-@Empresa_fumigadora.route("/Servicios")
+@Empresa_fumigadora.route('/Servicios')
 def servicios_atendidos():
     context = {
         'id_cliente' : session.get('datos_cliente', {}).get('id_cliente', 'logo_inexistente'),
@@ -101,7 +101,7 @@ def servicios_atendidos():
         return  render_template('empresa_fumigadora/servicios/mensaje_no_encontrado/servicios_completos.html', **context)
 
     print(session['servicios_atenddos']); 
-    return render_template("empresa_fumigadora/Servicios.html", **context)
+    return render_template('empresa_fumigadora/Servicios.html', **context)
 
 #Certificado
 @Empresa_fumigadora.route('/Capturar_indice/<int:index>')
@@ -157,7 +157,7 @@ def desacragr_certificado(nombre_cliente, sede_cliente, encargado_sede, encargad
     return redirect(url_for('Documentos.descargar_certificado', nombre_cliente=context2['nombre_cliente'], sede_cliente=context2['sede_cliente'], encargado_sede=context2['encargado_sede'], encargado_empresa_fumigador=context2['encargado_empresa_fumigador'], fecha_final=context2['fecha_final'], empresa_fumigadora=context2['empresa_fumigadora']))
 
 #Reporte
-@Empresa_fumigadora.route("/reporte/<int:indice>")
+@Empresa_fumigadora.route('/reporte/<int:indice>')
 def reporte(indice):
     context = {
         'id_cliente' : session.get('datos_cliente', {}).get('id_cliente', 'logo_inexistente'),
@@ -195,7 +195,7 @@ def reporte(indice):
 
     
     if cantidad_detalle<1:
-        return render_template("empresa_fumigadora/No_reporte.html", **context); 
+        return render_template('empresa_fumigadora/No_reporte.html', **context); 
     
     session['detalles_servicios_1'] = []
     session['detalles_servicios_2'] = []
@@ -255,10 +255,10 @@ def reporte(indice):
         'longitud3' : longitud3
     }
     
-    return render_template("empresa_fumigadora/Reporte.html", **context2, **context3)
+    return render_template('empresa_fumigadora/Reporte.html', **context2, **context3)
 
 #Editar servicios completos
-@Empresa_fumigadora.route("/actualizar_servicio/<int:index_servicio>")
+@Empresa_fumigadora.route('/actualizar_servicio/<int:index_servicio>')
 def actualizar_servicio(index_servicio):
     context = {
         'id_cliente' : session.get('datos_cliente', {}).get('id_cliente', 'logo_inexistente'),
@@ -311,9 +311,9 @@ def actualizar_servicio(index_servicio):
     }
     
     print(fecha_solicitud)
-    return render_template("empresa_fumigadora/servicios/actualizar_servicios_final.html", **context, **context2)
+    return render_template('empresa_fumigadora/servicios/actualizar_servicios_final.html', **context, **context2)
 
-@Empresa_fumigadora.route("/editar_servicio", methods=['POST'])
+@Empresa_fumigadora.route('/editar_servicio', methods=['POST'])
 def editar_servicio():
     context = {
         'id_cliente' : session.get('datos_cliente', {}).get('id_cliente', 'logo_inexistente'),
@@ -350,10 +350,10 @@ def editar_servicio():
     cur.execute("update servicio set fechaSolicitudServicio=%s, fechaInicioServicio = %s, fechaFinalServicio = %s,  estadoServicio = %s , idEmpleadoFk = %s where idServicio = %s", (fecha_solicitud,fecha_inicio,fecha_final,estado, id_empleado, id_servicio,)); 
     cur.connection.commit(); 
     
-    return render_template("empresa_fumigadora/servicios/mensajes/servicios_completado_actualizado.html", **context)
+    return render_template('empresa_fumigadora/servicios/mensajes/servicios_completado_actualizado.html', **context)
 
 #Servicios incompletos
-@Empresa_fumigadora.route("/servicios_incompletos")
+@Empresa_fumigadora.route('/servicios_incompletos')
 def servicios_icompletos():
     context = {
         'id_cliente' : session.get('datos_cliente', {}).get('id_cliente', 'logo_inexistente'),
@@ -417,10 +417,10 @@ def servicios_icompletos():
         return  render_template('empresa_fumigadora/servicios/mensaje_no_encontrado/servicios_incompletos.html', **context)
 
     print(session['servicios_atenddos']); 
-    return render_template("empresa_fumigadora/servicios/servicios_incompletos.html", **context)
+    return render_template('empresa_fumigadora/servicios/servicios_incompletos.html', **context)
 
 #Editar servicios incompletos
-@Empresa_fumigadora.route("/actualizar_servicio_incompleto/<int:index_servicio_incompleto>")
+@Empresa_fumigadora.route('/actualizar_servicio_incompleto/<int:index_servicio_incompleto>')
 def actualizar_servicio_incompleto(index_servicio_incompleto):
     context = {
         'id_cliente' : session.get('datos_cliente', {}).get('id_cliente', 'logo_inexistente'),
@@ -473,9 +473,9 @@ def actualizar_servicio_incompleto(index_servicio_incompleto):
     }
     
     print(fecha_solicitud)
-    return render_template("empresa_fumigadora/servicios/actualizar_servicios_incompletos.html", **context, **context2)
+    return render_template('empresa_fumigadora/servicios/actualizar_servicios_incompletos.html', **context, **context2)
 
-@Empresa_fumigadora.route("/editar_servicio_incompleto", methods=['POST'])
+@Empresa_fumigadora.route('/editar_servicio_incompleto', methods=['POST'])
 def editar_servicio_incompleto():
     context = {
         'id_cliente' : session.get('datos_cliente', {}).get('id_cliente', 'logo_inexistente'),
@@ -512,10 +512,10 @@ def editar_servicio_incompleto():
     cur.execute("update servicio set fechaSolicitudServicio=%s, fechaInicioServicio = %s, fechaFinalServicio = %s,  estadoServicio = %s , idEmpleadoFk = %s where idServicio = %s", (fecha_solicitud,fecha_inicio,fecha_final,estado, id_empleado, id_servicio,)); 
     cur.connection.commit(); 
     
-    return render_template("empresa_fumigadora/servicios/mensajes/servicios_completado_actualizado.html", **context)
+    return render_template('empresa_fumigadora/servicios/mensajes/servicios_completado_actualizado.html', **context)
 
 #Servicios disponibles
-@Empresa_fumigadora.route("/servicios_disponibles")
+@Empresa_fumigadora.route('/servicios_disponibles')
 def servicios_disponibles():
     context = {
         'id_cliente' : session.get('datos_cliente', {}).get('id_cliente', 'logo_inexistente'),
@@ -567,9 +567,9 @@ def servicios_disponibles():
         return  render_template('empresa_fumigadora/servicios/mensaje_no_encontrado/servicios_disponibles.html', **context)
 
     # print(session['servicios_atenddos']); 
-    return render_template("empresa_fumigadora/servicios/servicios_disponibles.html", **context)
+    return render_template('empresa_fumigadora/servicios/servicios_disponibles.html', **context)
 
-@Empresa_fumigadora.route("/aceptar_servicio/<int:id_servicio_disponible>")
+@Empresa_fumigadora.route('/aceptar_servicio/<int:id_servicio_disponible>')
 def aceptar_servicio(id_servicio_disponible):
     context = {
         'id_cliente' : session.get('datos_cliente', {}).get('id_cliente', 'logo_inexistente'),
@@ -619,9 +619,9 @@ def aceptar_servicio(id_servicio_disponible):
         'fecha_solicitud' : fecha_solicitud
     }
     
-    return render_template("empresa_fumigadora/servicios/aceptar_servicios.html", **context, **context2)
+    return render_template('empresa_fumigadora/servicios/aceptar_servicios.html', **context, **context2)
 
-@Empresa_fumigadora.route("/actualizar_servicio_nuevo", methods=['POST'])
+@Empresa_fumigadora.route('/actualizar_servicio_nuevo', methods=['POST'])
 def actualizar_servicio_nuevo():
     context = {
         'id_cliente' : session.get('datos_cliente', {}).get('id_cliente', 'logo_inexistente'),
@@ -660,7 +660,7 @@ def actualizar_servicio_nuevo():
     cur.connection.commit()
     
     
-    return render_template("empresa_fumigadora/servicios/mensajes/servicios_completado_actualizado.html", **context)
+    return render_template('empresa_fumigadora/servicios/mensajes/servicios_completado_actualizado.html', **context)
 
 #Encargado
 @Empresa_fumigadora.route('/Encargado')
@@ -749,7 +749,7 @@ def consulta_detalles_servicios():
                 'id_detalle': consulta[10]
             })     
     else:
-        return render_template("empresa_fumigadora/detalles_servicios/contenido_no_encontrado/detallles_servicios.html", **context)    
+        return render_template('empresa_fumigadora/detalles_servicios/contenido_no_encontrado/detallles_servicios.html', **context)    
     return redirect(url_for('Empresa_fumigadora.detalles_servicios' ))
 
 @Empresa_fumigadora.route('/Detalles_servicios')
@@ -773,7 +773,7 @@ def detalles_servicios():
     return render_template('empresa_fumigadora/Detalles_servicios.html', **context, )
 
 #Eliminar detalle de servicio
-@Empresa_fumigadora.route("/Eliminar_detalle/<int:index_detalle>")
+@Empresa_fumigadora.route('/Eliminar_detalle/<int:index_detalle>')
 def elimar_detalle(index_detalle):
     context = {
         'id_cliente' : session.get('datos_cliente', {}).get('id_cliente', 'id_inexistente'),
@@ -804,10 +804,10 @@ def elimar_detalle(index_detalle):
     cur.connection.commit(); 
     
         
-    return render_template("/empresa_fumigadora/detalles_servicios/mensajes/detalle_eliminado.html", **context)
+    return render_template('empresa_fumigadora/detalles_servicios/mensajes/detalle_eliminado.html', **context)
 
 #Editar detalle de servicio
-@Empresa_fumigadora.route("/Editar_detalle/<int:inex_detalle>")
+@Empresa_fumigadora.route('/Editar_detalle/<int:inex_detalle>')
 def editar_detalle(inex_detalle):
     
     context = {
@@ -892,9 +892,9 @@ def editar_detalle(inex_detalle):
     
     
     
-    return render_template("empresa_fumigadora/detalles_servicios/editar_detalle.html", **context, **context2)
+    return render_template('empresa_fumigadora/detalles_servicios/editar_detalle.html', **context, **context2)
 
-@Empresa_fumigadora.route("/Actualizar_detalle", methods=['POST'])
+@Empresa_fumigadora.route('/Actualizar_detalle', methods=['POST'])
 def actualizar_detalle():
     context = {
         'id_cliente' : session.get('datos_cliente', {}).get('id_cliente', 'id_inexistente'),
@@ -934,7 +934,7 @@ def actualizar_detalle():
     cur.connection.commit(); 
     
     
-    return render_template("empresa_fumigadora/detalles_servicios/mensajes/detalle_editado.html", **context)
+    return render_template('empresa_fumigadora/detalles_servicios/mensajes/detalle_editado.html', **context)
 
 #Empleados
 @Empresa_fumigadora.route('/Consultar_empleados')
@@ -990,10 +990,10 @@ def consultar_empleados():
             })
             print(consulta_empleado[5])        
     else:
-        return render_template("/empresa_fumigadora/empleado/contenido_no_encontrado/empleados_activos.html", **context)
+        return render_template('empresa_fumigadora/empleado/contenido_no_encontrado/empleados_activos.html', **context)
     
     
-    return redirect(url_for("Empresa_fumigadora.emplados"))
+    return redirect(url_for('Empresa_fumigadora.emplados'))
 
 @Empresa_fumigadora.route('/Empleados')
 def emplados():
@@ -1013,7 +1013,7 @@ def emplados():
         'encargado_telefono' : session.get('datos_cliente', {}).get('encargado_telefono', 'telefono_inexistente'),
         'file_path_encargado' : session.get('datos_cliente', {}).get('file_path_encargado', 'path_inexistente')
     }
-    return render_template("empresa_fumigadora/Empleados.html", **context)
+    return render_template('empresa_fumigadora/Empleados.html', **context)
 
 #actualizar empleado
 @Empresa_fumigadora.route('/Editar_empleados/<int:index_empleado_modificar>')
@@ -1047,7 +1047,7 @@ def editar_empleado(index_empleado_modificar):
     # Almacenar en la sesión
     session['datos_actualizar'] = datos_actualizar
     
-    return redirect(url_for("Empresa_fumigadora.form_actualizar", ))
+    return redirect(url_for('Empresa_fumigadora.form_actualizar', ))
 
 @Empresa_fumigadora.route('/Actualizar_empleado')
 def form_actualizar():
@@ -1077,7 +1077,7 @@ def form_actualizar():
         'encargado_telefono' : session.get('datos_cliente', {}).get('encargado_telefono', 'telefono_inexistente'),
         'file_path_encargado' : session.get('datos_cliente', {}).get('file_path_encargado', 'path_inexistente')
     }
-    return render_template("empresa_fumigadora/empleado/actualizar_empleado.html", **context, **context_2)
+    return render_template('empresa_fumigadora/empleado/actualizar_empleado.html', **context, **context_2)
 
 @Empresa_fumigadora.route('/Modificar_empleado', methods=['POST'])
 def actualizar_empleado():
@@ -1123,7 +1123,7 @@ def actualizar_empleado():
     
     if similitud1>0 or similitud2>0:
         flash("Correos existentes en la base de datos");
-        return redirect(url_for("Empresa_fumigadora.form_actualizar")); 
+        return redirect(url_for('Empresa_fumigadora.form_actualizar')); 
     else:
         cur.execute("""update empleado set nombresEmpleado = %s,
                  apellidosEmpleado = %s,
@@ -1133,7 +1133,7 @@ def actualizar_empleado():
         mysql.connection.commit()
         
     
-        return render_template("empresa_fumigadora/empleado/mensajes/editar_empleados.html", **context)
+        return render_template('empresa_fumigadora/empleado/mensajes/editar_empleados.html', **context)
 
 #Inhabilitar empleado
 @Empresa_fumigadora.route('/Eliminar_empleado/<int:index_empleado>')
@@ -1166,10 +1166,10 @@ def eliminar_empleado(index_empleado):
         'encargado_telefono' : session.get('datos_cliente', {}).get('encargado_telefono', 'telefono_inexistente'),
         'file_path_encargado' : session.get('datos_cliente', {}).get('file_path_encargado', 'path_inexistente')
     }
-    return render_template("empresa_fumigadora/empleado/mensajes/inhabilitar_empleado.html", **context)
+    return render_template('empresa_fumigadora/empleado/mensajes/inhabilitar_empleado.html', **context)
 
 #Empleados inhabilitados
-@Empresa_fumigadora.route("/Empleados_inhabilitados")
+@Empresa_fumigadora.route('/Empleados_inhabilitados')
 def consultar_empleados_inhabilitados():
     from app import mysql
     cur = mysql.connection.cursor()
@@ -1222,11 +1222,11 @@ def consultar_empleados_inhabilitados():
             })
             
     else:
-        return render_template("/empresa_fumigadora/empleado/contenido_no_encontrado/empleados_inactivos.html", **context); 
+        return render_template('empresa_fumigadora/empleado/contenido_no_encontrado/empleados_inactivos.html', **context); 
   
-    return redirect(url_for("Empresa_fumigadora.emplados_inhabilitados"))
+    return redirect(url_for('Empresa_fumigadora.emplados_inhabilitados'))
 
-@Empresa_fumigadora.route("/Empleados_no_habilitados")
+@Empresa_fumigadora.route('/Empleados_no_habilitados')
 def emplados_inhabilitados():
     context = {
         'id_cliente' : session.get('datos_cliente', {}).get('id_cliente', 'id_inexistente'),
@@ -1244,10 +1244,10 @@ def emplados_inhabilitados():
         'encargado_telefono' : session.get('datos_cliente', {}).get('encargado_telefono', 'telefono_inexistente'),
         'file_path_encargado' : session.get('datos_cliente', {}).get('file_path_encargado', 'path_inexistente')
     }
-    return render_template("empresa_fumigadora/empleado/Empleados_inhabilitados.html", **context); 
+    return render_template('empresa_fumigadora/empleado/Empleados_inhabilitados.html', **context); 
 
 #Habilitar empleados
-@Empresa_fumigadora.route("/Habilitar_epleado/<int:index_empleado_inhabilitado>")
+@Empresa_fumigadora.route('/Habilitar_epleado/<int:index_empleado_inhabilitado>')
 def habilitar_empleado(index_empleado_inhabilitado):
     from app import mysql;
     cur = mysql.connection.cursor(); 
@@ -1272,10 +1272,10 @@ def habilitar_empleado(index_empleado_inhabilitado):
         'encargado_telefono' : session.get('datos_cliente', {}).get('encargado_telefono', 'telefono_inexistente'),
         'file_path_encargado' : session.get('datos_cliente', {}).get('file_path_encargado', 'path_inexistente')
     }
-    return render_template("empresa_fumigadora/empleado/mensajes/habilitar_empleado.html", **context)
+    return render_template('empresa_fumigadora/empleado/mensajes/habilitar_empleado.html', **context)
 
 #Agregar_empleados
-@Empresa_fumigadora.route("/Agregar_empleado")
+@Empresa_fumigadora.route('/Agregar_empleado')
 def Agregar_empleado():
     context = {
         'id_cliente' : session.get('datos_cliente', {}).get('id_cliente', 'logo_inexistente'),
@@ -1293,9 +1293,9 @@ def Agregar_empleado():
         'encargado_telefono' : session.get('datos_cliente', {}).get('encargado_telefono', 'logo_inexistente'),
         'file_path_encargado' : session.get('datos_cliente', {}).get('file_path_encargado', 'logo_inexistente')
     }
-    return render_template("empresa_fumigadora/empleado/Agregar_empleados.html", **context)
+    return render_template('empresa_fumigadora/empleado/Agregar_empleados.html', **context)
 
-@Empresa_fumigadora.route("/Insertar_empleado", methods=['POST'])
+@Empresa_fumigadora.route('/Insertar_empleado', methods=['POST'])
 def Insertar_empleado():
     context = {
         'id_cliente' : session.get('datos_cliente', {}).get('id_cliente', 'logo_inexistente'),
@@ -1349,12 +1349,12 @@ def Insertar_empleado():
                        correoPersonalEmpleado, 
                        contrasenaEmpleado, 
                        idEmpresaFumigadoraFk) value (%s, %s, %s, %s, %s, %s, %s)""",
-                       (nombre, apellido, telefono, correo_personal, correo_empresarial, contraseña_cifrada, context['id_cliente']))
+                       (nombre, apellido, telefono, correo_empresarial, correo_personal, contraseña_cifrada, context['id_cliente']))
         mysql.connection.commit()
-    return render_template("empresa_fumigadora/empleado/mensajes/agregar_empleado.html", **context)
+    return render_template('empresa_fumigadora/empleado/mensajes/agregar_empleado.html', **context)
 
 #Licencias 
-@Empresa_fumigadora.route("/Licencias")
+@Empresa_fumigadora.route('/Licencias')
 def licencias():
     context = {
         'id_cliente' : session.get('datos_cliente', {}).get('id_cliente', 'logo_inexistente'),
@@ -1416,14 +1416,14 @@ def licencias():
        
         if actual >= context2['duracion_renta']:
            print("Licencia caduco")
-           return render_template("empresa_fumigadora/licencias/licencia_no.html", **context)
+           return render_template('empresa_fumigadora/licencias/licencia_no.html', **context)
 
         
-        return render_template("empresa_fumigadora/Licencias.html", **context, **context2)   
+        return render_template('empresa_fumigadora/Licencias.html', **context, **context2)   
     else:
-        return render_template("empresa_fumigadora/licencias/licencia_no.html", **context)
+        return render_template('empresa_fumigadora/licencias/licencia_no.html', **context)
 
-@Empresa_fumigadora.route("/adquirir_licencia")
+@Empresa_fumigadora.route('/adquirir_licencia')
 def adquirir_licencia():
     context = {
         'id_cliente' : session.get('datos_cliente', {}).get('id_cliente', 'logo_inexistente'),
@@ -1460,9 +1460,9 @@ def adquirir_licencia():
             'duracion_licencia' : licencia[3]
         })
     
-    return render_template("empresa_fumigadora/licencias/catalogo_licencias.html", **context); 
+    return render_template('empresa_fumigadora/licencias/catalogo_licencias.html', **context); 
 
-@Empresa_fumigadora.route("/comprar_licencia/<int:indice_licencia>")
+@Empresa_fumigadora.route('/comprar_licencia/<int:indice_licencia>')
 def comprar_licencia(indice_licencia):
     context = {
         'id_cliente' : session.get('datos_cliente', {}).get('id_cliente', 'logo_inexistente'),
@@ -1490,9 +1490,9 @@ def comprar_licencia(indice_licencia):
     }
     print(id_licencia)
     
-    return render_template("empresa_fumigadora/licencias/comprar_licencia.html", **context, **context2); 
+    return render_template('empresa_fumigadora/licencias/comprar_licencia.html', **context, **context2); 
 
-@Empresa_fumigadora.route("/guardar_pago", methods=['POST'])
+@Empresa_fumigadora.route('/guardar_pago', methods=['POST'])
 def guardar_pago():
     context = {
         'id_cliente' : session.get('datos_cliente', {}).get('id_cliente', 'logo_inexistente'),
@@ -1591,7 +1591,7 @@ def guardar_pago():
     
     return jsonify({"status": "success", "message": "Pago procesado correctamente"}), 200
 
-@Empresa_fumigadora.route("/licencia_comprada")
+@Empresa_fumigadora.route('/licencia_comprada')
 def licencia_comprada():
     context = {
         'id_cliente' : session.get('datos_cliente', {}).get('id_cliente', 'logo_inexistente'),
@@ -1609,10 +1609,10 @@ def licencia_comprada():
         'encargado_telefono' : session.get('datos_cliente', {}).get('encargado_telefono', 'logo_inexistente'),
         'file_path_encargado' : session.get('datos_cliente', {}).get('file_path_encargado', 'logo_inexistente')
     }
-    return render_template("empresa_fumigadora/licencias/licencia_comprada.html", **context); 
+    return render_template('empresa_fumigadora/licencias/licencia_comprada.html', **context); 
 
 #Eliminar cuenta
-@Empresa_fumigadora.route("/elimimitar_cuenta")
+@Empresa_fumigadora.route('/elimimitar_cuenta')
 def eliminar_cuenta (): 
     context = {
         'id_cliente' : session.get('datos_cliente', {}).get('id_cliente', 'logo_inexistente'),
@@ -1631,10 +1631,10 @@ def eliminar_cuenta ():
         'file_path_encargado' : session.get('datos_cliente', {}).get('file_path_encargado', 'logo_inexistente')
     }
     
-    return render_template("empresa_fumigadora/perfil/eliminar.html", **context)
+    return render_template('empresa_fumigadora/perfil/eliminar.html', **context)
 
 
-@Empresa_fumigadora.route("/hacer_eliminar_cuenta")
+@Empresa_fumigadora.route('/hacer_eliminar_cuenta')
 def hacer_eliminar_cuenta (): 
     context = {
         'id_cliente' : session.get('datos_cliente', {}).get('id_cliente', 'logo_inexistente'),
@@ -1659,10 +1659,10 @@ def hacer_eliminar_cuenta ():
     cur.execute("update empresafumigadora set estadoEmpresa = false where idEmpresaFumigadora = %s", (context['id_cliente'],))
     cur.connection.commit(); 
     
-    return redirect(url_for("Login.cerrar_sesion")); 
+    return redirect(url_for('Login.cerrar_sesion')); 
 
 #editar_cuenta
-@Empresa_fumigadora.route("/editar_cuenta")
+@Empresa_fumigadora.route('/editar_cuenta')
 def editar_cuenta (): 
     context = {
         'id_cliente' : session.get('datos_cliente', {}).get('id_cliente', 'logo_inexistente'),
@@ -1681,10 +1681,10 @@ def editar_cuenta ():
         'file_path_encargado' : session.get('datos_cliente', {}).get('file_path_encargado', 'logo_inexistente')
     }
     
-    return render_template("empresa_fumigadora/perfil/editar.html", **context)
+    return render_template('empresa_fumigadora/perfil/editar.html', **context)
 
 #actualizar cuenta
-@Empresa_fumigadora.route("/actualizar_cuenta", methods=['POST'])
+@Empresa_fumigadora.route('/actualizar_cuenta', methods=['POST'])
 def actualizar_cuenta (): 
     context = {
         'id_cliente' : session.get('datos_cliente', {}).get('id_cliente', 'logo_inexistente'),
@@ -1714,4 +1714,4 @@ def actualizar_cuenta ():
     cur.execute("update empresafumigadora set direccionEmpresaFumigadora  = %s, departamentoEmpresaFumigadora =%s, descripcionEmpresaFumigadora =%s where idEmpresaFumigadora = %s", (direccion, departamento, descripcion, context['id_cliente'],))
     cur.connection.commit(); 
     
-    return render_template("empresa_fumigadora/perfil/datos_actualizados.html", **context)
+    return render_template('empresa_fumigadora/perfil/datos_actualizados.html', **context)

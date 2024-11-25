@@ -1,15 +1,30 @@
+#archivos afuera de /app
 /entorno_vitual
 /testing
+datos_hosting.txt
 usuario_ejemplo_paypal.txt
+
+#archivos dentro de /app
 /app/__pycache__
+#1.cliente
 /app/Cliente/__pycache__
+#2.documentos
 /app/Documentos/__pycache__
+#3.Empleado
 /app/Emp_empresa_fumigadora/__pycache__
+#4.Empresa
 /app/Empresa_fumigadora/__pycache__
+#5.Index
 /app/Index/__pycache__
+#6.Login
 /app/Login/__pycache__
+#7.Cuenta
 /app/Recuperar_cuenta/__pycache__
+#8.Password
 /app/Recuperar_password/__pycache__
+#9.Register
 /app/Register/__pycache__
+#10.ejemplo
 /app/Register/ejemplo.py
+#sede2
 /app/Sede_cliente/__pycache__

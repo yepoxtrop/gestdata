@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/pdfs/reporte.css') }}"
+    />
+    <title>{% block titulo %}{{ nombreComercialCliente }} - Reporte{% endblock %}</title>
+  </head>
+  <body>
+    <div class="contendor_general">
+      <div class="titulo">
+        <div class="datos_empresa_fumigadora">
+          <div id="empresa_fumigadora">
+            <span>{{ nombreComercialCliente }}</span>
+          </div>
+          <div id="slogan">
+            <span>Comprometidos con el medio ambiente y sus clientes</span>
+          </div>
+          <div id="nit_empresa_fumigadora">
+            <span>NIT: {{ nitSedeCliente }} RÉGIMEN COMÚN</span>
+          </div>
+        </div>
+
+        <div class="datos_personales">
+          <div class="numeros">
+            <div class="num1"><span>{{ telefonoSedeCliente }}</span></div>
+            <div class="separados">-</div>
+            <div class="num2"><span>{{ telefonoSedeCliente }}</span></div>
+          </div>
+
+          <div class="direccion">
+            <div class="calle"><span>{{ direccionSedeCliente }}</span></div>
+            <div class="separados">-</div>
+            <div class="departamento"><span>{{ departamentoSedeCliente }}</span></div>
+          </div>
+
+          <div class="correos">
+            <div class="correo1"><span>{{ gmailSedeCliente }}</span></div>
+            <div class="correo2"><span>{{ gmailSedeCliente }}</span></div>
+          </div>
+        </div>
+
+        <div class="logo">
+          <img
+            src="{{ logoCliente }}"
+            alt="Logo de {{ nombreComercialCliente }}"
+            class="logo_gestdata"
+          />
+        </div>
+      </div>
+
+      <div class="cuerpo">
+        <div class="titulo_cuerpo">
+          <span class="txt_titulo_cuerpo">ANÁLISIS DE TRABAJO SEGURO</span>
+        </div>
+
+        <div class="subtitulo_cuerpo">
+          <span class="txt_subtitulo_cuerpo">MEDIDAS PREVENTIVAS</span>
+        </div>
+
+        <div class="subtitulo_cuerpo">
+          <span class="txt_subtitulo_cuerpo">OBSERVACIONES GENERALES</span>
+        </div>
+
+        <div class="nota">
+          <span style="color: rgb(0, 0, 0); text-align: left">
+            Nota:
+            <span>
+              La aplicación de insecticida por método nebulizador genera
+              condensación de aceite en piso y superficies, por lo cual se
+              recomienda realizar jornada de limpieza antes de iniciar labores,
+              para prevenir caídas al mismo nivel y derrapes de montacargas u
+              otros.
+            </span>
+          </span>
+        </div>
+
+        <div class="aprobacion">
+          <table>
+            <thead>
+              <tr>
+                <th colspan="3">APROBACIÓN A.T.S PARA INICIO DE LABORES</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>NOMBRE CLIENTE</td>
+                <td colspan="2">{{ nombreComercialCliente }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="titulo_cuerpo">
+          <span class="txt_titulo_cuerpo">REPORTE DE SERVICIO</span>
+        </div>
+
+        <div class="subtitulo_cuerpo">
+          <span class="txt_subtitulo_cuerpo">OBSERVACIONES EN MEJORAS DE LIMPIEZA</span>
+        </div>
+
+        <div class="subtitulo_cuerpo">
+          <span class="txt_subtitulo_cuerpo">OBSERVACIONES EN MEJORAS DE INFRAESTRUCTURA</span>
+        </div>
+
+        <div class="subtitulo_cuerpo">
+          <span class="txt_subtitulo_cuerpo">OBSERVACIONES DE MALAS PRACTICAS DEL PERSONAL</span>
+        </div>
+
+        <div class="subtitulo_cuerpo">
+          <span class="txt_subtitulo_cuerpo">OBSERVACIONES DE RIESGOS SST</span>
+        </div>
+
+        <div class="aprobacion">
+          <table>
+            <thead>
+              <tr>
+                <th>TÉCNICO/S ESPECIALISTA/S</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>{{ nombreEncargadoSedeCliente }} {{ telefonoEncargadoSedeCliente }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
