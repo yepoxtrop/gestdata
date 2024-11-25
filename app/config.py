@@ -12,7 +12,7 @@ class configracion_base():
     MYSQL_USER = 'root'
     MYSQL_PASSWORD = '20102006'
     MYSQL_DB = 'gestdata'
-    #folder de imagenes
+    #folder de imagenes local
     UPLOAD_FOLDERS = {
         'cliente_logo': os.path.join('app', 'static', 'src', 'gest_data_users', 'cliente'),
         'empresa_fumigadora_logo': os.path.join('app', 'static', 'src', 'gest_data_users', 'empresa_fumigadora', 'logo'),
@@ -20,6 +20,15 @@ class configracion_base():
         'sede_cliente_logo': os.path.join('app', 'static', 'src', 'gest_data_users', 'sede_cliente', 'logo'),
         'sede_cliente_administrador': os.path.join('app', 'static', 'src', 'gest_data_users', 'sede_cliente', 'administrador'),
     }
+
+    #folder de imagenes hosting
+    # UPLOAD_FOLDERS = {
+    #     'cliente_logo': os.path.join('/home/luisSarmiento/gestdata/app/static/src/gest_data_users/cliente'),
+    #     'empresa_fumigadora_logo': os.path.join('/home/luisSarmiento/gestdata/app/static/src/gest_data_users/empresa_fumigadora/logo'),
+    #     'empresa_fumigadora_administrador': os.path.join('/home/luisSarmiento/gestdata/app/static/src/gest_data_users/empresa_fumigadora/administrador'),
+    #     'sede_cliente_logo': os.path.join('/home/luisSarmiento/gestdata/app/static/src/gest_data_users/sede_cliente/logo'),
+    #     'sede_cliente_administrador': os.path.join('/home/luisSarmiento/gestdata/app/static/src/gest_data_users/sede_cliente/administrador'),
+    # }
     
     #D:\Desktop\PROYECTOS_FLASK\gest_data\app\static\src\gest_data_users\cliente
     

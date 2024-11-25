@@ -26,6 +26,11 @@ def logo_cliente(nombre_comercial,logo_usuario):
     
     logo_usuario.save(file_path)
     
+    #path para eliminar dentro del hosting
+    # file_path = file_path.split('static', 1)[-1]
+    # file_path = '/static' + file_path.replace('\\', '/')
+
+
     file_path = file_path.replace('app', '')
     file_path = file_path.replace('\\', '/')
     
@@ -53,6 +58,10 @@ def logo_empresa_fumigadora(nombre_comercial,logo_usuario):
     file_path = os.path.join(carpeta_path, file_name_final)
 
     logo_usuario.save(file_path)
+
+    #path para eliminar dentro del hosting
+    # file_path = file_path.split('static', 1)[-1]
+    # file_path = '/static' + file_path.replace('\\', '/')
     
     file_path = file_path.replace('app', '')
     file_path = file_path.replace('\\', '/')
@@ -82,6 +91,10 @@ def foto_encargado(nombre_encargado, foto):
     
     #guardar archivo
     foto.save(file_path)
+
+    #path para eliminar dentro del hosting
+    # file_path = file_path.split('static', 1)[-1]
+    # file_path = '/static' + file_path.replace('\\', '/')
     
     file_path = file_path.replace('app', '')
     file_path = file_path.replace('\\', '/')
