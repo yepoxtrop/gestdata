@@ -40,10 +40,10 @@ def sede_cliente_ui():
     # Consulta para obtener el nombre comercial, logo del cliente y foto del encargado de la sede
     cur = mysql.connection.cursor()
     cur.execute("""
-        SELECT cliente.nombreComercialCliente, cliente.logoCliente, sedescliente.fotoEncargadoSedeCliente
+        SELECT cliente.nombreComercialCliente, cliente.logoCliente, sedesCliente.fotoEncargadoSedeCliente
         FROM cliente
-        JOIN sedescliente ON cliente.idCliente = sedescliente.idClienteFk
-        WHERE sedescliente.idSedeCliente = %s;
+        JOIN sedesCliente ON cliente.idCliente = sedesCliente.idClienteFk
+        WHERE sedesCliente.idSedeCliente = %s;
     """, (idSedeCliente,))
     resultado = cur.fetchone()
     cur.close()
@@ -93,10 +93,10 @@ def Sede_cliente_gerente():
     # Consulta para obtener el nombre comercial, logo del cliente y foto del encargado de la sede
     cur = mysql.connection.cursor()
     cur.execute("""
-        SELECT cliente.nombreComercialCliente, cliente.logoCliente, sedescliente.fotoEncargadoSedeCliente
+        SELECT cliente.nombreComercialCliente, cliente.logoCliente, sedesCliente.fotoEncargadoSedeCliente
         FROM cliente
-        JOIN sedescliente ON cliente.idCliente = sedescliente.idClienteFk
-        WHERE sedescliente.idSedeCliente = %s;
+        JOIN sedesCliente ON cliente.idCliente = sedesCliente.idClienteFk
+        WHERE sedesCliente.idSedeCliente = %s;
     """, (idSedeCliente,))
     resultado = cur.fetchone()
     cur.close()
@@ -173,7 +173,7 @@ def Sede_cliente_edit():
             # Actualizar los datos en la base de datos
             cur = mysql.connection.cursor()
             cur.execute("""
-                UPDATE sedescliente 
+                UPDATE sedesCliente 
                 SET departamentoSedeCliente = %s, telefonoSedeCliente = %s, 
                     direccionSedeCliente = %s, nombreEncargadoSedeCliente = %s, 
                     nitSedeCliente = %s, nombreSedeCliente = %s, gmailSedeCliente = %s, 
@@ -222,10 +222,10 @@ def Sede_cliente_edit():
     # Consulta para obtener el nombre comercial, logo del cliente y foto del encargado de la sede
     cur = mysql.connection.cursor()
     cur.execute("""
-        SELECT cliente.nombreComercialCliente, cliente.logoCliente, sedescliente.fotoEncargadoSedeCliente
+        SELECT cliente.nombreComercialCliente, cliente.logoCliente, sedesCliente.fotoEncargadoSedeCliente
         FROM cliente
-        JOIN sedescliente ON cliente.idCliente = sedescliente.idClienteFk
-        WHERE sedescliente.idSedeCliente = %s;
+        JOIN sedesCliente ON cliente.idCliente = sedesCliente.idClienteFk
+        WHERE sedesCliente.idSedeCliente = %s;
     """, (idSedeCliente,))
     resultado = cur.fetchone()
     cur.close()
@@ -281,10 +281,10 @@ def Sede_cliente_actualizar():
     # Consulta para obtener el nombre comercial, logo del cliente y foto del encargado de la sede
     cur = mysql.connection.cursor()
     cur.execute("""
-        SELECT cliente.nombreComercialCliente, cliente.logoCliente, sedescliente.fotoEncargadoSedeCliente
+        SELECT cliente.nombreComercialCliente, cliente.logoCliente, sedesCliente.fotoEncargadoSedeCliente
         FROM cliente
-        JOIN sedescliente ON cliente.idCliente = sedescliente.idClienteFk
-        WHERE sedescliente.idSedeCliente = %s;
+        JOIN sedesCliente ON cliente.idCliente = sedesCliente.idClienteFk
+        WHERE sedesCliente.idSedeCliente = %s;
     """, (idSedeCliente,))
     resultado = cur.fetchone()
     cur.close()
@@ -339,7 +339,7 @@ def Sede_cliente_borrar():
         # Cambiar el estado de la sede cliente a inactiva (1)
         cur = mysql.connection.cursor()
         cur.execute("""
-            UPDATE sedescliente 
+            UPDATE sedesCliente 
             SET estadoSede = 1
             WHERE idSedeCliente = %s
         """, (idSedeCliente,))
@@ -351,14 +351,14 @@ def Sede_cliente_borrar():
         flash("Sede cliente activada exitosamente", "success")
         return redirect(url_for('Login.login'))
 
-    # Prueba de conexión con la tabla 'cliente' y 'sedescliente'
+    # Prueba de conexión con la tabla 'cliente' y 'sedesCliente'
     try:
         cur = mysql.connection.cursor()
         cur.execute("""
-            SELECT cliente.logoCliente, sedescliente.fotoEncargadoSedeCliente
+            SELECT cliente.logoCliente, sedesCliente.fotoEncargadoSedeCliente
             FROM cliente
-            JOIN sedescliente ON cliente.idCliente = sedescliente.idClienteFk
-            WHERE sedescliente.idSedeCliente = %s;
+            JOIN sedesCliente ON cliente.idCliente = sedesCliente.idClienteFk
+            WHERE sedesCliente.idSedeCliente = %s;
         """, (idSedeCliente,))
         resultado = cur.fetchone()
         cur.close()
@@ -430,10 +430,10 @@ def Sede_cliente_detall():
     # Consulta para obtener el nombre comercial, logo del cliente y foto del encargado de la sede
     cur = mysql.connection.cursor()
     cur.execute("""
-        SELECT cliente.nombreComercialCliente, cliente.logoCliente, sedescliente.fotoEncargadoSedeCliente
+        SELECT cliente.nombreComercialCliente, cliente.logoCliente, sedesCliente.fotoEncargadoSedeCliente
         FROM cliente
-        JOIN sedescliente ON cliente.idCliente = sedescliente.idClienteFk
-        WHERE sedescliente.idSedeCliente = %s;
+        JOIN sedesCliente ON cliente.idCliente = sedesCliente.idClienteFk
+        WHERE sedesCliente.idSedeCliente = %s;
     """, (idSedeCliente,))
     resultado = cur.fetchone()
     cur.close()
@@ -450,24 +450,24 @@ def Sede_cliente_detall():
     cur = mysql.connection.cursor()
     cur.execute("""
         SELECT
-            empresafumigadora.nombreEmpresaFumigadora AS empresa,
+            empresaFumigadora.nombreEmpresaFumigadora AS empresa,
             clases.nombreClases AS clase,
             caracteristicas.nombreCaracteristicas AS caracteristica,
-            detallesservicio.valorDetalle AS detalle
+            detallesServicio.valorDetalle AS detalle
         FROM
-            detallesservicio
+            detallesServicio
         JOIN
-            caracteristicas ON detallesservicio.idCaracteristicaFk = caracteristicas.idCaracteristicas
+            caracteristicas ON detallesServicio.idCaracteristicaFk = caracteristicas.idCaracteristicas
         JOIN
             clases ON caracteristicas.idClasesFk = clases.idClases
         JOIN
-            servicio ON detallesservicio.idServicioFk = servicio.idServicio
+            servicio ON detallesServicio.idServicioFk = servicio.idServicio
         JOIN
-            sedescliente ON servicio.idSedeClienteFk = sedescliente.idSedeCliente
+            sedesCliente ON servicio.idSedeClienteFk = sedesCliente.idSedeCliente
         JOIN
-            empresafumigadora ON sedescliente.idClienteFk = empresafumigadora.idEmpresaFumigadora
+            empresaFumigadora ON sedesCliente.idClienteFk = empresaFumigadora.idEmpresaFumigadora
         WHERE
-            sedescliente.idSedeCliente = %s;
+            sedesCliente.idSedeCliente = %s;
     """, (idSedeCliente,))
 
     d_servicios = cur.fetchall()
@@ -553,10 +553,10 @@ def Sede_cliente_servi():
     # Consulta para obtener el nombre comercial, logo del cliente y foto del encargado de la sede
     cur = mysql.connection.cursor()
     cur.execute("""
-        SELECT cliente.nombreComercialCliente, cliente.logoCliente, sedescliente.fotoEncargadoSedeCliente
+        SELECT cliente.nombreComercialCliente, cliente.logoCliente, sedesCliente.fotoEncargadoSedeCliente
         FROM cliente
-        JOIN sedescliente ON cliente.idCliente = sedescliente.idClienteFk
-        WHERE sedescliente.idSedeCliente = %s;
+        JOIN sedesCliente ON cliente.idCliente = sedesCliente.idClienteFk
+        WHERE sedesCliente.idSedeCliente = %s;
     """, (idSedeCliente,))
     resultado = cur.fetchone()
     cur.close()
@@ -583,7 +583,7 @@ def Sede_cliente_servi():
         JOIN 
             empleado e ON s.idEmpleadoFk = e.idEmpleado
         JOIN 
-            empresafumigadora ef ON e.idEmpresaFumigadoraFk = ef.idEmpresaFumigadora
+            empresaFumigadora ef ON e.idEmpresaFumigadoraFk = ef.idEmpresaFumigadora
         WHERE 
             s.idSedeClienteFk = %s and s.estadoServicio = "en espera";
     """, (idSedeCliente,))
@@ -674,10 +674,10 @@ def Sede_cliente_solicitud_servi():
     # Consulta para obtener el nombre comercial, logo del cliente y foto del encargado de la sede
     cur = mysql.connection.cursor()
     cur.execute("""
-        SELECT cliente.nombreComercialCliente, cliente.logoCliente, sedescliente.fotoEncargadoSedeCliente
+        SELECT cliente.nombreComercialCliente, cliente.logoCliente, sedesCliente.fotoEncargadoSedeCliente
         FROM cliente
-        JOIN sedescliente ON cliente.idCliente = sedescliente.idClienteFk
-        WHERE sedescliente.idSedeCliente = %s;
+        JOIN sedesCliente ON cliente.idCliente = sedesCliente.idClienteFk
+        WHERE sedesCliente.idSedeCliente = %s;
     """, (idSedeCliente,))
     resultado = cur.fetchone()
     cur.close()
@@ -711,7 +711,7 @@ def Sede_cliente_solicitud_servi():
     }
 
     cur = mysql.connection.cursor()
-    cur.execute("SELECT nombreEmpresaFumigadora FROM empresafumigadora where estadoEmpresa = 1")
+    cur.execute("SELECT nombreEmpresaFumigadora FROM empresaFumigadora where estadoEmpresa = 1")
     empresas = cur.fetchall()
 
     session['empresas'] = []
@@ -767,10 +767,10 @@ def Solicitar_servicio():
     # Consulta para obtener el nombre comercial, logo del cliente y foto del encargado de la sede
     cur = mysql.connection.cursor()
     cur.execute("""
-        SELECT cliente.nombreComercialCliente, cliente.logoCliente, sedescliente.fotoEncargadoSedeCliente
+        SELECT cliente.nombreComercialCliente, cliente.logoCliente, sedesCliente.fotoEncargadoSedeCliente
         FROM cliente
-        JOIN sedescliente ON cliente.idCliente = sedescliente.idClienteFk
-        WHERE sedescliente.idSedeCliente = %s;
+        JOIN sedesCliente ON cliente.idCliente = sedesCliente.idClienteFk
+        WHERE sedesCliente.idSedeCliente = %s;
     """, (idSedeCliente,))
     resultado = cur.fetchone()
     cur.close()
@@ -845,10 +845,10 @@ def Sede_cliente_servi_solicitado():
     # Consulta para obtener el nombre comercial, logo del cliente y foto del encargado de la sede
     cur = mysql.connection.cursor()
     cur.execute("""
-        SELECT cliente.nombreComercialCliente, cliente.logoCliente, sedescliente.fotoEncargadoSedeCliente
+        SELECT cliente.nombreComercialCliente, cliente.logoCliente, sedesCliente.fotoEncargadoSedeCliente
         FROM cliente
-        JOIN sedescliente ON cliente.idCliente = sedescliente.idClienteFk
-        WHERE sedescliente.idSedeCliente = %s;
+        JOIN sedesCliente ON cliente.idCliente = sedesCliente.idClienteFk
+        WHERE sedesCliente.idSedeCliente = %s;
     """, (idSedeCliente,))
     resultado = cur.fetchone()
     cur.close()
@@ -908,10 +908,10 @@ def Sede_cliente_no_det_servicio():
     # Consulta para obtener el nombre comercial, logo del cliente y foto del encargado de la sede
     cur = mysql.connection.cursor()
     cur.execute("""
-        SELECT cliente.nombreComercialCliente, cliente.logoCliente, sedescliente.fotoEncargadoSedeCliente
+        SELECT cliente.nombreComercialCliente, cliente.logoCliente, sedesCliente.fotoEncargadoSedeCliente
         FROM cliente
-        JOIN sedescliente ON cliente.idCliente = sedescliente.idClienteFk
-        WHERE sedescliente.idSedeCliente = %s;
+        JOIN sedesCliente ON cliente.idCliente = sedesCliente.idClienteFk
+        WHERE sedesCliente.idSedeCliente = %s;
     """, (idSedeCliente,))
     resultado = cur.fetchone()
     cur.close()
@@ -972,10 +972,10 @@ def Sede_cliente_no_servicio():
     # Consulta para obtener el nombre comercial, logo del cliente y foto del encargado de la sede
     cur = mysql.connection.cursor()
     cur.execute("""
-        SELECT cliente.nombreComercialCliente, cliente.logoCliente, sedescliente.fotoEncargadoSedeCliente
+        SELECT cliente.nombreComercialCliente, cliente.logoCliente, sedesCliente.fotoEncargadoSedeCliente
         FROM cliente
-        JOIN sedescliente ON cliente.idCliente = sedescliente.idClienteFk
-        WHERE sedescliente.idSedeCliente = %s;
+        JOIN sedesCliente ON cliente.idCliente = sedesCliente.idClienteFk
+        WHERE sedesCliente.idSedeCliente = %s;
     """, (idSedeCliente,))
     resultado = cur.fetchone()
     cur.close()
@@ -1048,10 +1048,10 @@ def reporte():
     # Consulta para obtener el nombre comercial, logo del cliente y foto del encargado de la sede
     cur = mysql.connection.cursor()
     cur.execute("""
-        SELECT cliente.nombreComercialCliente, cliente.logoCliente, sedescliente.fotoEncargadoSedeCliente
+        SELECT cliente.nombreComercialCliente, cliente.logoCliente, sedesCliente.fotoEncargadoSedeCliente
         FROM cliente
-        JOIN sedescliente ON cliente.idCliente = sedescliente.idClienteFk
-        WHERE sedescliente.idSedeCliente = %s;
+        JOIN sedesCliente ON cliente.idCliente = sedesCliente.idClienteFk
+        WHERE sedesCliente.idSedeCliente = %s;
     """, (idSedeCliente,))
     resultado = cur.fetchone()
     cur.close()
@@ -1105,10 +1105,10 @@ def certificados():
     # Consulta para obtener el nombre comercial, logo del cliente y foto del encargado de la sede
     cur = mysql.connection.cursor()
     cur.execute("""
-        SELECT cliente.nombreComercialCliente, cliente.logoCliente, sedescliente.fotoEncargadoSedeCliente
+        SELECT cliente.nombreComercialCliente, cliente.logoCliente, sedesCliente.fotoEncargadoSedeCliente
         FROM cliente
-        JOIN sedescliente ON cliente.idCliente = sedescliente.idClienteFk
-        WHERE sedescliente.idSedeCliente = %s;
+        JOIN sedesCliente ON cliente.idCliente = sedesCliente.idClienteFk
+        WHERE sedesCliente.idSedeCliente = %s;
     """, (idSedeCliente,))
     resultado = cur.fetchone()
     cur.close()
@@ -1173,10 +1173,10 @@ def reporte2():
     # Consulta para obtener el nombre comercial, logo del cliente y foto del encargado de la sede
     cur = mysql.connection.cursor()
     cur.execute("""
-        SELECT cliente.nombreComercialCliente, cliente.logoCliente, sedescliente.fotoEncargadoSedeCliente
+        SELECT cliente.nombreComercialCliente, cliente.logoCliente, sedesCliente.fotoEncargadoSedeCliente
         FROM cliente
-        JOIN sedescliente ON cliente.idCliente = sedescliente.idClienteFk
-        WHERE sedescliente.idSedeCliente = %s;
+        JOIN sedesCliente ON cliente.idCliente = sedesCliente.idClienteFk
+        WHERE sedesCliente.idSedeCliente = %s;
     """, (idSedeCliente,))
     resultado = cur.fetchone()
     cur.close()
@@ -1229,10 +1229,10 @@ def certificado2():
     # Consulta para obtener el nombre comercial, logo del cliente y foto del encargado de la sede
     cur = mysql.connection.cursor()
     cur.execute("""
-        SELECT cliente.nombreComercialCliente, cliente.logoCliente, sedescliente.fotoEncargadoSedeCliente
+        SELECT cliente.nombreComercialCliente, cliente.logoCliente, sedesCliente.fotoEncargadoSedeCliente
         FROM cliente
-        JOIN sedescliente ON cliente.idCliente = sedescliente.idClienteFk
-        WHERE sedescliente.idSedeCliente = %s;
+        JOIN sedesCliente ON cliente.idCliente = sedesCliente.idClienteFk
+        WHERE sedesCliente.idSedeCliente = %s;
     """, (idSedeCliente,))
     resultado = cur.fetchone()
     cur.close()

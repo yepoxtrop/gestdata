@@ -58,9 +58,9 @@ def servicios_atendidos():
     
     cur = mysql.connection.cursor(); 
     
-    cur.execute("""select empresafumigadora.nombreEmpresaFumigadora,
+    cur.execute("""select empresaFumigadora.nombreEmpresaFumigadora,
 	               cliente.nombreComercialCliente,
-	               sedescliente.nombreSedeCliente,
+	               sedesCliente.nombreSedeCliente,
                    servicio.descripcionServicio,
                    servicio.fechaSolicitudServicio,
                    servicio.fechaInicioServicio,
@@ -68,13 +68,13 @@ def servicios_atendidos():
                    servicio.estadoServicio,
                    empleado.nombresEmpleado,
                    servicio.idServicio,
-                   sedescliente.nombreEncargadoSedeCliente
+                   sedesCliente.nombreEncargadoSedeCliente
                    from servicio 
-                   inner join sedescliente on servicio.idSedeClienteFk = sedescliente.idSedeCliente
-                   inner join cliente on cliente.idCliente = sedescliente.idClienteFk
+                   inner join sedesCliente on servicio.idSedeClienteFk = sedesCliente.idSedeCliente
+                   inner join cliente on cliente.idCliente = sedesCliente.idClienteFk
                    inner join empleado on empleado.idEmpleado = servicio.idEmpleadoFk
-                   inner join empresafumigadora on empresafumigadora.idEmpresaFumigadora  = empleado.idEmpresaFumigadoraFk
-                   where servicio.estadoServicio = 'finalizado' and empresafumigadora.idEmpresaFumigadora=%s;
+                   inner join empresaFumigadora on empresaFumigadora.idEmpresaFumigadora  = empleado.idEmpresaFumigadoraFk
+                   where servicio.estadoServicio = 'finalizado' and empresaFumigadora.idEmpresaFumigadora=%s;
                    """, (context['id_cliente'],))
     servicios = cur.fetchall(); 
     print(servicios); 
@@ -189,7 +189,7 @@ def reporte(indice):
     
     cur = mysql.connection.cursor(); 
     
-    cur.execute(" select detallesservicio.valorDetalle, detallesservicio.idCaracteristicaFk, clases.nombreClases, caracteristicas.nombreCaracteristicas, caracteristicas.idclasesFk from detallesservicio inner join caracteristicas on caracteristicas.idCaracteristicas = detallesservicio.idCaracteristicaFk inner join clases on clases.idClases = caracteristicas.idClasesFk where idServicioFk = %s order by detallesservicio.idCaracteristicaFk ASC", (id_servicio,))    
+    cur.execute(" select detallesServicio.valorDetalle, detallesServicio.idCaracteristicaFk, clases.nombreClases, caracteristicas.nombreCaracteristicas, caracteristicas.idclasesFk from detallesServicio inner join caracteristicas on caracteristicas.idCaracteristicas = detallesServicio.idCaracteristicaFk inner join clases on clases.idClases = caracteristicas.idClasesFk where idServicioFk = %s order by detallesServicio.idCaracteristicaFk ASC", (id_servicio,))    
     detalles_servicios = cur.fetchall(); 
     cantidad_detalle = len(detalles_servicios); 
 
@@ -376,9 +376,9 @@ def servicios_icompletos():
     
     cur = mysql.connection.cursor(); 
     
-    cur.execute("""select empresafumigadora.nombreEmpresaFumigadora,
+    cur.execute("""select empresaFumigadora.nombreEmpresaFumigadora,
 	               cliente.nombreComercialCliente,
-	               sedescliente.nombreSedeCliente,
+	               sedesCliente.nombreSedeCliente,
                    servicio.descripcionServicio,
                    servicio.fechaSolicitudServicio,
                    servicio.fechaInicioServicio,
@@ -387,11 +387,11 @@ def servicios_icompletos():
                    empleado.nombresEmpleado,
                    servicio.idServicio
                    from servicio 
-                   inner join sedescliente on servicio.idSedeClienteFk = sedescliente.idSedeCliente
-                   inner join cliente on cliente.idCliente = sedescliente.idClienteFk
+                   inner join sedesCliente on servicio.idSedeClienteFk = sedesCliente.idSedeCliente
+                   inner join cliente on cliente.idCliente = sedesCliente.idClienteFk
                    inner join empleado on empleado.idEmpleado = servicio.idEmpleadoFk
-                   inner join empresafumigadora on empresafumigadora.idEmpresaFumigadora  = empleado.idEmpresaFumigadoraFk
-                   where servicio.estadoServicio = 'en espera' and empresafumigadora.idEmpresaFumigadora=%s;
+                   inner join empresaFumigadora on empresaFumigadora.idEmpresaFumigadora  = empleado.idEmpresaFumigadoraFk
+                   where servicio.estadoServicio = 'en espera' and empresaFumigadora.idEmpresaFumigadora=%s;
                    """, (context['id_cliente'],))
     servicios_incompletos = cur.fetchall(); 
     print(servicios_incompletos); 
@@ -540,12 +540,12 @@ def servicios_disponibles():
     
     cur.execute("""select servicio.idServicio,
 	               cliente.nombreComercialCliente,
-	               sedescliente.nombreSedeCliente,
+	               sedesCliente.nombreSedeCliente,
                    servicio.descripcionServicio,
                    servicio.fechaSolicitudServicio
                    from servicio 
-                   inner join sedescliente on servicio.idSedeClienteFk = sedescliente.idSedeCliente
-                   inner join cliente on cliente.idCliente = sedescliente.idClienteFk
+                   inner join sedesCliente on servicio.idSedeClienteFk = sedesCliente.idSedeCliente
+                   inner join cliente on cliente.idCliente = sedesCliente.idClienteFk
                    where servicio.idEmpleadoFk is null;
                    """)
     servicios_disponibles = cur.fetchall(); 
@@ -709,24 +709,24 @@ def consulta_detalles_servicios():
     }
     
     cur.execute('''select servicio.idServicio, 
-                   empresafumigadora.nombreEmpresaFumigadora,
-                   empresafumigadora.nombreEncargadoEmpresaFumigadora,
+                   empresaFumigadora.nombreEmpresaFumigadora,
+                   empresaFumigadora.nombreEncargadoEmpresaFumigadora,
                    cliente.nombreComercialCliente,
-                   sedescliente.nombreSedeCliente,
-                   sedescliente.nombreEncargadoSedeCliente,
+                   sedesCliente.nombreSedeCliente,
+                   sedesCliente.nombreEncargadoSedeCliente,
                    clases.nombreClases,
                    caracteristicas.nombreCaracteristicas,
-                   detallesservicio.valorDetalle,
+                   detallesServicio.valorDetalle,
                    servicio.fechaFinalServicio,
-                   detallesservicio.idDetalle from cliente 
-                   inner join sedescliente on cliente.idCliente = sedescliente.idClienteFk 
-                   inner join servicio on sedescliente.idSedeCliente = servicio.idSedeClienteFk 
-                   inner join detallesservicio on  servicio.idServicio = detallesservicio.idServicioFk 
-                   inner join caracteristicas on detallesservicio.idCaracteristicaFk = caracteristicas.idCaracteristicas 
+                   detallesServicio.idDetalle from cliente 
+                   inner join sedesCliente on cliente.idCliente = sedesCliente.idClienteFk 
+                   inner join servicio on sedesCliente.idSedeCliente = servicio.idSedeClienteFk 
+                   inner join detallesServicio on  servicio.idServicio = detallesServicio.idServicioFk 
+                   inner join caracteristicas on detallesServicio.idCaracteristicaFk = caracteristicas.idCaracteristicas 
                    inner join clases on caracteristicas.idClasesFk = clases.idClases 
                    inner join empleado on empleado.idEmpleado = servicio.idEmpleadoFk 
-                   inner join empresafumigadora on empresafumigadora.idEmpresaFumigadora = empleado.idEmpresaFumigadoraFk 
-                   where servicio.estadoServicio = 'finalizado' and empresafumigadora.idEmpresaFumigadora = %s order by servicio.idServicio asc''', (context['id_cliente'], ))
+                   inner join empresaFumigadora on empresaFumigadora.idEmpresaFumigadora = empleado.idEmpresaFumigadoraFk 
+                   where servicio.estadoServicio = 'finalizado' and empresaFumigadora.idEmpresaFumigadora = %s order by servicio.idServicio asc''', (context['id_cliente'], ))
     consulta_detalles = cur.fetchall()
     print(consulta_detalles)
     cur.close()
@@ -799,7 +799,7 @@ def elimar_detalle(index_detalle):
     from app import mysql; 
     cur = mysql.connection.cursor(); 
     
-    cur.execute("""delete from detallesservicio 
+    cur.execute("""delete from detallesServicio 
                    where idDetalle = %s""", (id_detalle,)); 
     cur.connection.commit(); 
     
@@ -930,7 +930,7 @@ def actualizar_detalle():
     consulta2 = cur.fetchone(); 
     id_caracteristica = consulta2[0]
     
-    cur.execute("update detallesservicio set valorDetalle = %s, idCaracteristicaFk = %s where idDetalle = %s", (detalle, id_caracteristica, id_detalle,)); 
+    cur.execute("update detallesServicio set valorDetalle = %s, idCaracteristicaFk = %s where idDetalle = %s", (detalle, id_caracteristica, id_detalle,)); 
     cur.connection.commit(); 
     
     
@@ -1377,20 +1377,20 @@ def licencias():
     
     cur = mysql.connection.cursor(); 
     
-    cur.execute("""select empresafumigadora.idEmpresaFumigadora, 
-	                empresafumigadora.nombreEmpresaFumigadora,
+    cur.execute("""select empresaFumigadora.idEmpresaFumigadora, 
+	                empresaFumigadora.nombreEmpresaFumigadora,
                     rentaSoftware.idRentaSoftware,
                     rentaSoftware.estadoRentaSoftware,
                     rentaSoftware.duracionRenta,
                     pagosSoftware.idPagosSoftware,
                     licencias.nombreLicencia,
                     metodosPagoSoftware.nombreMetodoPagoSoftware
-                    from empresafumigadora
-                    inner join rentaSoftware on empresafumigadora.idEmpresaFumigadora = rentaSoftware.idEmpresaFumigadoraFk
+                    from empresaFumigadora
+                    inner join rentaSoftware on empresaFumigadora.idEmpresaFumigadora = rentaSoftware.idEmpresaFumigadoraFk
                     inner join pagosSoftware on rentaSoftware.idRentaSoftware = pagosSoftware.idRentaSoftwareFk
                     inner join licencias on pagosSoftware.idLicenciaFk = licencias.idLicencia
                     inner join metodosPagoSoftware on pagosSoftware.idMediosPagoFk = metodosPagoSoftware.idMetodoPagoSoftware
-                    where rentaSoftware.estadoRentaSoftware=1 and empresafumigadora.idEmpresaFumigadora = %s;""",(context['id_cliente'],))
+                    where rentaSoftware.estadoRentaSoftware=1 and empresaFumigadora.idEmpresaFumigadora = %s;""",(context['id_cliente'],))
     consulta_licencia = cur.fetchone(); 
     print(consulta_licencia)
     
@@ -1656,7 +1656,7 @@ def hacer_eliminar_cuenta ():
     from app import mysql;
     cur = mysql.connection.cursor(); 
     
-    cur.execute("update empresafumigadora set estadoEmpresa = false where idEmpresaFumigadora = %s", (context['id_cliente'],))
+    cur.execute("update empresaFumigadora set estadoEmpresa = false where idEmpresaFumigadora = %s", (context['id_cliente'],))
     cur.connection.commit(); 
     
     return redirect(url_for('Login.cerrar_sesion')); 
@@ -1711,7 +1711,7 @@ def actualizar_cuenta ():
     
     cur = mysql.connection.cursor()
     
-    cur.execute("update empresafumigadora set direccionEmpresaFumigadora  = %s, departamentoEmpresaFumigadora =%s, descripcionEmpresaFumigadora =%s where idEmpresaFumigadora = %s", (direccion, departamento, descripcion, context['id_cliente'],))
+    cur.execute("update empresaFumigadora set direccionEmpresaFumigadora  = %s, departamentoEmpresaFumigadora =%s, descripcionEmpresaFumigadora =%s where idEmpresaFumigadora = %s", (direccion, departamento, descripcion, context['id_cliente'],))
     cur.connection.commit(); 
     
     return render_template('empresa_fumigadora/perfil/datos_actualizados.html', **context)

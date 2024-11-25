@@ -101,35 +101,35 @@ def registrar_usuario():
             
             
             #nit
-            cur.execute("select *from empresafumigadora where nitEmpresaFumigadora = %s" , (nit,))
+            cur.execute("select *from empresaFumigadora where nitEmpresaFumigadora = %s" , (nit,))
             similitud1 = cur.fetchall(); 
             if similitud1:
                 flash("Nit ya existente en el sistema"); 
                 return redirect(url_for('Register.register')); 
             
             #telefono
-            cur.execute("select *from empresafumigadora where telefonoEmpresaFumigadora = %s", (telefono,)); 
+            cur.execute("select *from empresaFumigadora where telefonoEmpresaFumigadora = %s", (telefono,)); 
             similitud2 = cur.fetchall(); 
             if similitud2:
                 flash("Teléfono ya existente en el sistema"); 
                 return redirect(url_for('Register.register')); 
             
             #gmail
-            cur.execute("select *from empresafumigadora where gmailEmpresaFumigadora = %s", (correo,)); 
+            cur.execute("select *from empresaFumigadora where gmailEmpresaFumigadora = %s", (correo,)); 
             similitud3 = cur.fetchall(); 
             if similitud3:
                 flash("Correo ya existente en el sistema"); 
                 return redirect(url_for('Register.register')); 
             
             #encargado correo
-            cur.execute("select *from empresafumigadora where gmailEncargadoEmpresaFumigadora = %s", (encargado_correo,)); 
+            cur.execute("select *from empresaFumigadora where gmailEncargadoEmpresaFumigadora = %s", (encargado_correo,)); 
             similitud4 = cur.fetchall(); 
             if similitud4:
                 flash("Correo ya existente en el sistema"); 
                 return redirect(url_for('Register.register')); 
             
             #encargado telefono
-            cur.execute("select *from empresafumigadora where telefonoEncargadoEmpresaFumigadora = %s", (encargado_telefono,)); 
+            cur.execute("select *from empresaFumigadora where telefonoEncargadoEmpresaFumigadora = %s", (encargado_telefono,)); 
             similitud5 = cur.fetchall(); 
             if similitud5:
                 flash("Teléfono ya existente en el sistema"); 
@@ -138,11 +138,11 @@ def registrar_usuario():
             
             #sesion
             
-            cur.execute('insert into empresafumigadora(fotoLogoEmpresaFumigadora, nitEmpresaFumigadora, nombreEmpresaFumigadora, direccionEmpresaFumigadora, departamentoEmpresaFumigadora, contrasenaEmpresaFumigadora, descripcionEmpresaFumigadora, telefonoEmpresaFumigadora, gmailEmpresaFumigadora, nombreEncargadoEmpresaFumigadora, gmailEncargadoEmpresaFumigadora, telefonoEncargadoEmpresaFumigadora, fotoEncargadoEmpresaFumigadora) value(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)',
+            cur.execute('insert into empresaFumigadora(fotoLogoEmpresaFumigadora, nitEmpresaFumigadora, nombreEmpresaFumigadora, direccionEmpresaFumigadora, departamentoEmpresaFumigadora, contrasenaEmpresaFumigadora, descripcionEmpresaFumigadora, telefonoEmpresaFumigadora, gmailEmpresaFumigadora, nombreEncargadoEmpresaFumigadora, gmailEncargadoEmpresaFumigadora, telefonoEncargadoEmpresaFumigadora, fotoEncargadoEmpresaFumigadora) value(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)',
                         (file_path, nit,nombre_comercial,direccion, departamento, contraseña_cifrada, descripcion, telefono, correo, encargado_nombre, encargado_correo, encargado_telefono, file_path_encargado))
             mysql.connection.commit()
             
-            cur.execute("select *from empresafumigadora where gmailEmpresaFumigadora = %s", (correo,)); 
+            cur.execute("select *from empresaFumigadora where gmailEmpresaFumigadora = %s", (correo,)); 
             consulta_new_user = cur.fetchone(); 
             
             session['datos_cliente'] = {

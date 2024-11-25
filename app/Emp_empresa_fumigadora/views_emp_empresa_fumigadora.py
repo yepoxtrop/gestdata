@@ -22,7 +22,7 @@ def Emp_empre_plantilla():
     cur = mysql.connection.cursor()
     cur.execute("""
         SELECT nombreEmpresaFumigadora, fotoLogoEmpresaFumigadora 
-        FROM empresafumigadora 
+        FROM empresaFumigadora 
         WHERE idEmpresaFumigadora = %s;
     """, (idEmpresaFumigadoraFk,))
     resultado = cur.fetchone()
@@ -70,7 +70,7 @@ def Emp_empre_ui():
     cur = mysql.connection.cursor()
     cur.execute("""
         SELECT nombreEmpresaFumigadora, fotoLogoEmpresaFumigadora 
-        FROM empresafumigadora 
+        FROM empresaFumigadora 
         WHERE idEmpresaFumigadora = %s;
     """, (idEmpresaFumigadoraFk,))
     resultado = cur.fetchone()
@@ -121,7 +121,7 @@ def emp_empre_info():
     cur = mysql.connection.cursor()
     cur.execute("""
         SELECT nombreEmpresaFumigadora, fotoLogoEmpresaFumigadora 
-        FROM empresafumigadora 
+        FROM empresaFumigadora 
         WHERE idEmpresaFumigadora = %s;
     """, (idEmpresaFumigadoraFk,))
     resultado_empresa = cur.fetchone()
@@ -234,7 +234,7 @@ def emp_empre_edit():
     cur = mysql.connection.cursor()
     cur.execute("""
         SELECT nombreEmpresaFumigadora, fotoLogoEmpresaFumigadora 
-        FROM empresafumigadora 
+        FROM empresaFumigadora 
         WHERE idEmpresaFumigadora = %s;
     """, (idEmpresaFumigadoraFk,))
     
@@ -278,7 +278,7 @@ def emp_empre_actualizacion():
     cur = mysql.connection.cursor()
     cur.execute("""
         SELECT nombreEmpresaFumigadora, fotoLogoEmpresaFumigadora 
-        FROM empresafumigadora 
+        FROM empresaFumigadora 
         WHERE idEmpresaFumigadora = %s;
     """, (id_empresa_fumigadora_fk,))
     
@@ -345,7 +345,7 @@ def emp_empre_borrar():
     cur = mysql.connection.cursor()
     cur.execute("""
         SELECT nombreEmpresaFumigadora, fotoLogoEmpresaFumigadora 
-        FROM empresafumigadora 
+        FROM empresaFumigadora 
         WHERE idEmpresaFumigadora = %s;
     """, (idEmpresaFumigadoraFk,))
     resultado = cur.fetchone()
@@ -395,7 +395,7 @@ def emp_empre_detall():
     cur = mysql.connection.cursor()
     cur.execute("""
         SELECT nombreEmpresaFumigadora, fotoLogoEmpresaFumigadora 
-        FROM empresafumigadora 
+        FROM empresaFumigadora 
         WHERE idEmpresaFumigadora = %s;
     """, (idEmpresaFumigadoraFk,))
     resultado = cur.fetchone()
@@ -420,7 +420,7 @@ def emp_empre_detall():
         car.nombreCaracteristicas AS caracteristica,
         det.valorDetalle AS detalle
     FROM 
-        detallesservicio det
+        detallesServicio det
     JOIN 
         caracteristicas car ON det.idCaracteristicaFk = car.idCaracteristicas
     JOIN 
@@ -428,17 +428,17 @@ def emp_empre_detall():
     JOIN 
         servicio ser ON det.idServicioFk = ser.idServicio
     JOIN 
-        sedescliente s ON ser.idSedeClienteFk = s.idSedeCliente
+        sedesCliente s ON ser.idSedeClienteFk = s.idSedeCliente
     JOIN 
         cliente c ON s.idClienteFk = c.idCliente
     WHERE 
         s.idClienteFk IN (
             SELECT s.idClienteFk 
-            FROM sedescliente s 
+            FROM sedesCliente s 
             WHERE s.idClienteFk IN (
                 SELECT c.idCliente 
                 FROM cliente c 
-                JOIN sedescliente s ON c.idCliente = s.idClienteFk 
+                JOIN sedesCliente s ON c.idCliente = s.idClienteFk 
                 WHERE s.idClienteFk IN (
                     SELECT e.idEmpleado 
                     FROM empleado e 
@@ -513,7 +513,7 @@ def emp_empre_servi():
     cur = mysql.connection.cursor()
     cur.execute("""
         SELECT nombreEmpresaFumigadora, fotoLogoEmpresaFumigadora 
-        FROM empresafumigadora 
+        FROM empresaFumigadora 
         WHERE idEmpresaFumigadora = %s;
     """, (idEmpresaFumigadoraFk,))
     resultado = cur.fetchone()
@@ -534,15 +534,15 @@ def emp_empre_servi():
            ser.fechaInicioServicio, ser.fechaFinalServicio, 
            ser.estadoServicio 
     FROM servicio ser 
-    JOIN sedescliente s ON ser.idSedeClienteFk = s.idSedeCliente 
+    JOIN sedesCliente s ON ser.idSedeClienteFk = s.idSedeCliente 
     JOIN cliente c ON s.idClienteFk = c.idCliente 
     WHERE s.idClienteFk IN ( 
         SELECT s.idClienteFk 
-        FROM sedescliente s 
+        FROM sedesCliente s 
         WHERE s.idClienteFk IN (
             SELECT c.idCliente 
             FROM cliente c 
-            JOIN sedescliente s ON c.idCliente = s.idClienteFk 
+            JOIN sedesCliente s ON c.idCliente = s.idClienteFk 
             WHERE s.idClienteFk IN (
                 SELECT e.idEmpleado 
                 FROM empleado e 
@@ -631,7 +631,7 @@ def reporte():
     cur = mysql.connection.cursor()
     cur.execute("""
         SELECT nombreEmpresaFumigadora, fotoLogoEmpresaFumigadora 
-        FROM empresafumigadora 
+        FROM empresaFumigadora 
         WHERE idEmpresaFumigadora = %s;
     """, (idEmpresaFumigadoraFk,))
     resultado = cur.fetchone()
@@ -686,7 +686,7 @@ def certificado():
     cur = mysql.connection.cursor()
     cur.execute("""
         SELECT nombreEmpresaFumigadora, fotoLogoEmpresaFumigadora 
-        FROM empresafumigadora 
+        FROM empresaFumigadora 
         WHERE idEmpresaFumigadora = %s;
     """, (idEmpresaFumigadoraFk,))
     resultado = cur.fetchone()
@@ -748,7 +748,7 @@ def emp_empre_no_det_servicio():
     cur = mysql.connection.cursor()
     cur.execute("""
         SELECT nombreEmpresaFumigadora, fotoLogoEmpresaFumigadora 
-        FROM empresafumigadora 
+        FROM empresaFumigadora 
         WHERE idEmpresaFumigadora = %s;
     """, (idEmpresaFumigadoraFk,))
     resultado = cur.fetchone()
@@ -796,7 +796,7 @@ def emp_empre_no_servicio():
     cur = mysql.connection.cursor()
     cur.execute("""
         SELECT nombreEmpresaFumigadora, fotoLogoEmpresaFumigadora 
-        FROM empresafumigadora 
+        FROM empresaFumigadora 
         WHERE idEmpresaFumigadora = %s;
     """, (idEmpresaFumigadoraFk,))
     resultado = cur.fetchone()

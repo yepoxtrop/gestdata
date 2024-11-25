@@ -49,7 +49,7 @@ def servicio():
     from app import mysql;
     cur = mysql.connection.cursor(); 
     
-    cur.execute("select empresafumigadora.idEmpresaFumigadora, empresafumigadora.nombreEmpresaFumigadora, sedesCliente.idSedeCliente, sedesCliente.nombreSedeCliente, servicio.idServicio, servicio.descripcionServicio, servicio.fechaSolicitudServicio, servicio.fechaInicioServicio, servicio.fechaFinalServicio, servicio.estadoServicio, empleado.nombresEmpleado from empresafumigadora left join empleado on empresafumigadora.idEmpresaFumigadora = empleado.idEmpresaFumigadoraFk right join servicio on servicio.idEmpleadoFk = empleado.idEmpleado inner join sedesCliente on servicio.idSedeClienteFk = sedesCliente.idSedeCliente inner join cliente on cliente.idCliente = sedesCliente.idClienteFk where cliente.idCliente =%s;", (context['id_cliente'],))
+    cur.execute("select empresaFumigadora.idEmpresaFumigadora, empresaFumigadora.nombreEmpresaFumigadora, sedesCliente.idSedeCliente, sedesCliente.nombreSedeCliente, servicio.idServicio, servicio.descripcionServicio, servicio.fechaSolicitudServicio, servicio.fechaInicioServicio, servicio.fechaFinalServicio, servicio.estadoServicio, empleado.nombresEmpleado from empresaFumigadora left join empleado on empresaFumigadora.idEmpresaFumigadora = empleado.idEmpresaFumigadoraFk right join servicio on servicio.idEmpleadoFk = empleado.idEmpleado inner join sedesCliente on servicio.idSedeClienteFk = sedesCliente.idSedeCliente inner join cliente on cliente.idCliente = sedesCliente.idClienteFk where cliente.idCliente =%s;", (context['id_cliente'],))
     servicios = cur.fetchall(); 
     
     if servicios:
@@ -109,12 +109,12 @@ def certificado(index):
     cur = mysql.connection.cursor()
     
     if empresa_fumigadora == None or inicio == None or final == None or estado=='en espera' or empleado==None:
-        return render_template("cliente/servicios/no_certificado.html", **context)
+        return render_template('cliente/servicios/no_certificado.html', **context)
     
-    cur.execute("select nombreEncargadoEmpresaFumigadora from empresafumigadora where idEmpresaFumigadora = %s", (id_empresa_fumigadora,))
+    cur.execute("select nombreEncargadoEmpresaFumigadora from empresaFumigadora where idEmpresaFumigadora = %s", (id_empresa_fumigadora,))
     encargado_fumigadora = cur.fetchone()
     
-    cur.execute("select nombreEncargadoSedeCliente from sedescliente where idSedeCliente =%s", (id_sede,))
+    cur.execute("select nombreEncargadoSedeCliente from sedesCliente where idSedeCliente =%s", (id_sede,))
     encargado_sede = cur.fetchone()
     
     context2 = {
@@ -135,7 +135,7 @@ def certificado(index):
     
     
     
-    return render_template("cliente/servicios/certificado.html", **context, **context2)
+    return render_template('cliente/servicios/certificado.html', **context, **context2)
 
 @Cliente.route('/desacragr_certificado/<string:nombre_Comercial_Cliente>/<string:sede>/<string:encargado_sede>/<string:encargado_fumigadora>/<string:final>/<string:empresa_fumigadora>')
 def desacragr_certificado(nombre_Comercial_Cliente, sede, encargado_sede, encargado_fumigadora, final, empresa_fumigadora):
@@ -182,12 +182,12 @@ def reporte(indice):
     
     cur = mysql.connection.cursor(); 
     
-    cur.execute(" select detallesservicio.valorDetalle, detallesservicio.idCaracteristicaFk, clases.nombreClases, caracteristicas.nombreCaracteristicas, caracteristicas.idclasesFk from detallesservicio inner join caracteristicas on caracteristicas.idCaracteristicas = detallesservicio.idCaracteristicaFk inner join clases on clases.idClases = caracteristicas.idClasesFk where idServicioFk = %s order by detallesservicio.idCaracteristicaFk ASC", (id_servicio,))    
+    cur.execute(" select detallesServicio.valorDetalle, detallesServicio.idCaracteristicaFk, clases.nombreClases, caracteristicas.nombreCaracteristicas, caracteristicas.idclasesFk from detallesServicio inner join caracteristicas on caracteristicas.idCaracteristicas = detallesServicio.idCaracteristicaFk inner join clases on clases.idClases = caracteristicas.idClasesFk where idServicioFk = %s order by detallesServicio.idCaracteristicaFk ASC", (id_servicio,))    
     detalles_servicios = cur.fetchall(); 
     cantidad_detalle = len(detalles_servicios); 
     
     if cantidad_detalle == 0:
-        return render_template("cliente/servicios/no_reporte.html", **context); 
+        return render_template('cliente/servicios/no_reporte.html', **context); 
     
     session['detalles_servicios_1'] = []
     session['detalles_servicios_2'] = []
@@ -231,7 +231,7 @@ def reporte(indice):
     print(longitud2)
     print(longitud3)
     
-    cur.execute("select *from empresafumigadora where idEmpresaFumigadora = %s", (id_empresa_fumigadora,))
+    cur.execute("select *from empresaFumigadora where idEmpresaFumigadora = %s", (id_empresa_fumigadora,))
     cosulta = cur.fetchone()
 
     context4 = {
@@ -265,7 +265,7 @@ def reporte(indice):
         'longitud3' : longitud3
     }
     
-    return render_template("cliente/servicios/reporte.html", **context2, **context3)
+    return render_template('cliente/servicios/reporte.html', **context2, **context3)
 
 #solicitar servicios
 @Cliente.route("/solicitar")
@@ -287,7 +287,7 @@ def solicitar():
     
     cur = mysql.connection.cursor(); 
     
-    cur.execute("select nombreSedeCliente from sedescliente where idClienteFk=%s", (context['id_cliente'],))
+    cur.execute("select nombreSedeCliente from sedesCliente where idClienteFk=%s", (context['id_cliente'],))
     sedes = cur.fetchall(); 
     
     session['sedes'] = []
@@ -296,7 +296,7 @@ def solicitar():
         session['sedes'].append({
             'nombre_sede' : sedes_cliente[0]
         })
-    return render_template("cliente/servicios/solicitar.html", **context)
+    return render_template('cliente/servicios/solicitar.html', **context)
 
 @Cliente.route("/solicitar_servicio", methods=['POST'])
 def solicitar_servicio():
@@ -326,7 +326,7 @@ def solicitar_servicio():
     cur.execute("insert into servicio(descripcionServicio, idSedeClienteFk) value(%s, %s)", (descripcion, id_sede[0]))
     cur.connection.commit(); 
     
-    return render_template("cliente/servicios/mensajes/servicio_solicitado.html", **context)
+    return render_template('cliente/servicios/mensajes/servicio_solicitado.html', **context)
 
 #sedes
 @Cliente.route("/sedes")
@@ -347,7 +347,7 @@ def sedes():
     from app import mysql; 
     cur = mysql.connect.cursor(); 
 
-    cur.execute("select *from sedescliente where idClienteFk = %s", (context['id_cliente'],))
+    cur.execute("select *from sedesCliente where idClienteFk = %s", (context['id_cliente'],))
     sedes= cur.fetchall()
     print(sedes)
 
@@ -375,7 +375,7 @@ def sedes():
             'estadoSede': sedes_cliente[14]
         })
 
-    return render_template("cliente/Sedes.html", **context)
+    return render_template('cliente/Sedes.html', **context)
 
 #insertar sede
 @Cliente.route("/sedes_form")
@@ -392,7 +392,7 @@ def sedes_form():
         'contrasena_Cliente' : session.get('datos_cliente', {}).get('contrasenaCliente', 'contraseña_inexistente'),
         'estado_Cliente' : session.get('datos_cliente', {}).get('estadoCliente', 'estado_inexistente')
     }
-    return render_template("cliente/sedes/crear.html", **context)
+    return render_template('cliente/sedes/crear.html', **context)
 
 @Cliente.route("/insertar", methods=['POST'])
 def insertar_sede():
@@ -411,7 +411,7 @@ def insertar_sede():
     
     if request.method == 'GET':
         flash("Error al crear la sede"); 
-        return render_template("cliente/sedes/crear.html", **context)
+        return render_template('cliente/sedes/crear.html', **context)
     else:
         archivo_logo = request.files['logo_cliente']
         archivo_empleado = request.files['foto_encargado']
@@ -436,18 +436,18 @@ def insertar_sede():
     
         cur = mysql.connection.cursor()
     
-        cur.execute("select *from sedescliente where nitSedeCliente = %s or gmailSedeCliente = %s or telefonoSedeCliente = %s or gmailEncargadoSedeCliente  = %s or telefonoEncargadoSedeCliente = %s", (nit, correo1, telefono, correo2, encargado_tel))
+        cur.execute("select *from sedesCliente where nitSedeCliente = %s or gmailSedeCliente = %s or telefonoSedeCliente = %s or gmailEncargadoSedeCliente  = %s or telefonoEncargadoSedeCliente = %s", (nit, correo1, telefono, correo2, encargado_tel))
         consulta1 = cur.fetchall(); 
     
         if len(consulta1) >0:
             flash("Algún correo/nit/teléfono ya existe"); 
-            return render_template("cliente/sedes/crear.html", **context)
+            return render_template('cliente/sedes/crear.html', **context)
     
     
-        cur.execute("insert into sedescliente(nitSedeCliente, nombreSedeCliente, direccionSedeCliente, gmailSedeCliente, contrasenaSedeCliente, telefonoSedeCliente, departamentoSedeCliente, logoSedeCliente, nombreEncargadoSedeCliente, telefonoEncargadoSedeCliente, gmailEncargadoSedeCliente, fotoEncargadoSedeCliente, idClienteFk) value(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)", (nit, nombre, direccion, correo1, contraseña_cifrda, telefono, departamento, path_logo, encargado, encargado_tel, correo2, path_empleado, context['id_cliente'],))
+        cur.execute("insert into sedesCliente(nitSedeCliente, nombreSedeCliente, direccionSedeCliente, gmailSedeCliente, contrasenaSedeCliente, telefonoSedeCliente, departamentoSedeCliente, logoSedeCliente, nombreEncargadoSedeCliente, telefonoEncargadoSedeCliente, gmailEncargadoSedeCliente, fotoEncargadoSedeCliente, idClienteFk) value(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)", (nit, nombre, direccion, correo1, contraseña_cifrda, telefono, departamento, path_logo, encargado, encargado_tel, correo2, path_empleado, context['id_cliente'],))
         cur.connection.commit()
     
-    return render_template("cliente/sedes/creada.html", **context)
+    return render_template('cliente/sedes/creada.html', **context)
 
 #editar_sede
 @Cliente.route("/editar_Sede/<int:index>")
@@ -481,7 +481,7 @@ def editar_sede(index):
         'nombreEncargadoSedeCliente' : nombreEncargadoSedeCliente
     }
     
-    return render_template("cliente/sedes/editar.html", **context, **context2)
+    return render_template('cliente/sedes/editar.html', **context, **context2)
 
 @Cliente.route("/actualizar_sede", methods=['POST'])
 def actualizar_sede():
@@ -510,17 +510,17 @@ def actualizar_sede():
     
     cur = mysql.connection.cursor()
     
-    cur.execute("select *from sedescliente where nitSedeCliente = %s or  telefonoSedeCliente = %s or gmailSedeCliente=%s", (nitSedeCliente, telefonoSedeCliente, gmailSedeCliente,))
+    cur.execute("select *from sedesCliente where nitSedeCliente = %s or  telefonoSedeCliente = %s or gmailSedeCliente=%s", (nitSedeCliente, telefonoSedeCliente, gmailSedeCliente,))
     consulta = cur.fetchall()
     
     if len(consulta)>0:
         flash("El nit/telefono/correo puede que este repetido")
-        return render_template("cliente/Sedes.html", **context)
+        return render_template('cliente/Sedes.html', **context)
     
-    cur.execute("update sedescliente set nitSedeCliente = %s, nombreSedeCliente=%s, gmailSedeCliente=%s, telefonoSedeCliente=%s, nombreEncargadoSedeCliente=%s where idSedeCliente=%s", (nitSedeCliente, nombreSedeCliente, gmailSedeCliente,telefonoSedeCliente,nombreEncargadoSedeCliente,id_sede,))
+    cur.execute("update sedesCliente set nitSedeCliente = %s, nombreSedeCliente=%s, gmailSedeCliente=%s, telefonoSedeCliente=%s, nombreEncargadoSedeCliente=%s where idSedeCliente=%s", (nitSedeCliente, nombreSedeCliente, gmailSedeCliente,telefonoSedeCliente,nombreEncargadoSedeCliente,id_sede,))
     cur.connection.commit()
     
-    return render_template("cliente/sedes/editado.html", **context)
+    return render_template('cliente/sedes/editado.html', **context)
 
 #gerentes
 @Cliente.route("/gerentes")
@@ -541,11 +541,11 @@ def gerentes():
     from app import mysql; 
     cur = mysql.connection.cursor()
 
-    cur.execute("select idSedeCliente, nombreEncargadoSedeCliente, telefonoEncargadoSedeCliente, gmailEncargadoSedeCliente, nombreSedeCliente from sedescliente where idClienteFk = %s", (context['id_cliente'],))
+    cur.execute("select idSedeCliente, nombreEncargadoSedeCliente, telefonoEncargadoSedeCliente, gmailEncargadoSedeCliente, nombreSedeCliente from sedesCliente where idClienteFk = %s", (context['id_cliente'],))
     gerentes = cur.fetchall()
 
     if len(gerentes) == 0:
-        return render_template("cliente/gerente/no_gerentes.html", **context)
+        return render_template('cliente/gerente/no_gerentes.html', **context)
 
     session['gerentes']=[]
 
@@ -560,7 +560,7 @@ def gerentes():
         
     print(session['gerentes'])
 
-    return render_template("cliente/gerente/gerentes.html", **context)
+    return render_template('cliente/gerente/gerentes.html', **context)
 
 #editar gerente
 @Cliente.route("/gerentes_Editar/<int:index>")
@@ -591,7 +591,7 @@ def gerentes_editar(index):
     }
     
     print(context2)
-    return render_template("cliente/gerente/editar.html", **context, **context2)
+    return render_template('cliente/gerente/editar.html', **context, **context2)
 
 @Cliente.route("/actualizar_gerente", methods=['POST'])
 def actualizar_gerente():
@@ -619,17 +619,17 @@ def actualizar_gerente():
     
     cur = mysql.connection.cursor()
     
-    cur.execute("select idSedeCliente from sedescliente where telefonoEncargadoSedeCliente = %s or gmailEncargadoSedeCliente = %s", (telefono, correo,))
+    cur.execute("select idSedeCliente from sedesCliente where telefonoEncargadoSedeCliente = %s or gmailEncargadoSedeCliente = %s", (telefono, correo,))
     consulta = cur.fetchall()
     
     if len(consulta) >0:
         flash("Ya se encuentra repetido un dato correo o telefono")
-        return redirect(url_for("Cliente.gerentes"))
+        return redirect(url_for('Cliente.gerentes'))
     
-    cur.execute("update sedescliente set nombreEncargadoSedeCliente = %s, telefonoEncargadoSedeCliente = %s, gmailEncargadoSedeCliente = %s where idSedeCliente = %s", (nombre, telefono, correo, sede,))
+    cur.execute("update sedesCliente set nombreEncargadoSedeCliente = %s, telefonoEncargadoSedeCliente = %s, gmailEncargadoSedeCliente = %s where idSedeCliente = %s", (nombre, telefono, correo, sede,))
     cur.connection.commit(); 
     
-    return render_template("cliente/gerente/editado.html", **context)
+    return render_template('cliente/gerente/editado.html', **context)
 
 #detalles
 @Cliente.route("/detalles")
@@ -656,7 +656,7 @@ def detalles():
     
     
     if len(detalles) == 0:
-        return render_template("cliente/detalles_servicios/no_detalles.html", **context)
+        return render_template('cliente/detalles_servicios/no_detalles.html', **context)
 
     session['detalles']=[]
     
@@ -670,7 +670,7 @@ def detalles():
             'caracteristica':detalles_servicios[5],
             'detalle':detalles_servicios[6]
         })
-    return render_template("cliente/detalles_servicios/detalles.html", **context)
+    return render_template('cliente/detalles_servicios/detalles.html', **context)
 
 #eliminar_cuenta
 @Cliente.route("/eliminar_user")
@@ -687,7 +687,7 @@ def eliminar_user():
         'contrasena_Cliente' : session.get('datos_cliente', {}).get('contrasenaCliente', 'contraseña_inexistente'),
         'estado_Cliente' : session.get('datos_cliente', {}).get('estadoCliente', 'estado_inexistente')
     }
-    return render_template("cliente/perfil/eliminar.html", **context)
+    return render_template('cliente/perfil/eliminar.html', **context)
 
 @Cliente.route("/hacer_eliminar_cuenta")
 def hacer_eliminar_cuenta():
@@ -710,10 +710,10 @@ def hacer_eliminar_cuenta():
     cur.execute("update cliente set estadoCliente = false where idCliente = %s", (context['id_cliente'],))
     cur.connection.commit()
 
-    cur.execute("update sedescliente set estadoSede = false where idClienteFk = %s", (context['id_cliente'],))
+    cur.execute("update sedesCliente set estadoSede = false where idClienteFk = %s", (context['id_cliente'],))
     cur.connection.commit()
 
-    return redirect(url_for("Login.cerrar_sesion")); 
+    return redirect(url_for('Login.cerrar_sesion')); 
 
 #Editar_Cuente
 @Cliente.route("/editar_user")
@@ -730,7 +730,7 @@ def editar_user():
         'contrasena_Cliente' : session.get('datos_cliente', {}).get('contrasenaCliente', 'contraseña_inexistente'),
         'estado_Cliente' : session.get('datos_cliente', {}).get('estadoCliente', 'estado_inexistente')
     }
-    return render_template("cliente/perfil/editar.html", **context)
+    return render_template('cliente/perfil/editar.html', **context)
 
 @Cliente.route("/editado_user", methods=['POST'])
 def editado_user():
@@ -757,4 +757,4 @@ def editado_user():
 
     cur.execute("update cliente set nombreComercialCliente=%s, direcionCliente=%s, descripcionCliente=%s where idCliente =%s", (nombre, direccion, descripcion, context['id_cliente'],))
 
-    return render_template("cliente/perfil/datos_actualizados.html", **context)
+    return render_template('cliente/perfil/datos_actualizados.html', **context)

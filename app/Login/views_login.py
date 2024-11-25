@@ -23,7 +23,7 @@ def iniciar_sesion():
         
         
         if rol == 'Empresa_fumigadora':
-            cur.execute('select *from empresafumigadora where gmailEmpresaFumigadora = %s', (email,));
+            cur.execute('select *from empresaFumigadora where gmailEmpresaFumigadora = %s', (email,));
             consulta2 = cur.fetchone()
             
             if consulta2:
@@ -124,7 +124,7 @@ def iniciar_sesion():
             
         
         elif rol =='Sede_cliente':
-            cur.execute('select *from sedescliente where gmailSedeCliente = %s', (email,));
+            cur.execute('select *from sedesCliente where gmailSedeCliente = %s', (email,));
             consulta4 = cur.fetchone()
             
             if consulta4: 
